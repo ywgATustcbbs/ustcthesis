@@ -1,0 +1,105 @@
+﻿
+
+\documentclass[dvipdfm,oneside]{USTCthesis}
+
+% 设置图形文件的搜索路径
+\graphicspath{{chapter/}{figures/}}
+
+% 取消链接的颜色（黑白打印时）
+\hypersetup{colorlinks=false}
+
+
+\begin{document}
+
+
+% 小节标题靠左对齐（必须在 \begin{document} 之后，否则无效）
+%\CTEXsetup[format+={\flushleft}]{section}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 封面部分
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  % 中文封面内容
+  \school{中国科学技术大学}
+  \degree{博士}
+  \title{基于统计模型的话者识别失配补偿方法研究}
+  \author{刘~青~松}
+  \depart{二十三系}
+  \major{电路与系统}
+  \advisor{戴蓓蒨~~教授}
+  \submitdate{二○一○年六月二日}
+  
+  % 英文封面内容
+  \englishschool{University of Science and Technology of China}
+  \englishdegree{doctor}
+  \englishtitle{Channel Compensation for Statistial Model Based Speaker Verification}
+  \englishauthor{Qinsong Liu}
+  \englishmajor{Circuit and System}
+  \englishadvisor{Prof.Beiqian Dai}
+  \englishdate{June 2nd, 2010}
+
+
+  % 封面
+  \maketitle
+  \makeenglishtitle
+  \makebookspine
+  
+  % 授权页
+  \makeauthorization
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 前言部分
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+
+  % 摘要
+  \include{chapter/abstract}
+
+  % 目录
+  \tableofcontents
+  % 表格目录
+  %\listoftables
+  % 插图目录
+  %\listoffigures
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 正文部分
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+
+%  \include{chapter/chap-intro}
+%  \include{chapter/chap-math}
+%  \include{chapter/chap-tabfig}
+%  \include{chapter/chap-faq}
+
+
+  参考文献测试：\cite{lshort-cn,deng:01a,lamport85a,knuth86a,knuth86b,knuth86c}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 附件部分
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+
+  % 参考文献
+  % 使用 BibTeX
+  \bibliography{bib/tex}
+  \nocite{*}
+  % 不使用 BibTeX
+  % \include{chapter/bib}
+
+  % 附录
+  \begin{appendix}
+    \include{chapter/chap-req}
+  \end{appendix}
+  
+  % 致谢
+  \include{chapter/thanks}
+
+  % 发表文章目录
+  \include{chapter/pub}
+
+\end{document}

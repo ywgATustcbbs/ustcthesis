@@ -1,0 +1,63 @@
+﻿
+\chapter{常见问题}
+\label{chap:faq}
+
+\newtheoremstyle{question}% name
+  {}%      Space above, empty = `usual value'
+  {}%      Space below
+  {\tt}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {10pt}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+
+\newtheoremstyle{answer}% name
+  {}%      Space above, empty = `usual value'
+  {}%      Space below
+  {\rm}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {10pt}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+
+\theoremstyle{question}
+ \newtheorem{FAQ}{问题~}
+\theoremstyle{answer}
+ \newtheorem{ANS}{回答~}
+
+\section{表格}
+
+\begin{FAQ}
+页眉里论文题目和各章标题中的字母均为大写，不能实现大小写的区别，而我写的论文需要在页眉中出现的标题中区分英文字母的大小写比如：YBaCuO而不是YBACUO。
+\end{FAQ}
+
+\begin{ANS}
+在 CASthesis.cfg 文件中加上
+\begin{verbatim}
+\renewcommand\title[2][\CAST@value@title]{%
+  \def\CAST@value@title{#2}
+  \def\CAST@value@titlemark{#1}}
+\def\chaptermark#1{\markboth {{\ifnum \c@secnumdepth>\m@ne
+  \if@mainmatter\CTEXthechapter \quad\fi
+  \fi #1}}{}}%
+\def\sectionmark#1{\markright{{\ifnum \c@secnumdepth >\z@
+  \CTEXthesection \quad \fi #1}}}
+\end{verbatim}
+\end{ANS}
+
+
+\section{脚注}
+
+\begin{FAQ}
+如果在章节标题中加入注脚，则不仅会出现在本章首页的页脚，也会出现在目录的页脚，不知是否能够让其不要出现在目录的页脚中。
+\end{FAQ}
+
+\begin{ANS}
+可以使用如下的命令来定义章节的标题
+\begin{verbatim}
+\chapter[出现在目录和页眉的标题]{出现在正文的标题\footnote{这个不会出现在目录中。}}
+\end{verbatim}
+section、~subsection 等命令也有类似的用法。
+\end{ANS}
