@@ -186,9 +186,9 @@
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
-  \framebox{
-   \rotatebox{-90}{\hb@xt@ 0.97\textheight{\ziju{0.17}\verthei\zihao{-4} \USTCT@value@title 
-   \hspace*{20pt} \USTCT@value@depart \hspace*{20pt} \USTCT@value@author \hfill \USTCT@value@school \hspace*{30pt} }}
+   \rotatebox{-90}{
+   \framebox[0.97\textheight][c]{\ziju{0.17}\verthei\zihao{-4} \raisebox{10pt}{\USTCT@value@title 
+   \hspace*{20pt} \USTCT@value@depart \hspace*{20pt} \USTCT@value@author \hspace*{30pt} \USTCT@value@school }}
    }
   \end{center}
   \clearpage

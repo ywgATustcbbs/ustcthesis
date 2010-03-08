@@ -1,6 +1,6 @@
 ﻿
 
-\documentclass[dvipdfm,oneside]{USTCthesis}
+\documentclass[dvipdfm,oneside]{USTCthesis}% twoside 双面打印
 
 % 设置图形文件的搜索路径
 \graphicspath{{chapter/}{figures/}}
@@ -60,9 +60,9 @@
   % 目录
   \tableofcontents
   % 表格目录
-  %\listoftables
+  \listoftables
   % 插图目录
-  %\listoffigures
+  \listoffigures
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -70,10 +70,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mainmatter
 
-%  \include{chapter/chap-intro}
-%  \include{chapter/chap-math}
-%  \include{chapter/chap-tabfig}
-%  \include{chapter/chap-faq}
+  \include{chapter/chap-intro}
+  \include{chapter/chap-math}
+  \include{chapter/chap-tabfig}
+  \include{chapter/chap-faq}
 
 
   参考文献测试：\cite{lshort-cn,deng:01a,lamport85a,knuth86a,knuth86b,knuth86c}
