@@ -1,5 +1,5 @@
 del *.aux /s
-del *.log /s
+:;del *.log /s
 del *.lof /s
 del *.lot /s
 del *.bbl /s

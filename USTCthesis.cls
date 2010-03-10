@@ -61,6 +61,7 @@
 \RequirePackage{times}
 %% math packages
 \RequirePackage{amsmath,amsthm,amsfonts,amssymb,bm}
+
 %% using the MathTimeProfessional Font Supplement A
 %\let\Bbbk\relax
 %\let\heavymath\relax
@@ -71,21 +72,25 @@
 %% content format
 \RequirePackage{titletoc}
 %% page setup
-\RequirePackage[left=3.2cm,right=3.2cm,top=3.8cm,bottom=3.8cm,footskip=0.8cm,headsep=7.5pt]{geometry}
+\RequirePackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm,footskip=0.8cm,headsep=7.5pt]{geometry}
+
+\RequirePackage[round,sort]{natbib}
+\bibliographystyle{plainnat}%unsrtnat
+
 %% check pdfTeX mode
 \RequirePackage{ifpdf}
+%====================================================
 %% hyperref package
 \ifpdf   % We're running pdfTeX in PDF mode
-  \RequirePackage[pdftex]{hyperref}
+  \RequirePackage[pagebackref,pdftex]{hyperref}
 \else    % We're not running pdfTeX, or running pdfTeX in DVI mode
   \ifUSTCT@dvips
-    \RequirePackage[dvips]{hyperref}
+    \RequirePackage[pagebackref,dvips]{hyperref}
   \else
-    \RequirePackage[dvipdfm]{hyperref}
+    \RequirePackage[pagebackref,dvipdfm]{hyperref}
   \fi
  % \AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}} % GBK -> Unicode
 \fi
-\RequirePackage[numbers,sort&compress,super,square]{natbib}
 \RequirePackage{hypernat}
 \hypersetup{CJKbookmarks,%
       bookmarksnumbered,%
@@ -93,7 +98,12 @@
       linkcolor=blue,%
       citecolor=blue,%
       plainpages=false,%
-      pdfstartview=FitH}
+	  pagebackref=true,%
+      pdfstartview=FitH
+}
+\RequirePackage[hyperpageref]{backref}
+%======================================================
+	  
 \AtEndOfPackage{\makeatletter\input{USTCthesis.cfg}\makeatother}
 \def\baselinestretch{1.4}
 %\parskip 0.5ex plus 0.25ex minus 0.25ex
@@ -103,7 +113,6 @@
   \thispagestyle{empty}%
   \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
 \renewcommand{\floatpagefraction}{0.80}
-\bibliographystyle{unsrtnat}
 \newcommand\USTCTspace{\protect\CTEX@spaceChar}
 \newcommand\school[1]{\def\USTCT@value@school{#1}}
 \newcommand\depart[1]{\def\USTCT@value@depart{#1}}
@@ -198,6 +207,21 @@
   \fi
   }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 定义页眉和页脚 使用fancyhdr 宏包
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 定义页眉横线
+\newcommand{\makeheadrule}{%
+    \rule[.7\baselineskip]{\headwidth}{1.2pt}\vskip-0.97\baselineskip%
+    \rule[.6\baselineskip]{\headwidth}{0.4pt}}%
+
+%\makeatletter
+\renewcommand{\headrule}{%
+    {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi}%
+     \makeheadrule}
+%\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand\makeauthorization{%
   \cleardoublepage
@@ -297,6 +321,10 @@
   \chapter{\bibname}%
   \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}}
 \setlength{\bibsep}{1ex}
+
+	   
+
+
 \let\OLDappendix\appendix
 \newif\if@appendixinbackmatter
 \renewenvironment{appendix}
