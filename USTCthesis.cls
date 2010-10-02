@@ -1,96 +1,26 @@
-﻿%%
-%% This is file `USTCthesis.cls',
-%% generated with the docstrip utility.
-%%
-%% The original source files were:
-%%
-%% CASthesis.dtx  (with options: `cls')
-%% 
-%% This is a generated file.
-%% 
-%% Copyright 2004-2006
-%% CTEX.ORG and any individual authors listed elsewhere in this file.
-%% 
-%% This file was generated from file(s) of the CASthesis package project.
-%% ----------------------------------------------------------------------
-%% 
-%% It may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.2
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%% and version 1.2 or later is part of all distributions of LaTeX
-%% version 1999/12/01 or later.
-%% 
-%% This file may only be distributed together with a copy of original
-%% source files. You may however distribute original source files
-%% without such generated files. Copying of this file is authorized
-%% only if either:
-%% (1) you make absolutely no changes to your copy, including name; OR
-%% (2) if you do make changes, you first rename it to some other name.
-%% 
-%% To produce the documentation run the original source files ending
-%% with `.dtx' through LaTeX.
-%% 
-%% \CharacterTable
-%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
-%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
-%%   Digits        \0\1\2\3\4\5\6\7\8\9
-%%   Exclamation   \!     Double quote  \"     Hash (number) \#
-%%   Dollar        \$     Percent       \%     Ampersand     \&
-%%   Acute accent  \'     Left paren    \(     Right paren   \)
-%%   Asterisk      \*     Plus          \+     Comma         \,
-%%   Minus         \-     Point         \.     Solidus       \/
-%%   Colon         \:     Semicolon     \;     Less than     \<
-%%   Equals        \=     Greater than  \>     Question mark \?
-%%   Commercial at \@     Left bracket  \[     Backslash     \\
-%%   Right bracket \]     Circumflex    \^     Underscore    \_
-%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
-%%   Right brace   \}     Tilde         \~}
-%%
-\NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{USTCthesis}
-  [2007/01/09 v0.1h USTCthesis document class]
-\newif\ifUSTCT@dvips \USTCT@dvipstrue
-\DeclareOption{dvips}{\USTCT@dvipstrue}
-\DeclareOption{dvipdfm}{\USTCT@dvipsfalse}
+﻿\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesClass{USTCthesis}[2010/09/30 v0.1h USTCthesis document class]
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions
-\LoadClass[cs4size,a4paper,fancyhdr,fntef]{ctexbook}[2005/11/25]
-%% using times font
+\LoadClass[cs4size,a4paper,fancyhdr,fntef]{ctexbook}[2005/11/25] 
 \RequirePackage{times}
-%% math packages
+\RequirePackage{ccaption}
 \RequirePackage{amsmath,amsthm,amsfonts,amssymb,bm}
-
-%% using the MathTimeProfessional Font Supplement A
-%\let\Bbbk\relax
-%\let\heavymath\relax
 %\RequirePackage{mtpro,mtpams}
-%% graphics packages
 \RequirePackage{graphicx,psfrag}
 \RequirePackage[small,bf,labelsep=space]{caption}
-%% content format
 \RequirePackage{titletoc}
-%% page setup
 \RequirePackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm,footskip=0.8cm,headsep=7.5pt]{geometry}
-
-\RequirePackage[round,sort]{natbib}
-\bibliographystyle{plainnat}%unsrtnat
-
-%% check pdfTeX mode
-\RequirePackage{ifpdf}
-%====================================================
-%% hyperref package
-\ifpdf   % We're running pdfTeX in PDF mode
-  \RequirePackage[pagebackref,pdftex]{hyperref}
-\else    % We're not running pdfTeX, or running pdfTeX in DVI mode
-  \ifUSTCT@dvips
-    \RequirePackage[pagebackref,dvips]{hyperref}
-  \else
-    \RequirePackage[pagebackref,dvipdfm]{hyperref}
-  \fi
- % \AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}} % GBK -> Unicode
-\fi
+\RequirePackage{enumerate}
+\RequirePackage{subfig}
+\RequirePackage{float}
+\RequirePackage{paralist}
+\RequirePackage{booktabs}
+\RequirePackage[perpage,symbol]{footmisc}
+\RequirePackage{pifont}
+\RequirePackage{hyperref}
+\RequirePackage[numbers,sort&compress,super,square]{natbib}
 \RequirePackage{hypernat}
 \hypersetup{CJKbookmarks,%
       bookmarksnumbered,%
@@ -98,13 +28,100 @@
       linkcolor=blue,%
       citecolor=blue,%
       plainpages=false,%
-	  pagebackref=true,%
-      pdfstartview=FitH
-}
-\RequirePackage[hyperpageref]{backref}
-%======================================================
+      pdfstartview=FitH}
 	  
-\AtEndOfPackage{\makeatletter\input{USTCthesis.cfg}\makeatother}
+	  
+\setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
+\setCJKsansfont{Adobe Heiti Std}
+\setCJKmonofont{Adobe Fangsong Std}
+\setCJKfamilyfont{Adobe Song Std}{Adobe Song Std}
+\setCJKfamilyfont{Adobe Heiti Std}{Adobe Heiti Std}
+\setCJKfamilyfont{Adobe Kaiti Std}{Adobe Kaiti Std}
+\setCJKfamilyfont{Adobe Fangsong Std}{Adobe Fangsong Std}
+\setmainfont{Times New Roman}
+\setsansfont[BoldFont={Courier New Bold}]{Courier New}
+\setmonofont[BoldFont={Arial:style=Bold}]{Arial}
+
+\setCJKfamilyfont{song}{Adobe Song Std}
+\setCJKfamilyfont{hei}{Adobe Heiti Std}
+\setCJKfamilyfont{fs}{Adobe Fangsong Std} % XP对应 FangSong_GB2312，Vista对应FangSong，注意根据系统切换
+\setCJKfamilyfont{kai}{Adobe Kaiti Std}   % XP对应 KaiTi_GB2312，Vista对应KaiTi，注意根据系统切换
+\setCJKfamilyfont{li}{LiSu}
+\setCJKfamilyfont{xk}{STXingkai}
+\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{SimHei}
+\newcommand{\song}{\CJKfamily{song}}    % 宋体   (Windows自带simsun.ttf)
+\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体 (Windows自带simfs.ttf)
+\newcommand{\kai}{\CJKfamily{kai}}      % 楷体   (Windows自带simkai.ttf)
+\newcommand{\hei}{\CJKfamily{hei}}      % 黑体   (Windows自带simhei.ttf)
+\newcommand{\li}{\CJKfamily{li}}        % 隶书   (Windows自带simli.ttf)
+\newcommand{\xk}{\CJKfamily{xk}}				% 行楷，暂用黑体替代
+\newcommand{\verthei}{\CJKfamily{verthei}}
+ 
+
+%Chinese font size
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosanhao}{\fontsize{15pt}{\baselineskip}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
+	  
+	  
+	  
+	  
+\def\CTEX@contentsname{目$\quad$录}
+\def\CTEX@listfigurename{插$\quad$图}
+\def\CTEX@listtablename{表$\quad$格}
+\def\CTEX@appendixnumber{}
+
+
+\def\CTEX@chapter@nameformat{ \bf \hei \zihao{3}}
+\def\CTEX@chapter@titleformat{ \bf \hei \zihao{3}}
+\CTEXsetup[name={第~,~章},number={\arabic{chapter}}]{chapter}
+\def\CTEX@chapter@beforeskip{6bp}
+\def\CTEX@chapter@afterskip{18bp}
+%%
+%% the section title format
+%%
+\def\CTEX@section@format{\sffamily \hei \zihao{4}}
+\def\CTEX@section@beforeskip{20bp}
+\def\CTEX@section@afterskip{6bp}
+%%
+%% the subsection title format
+%%
+\def\CTEX@subsection@format{\sffamily \hei \fontsize{13.05}{15.66}\selectfont}
+\def\CTEX@subsection@beforeskip{8bp}
+\def\CTEX@subsection@afterskip{6bp}
+%%
+%% the subsubsection title format
+%%
+\def\CTEX@subsubsection@format{\sffamily \hei \zihao{-4}}
+\def\CTEX@subsubsection@beforeskip{8bp}
+\def\CTEX@subsubsection@afterskip{6bp}
+
+%theorems 
+\newtheorem{theorem}{\textbf{\hspace{0.7cm}定理}}[section] 
+\newtheorem{lemma}{\textbf{\hspace{0.7cm}引理}}[section] 
+\newtheorem{example}{\textbf{\hspace{0.7pt}例}}[section]             
+\newtheorem{algorithm}{\textbf{\hspace{0.7pt}算法}}[section] 
+\newtheorem{definition}{\textbf{\hspace{0.7pt}定义}}[section] 
+\newtheorem{axiom}{\textbf{\hspace{0.7pt}公理}}[section] 
+\newtheorem{property}{\textbf{\hspace{0.7pt}性质}}[section] 
+\newtheorem{proposition}{\textbf{\hspace{0.7pt}命题}}[section] 
+\newtheorem{corollary}{\textbf{\hspace{0.7pt}推论}}[section] 
+\newtheorem{remark}{\textbf{\hspace{0.7pt}注解}}[section] 
+\newtheorem{condition}{\textbf{\hspace{0.7pt}条件}}[section] 
+\newtheorem{conclusion}{\textbf{\hspace{0.7pt}结论}}[section] 
+\newtheorem{assumption}{\textbf{\hspace{0.7pt}假设}}[section] 
+\newtheorem{prove}{\textbf{\hspace{0.7cm}证明}}[section] 
+
 \def\baselinestretch{1.4}
 %\parskip 0.5ex plus 0.25ex minus 0.25ex
 \newcommand\USTCHUGE{\fontsize{56}{67.2}\selectfont}
@@ -113,8 +130,8 @@
   \thispagestyle{empty}%
   \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
 \renewcommand{\floatpagefraction}{0.80}
+\bibliographystyle{unsrtnat}
 \newcommand\USTCTspace{\protect\CTEX@spaceChar}
-\newcommand\school[1]{\def\USTCT@value@school{#1}}
 \newcommand\depart[1]{\def\USTCT@value@depart{#1}}
 \newcommand\degree[1]{\def\USTCT@value@degree{#1}}
 \renewcommand\title[1]{\def\USTCT@value@title{#1}}
@@ -127,14 +144,14 @@
   \thispagestyle{empty}
   \begin{center}
   	\vspace*{0cm}
-      \xk\zihao{-0} \USTCT@value@school
+      \xk\zihao{-0}{中国科学技术大学}
     \vskip -0.5cm
-      \hei\USTCHUGE \USTCT@value@degree\USTCT@label@thesis
+      \hei\USTCHUGE {博士学位论文}
     \vskip 1.75cm
       \includegraphics[scale=0.225]{ustc_logo_new.eps}
     \vskip 1cm %0.75cm
       \def\baselinestretch{1.5}
-      \bf\hei\zihao{1} \USTCT@value@title
+      \hei\zihao{1}\USTCT@value@title
   \end{center}
   \vskip 0.7cm %0.6cm 0.7cm 2.3cm
   \normalfont\zihao{3}
@@ -142,10 +159,10 @@
   \def\arraystretch{1.16}
   \hspace{1.25cm}
   \begin{tabular}{lp{8cm}}
-    \hei\USTCT@label@author & \song {\hfill \USTCT@value@author \hfill} \\
-    \hei\USTCT@label@major & \song {\hfill \USTCT@value@major \hfill} \\
-    \hei\USTCT@label@advisor & \song {\hfill \USTCT@value@advisor \hfill} \\
-    \hei\USTCT@label@date & \song {\hfill \USTCT@value@date \hfill}
+    \hei{作者姓名：} & \song {\hfill \USTCT@value@author \hfill} \\
+    \hei{学科专业：} & \song {\hfill \USTCT@value@major \hfill} \\
+    \hei{导师姓名：} & \song {\hfill \USTCT@value@advisor \hfill} \\
+    \hei{完成时间：} & \song {\hfill \USTCT@value@date \hfill}
   \end{tabular}
   \clearpage
   \if@twoside
@@ -153,26 +170,24 @@
     \cleardoublepage
   \fi
 }
-\newcommand\englishschool[1]{\def\USTCT@value@englishschool{#1}}
 \newcommand\englishtitle[1]{\def\USTC@value@englishtitle{#1}}
 \newcommand\englishauthor[1]{\def\USTC@value@englishauthor{#1}}
 \newcommand\englishadvisor[1]{\def\USTC@value@englishadvisor{#1}}
 \newcommand\englishdate[1]{\def\USTC@value@englishdate{#1}}
-\newcommand\englishdegree[1]{\def\USTC@value@englishdegree{#1}}
 \newcommand\englishmajor[1]{\def\USTC@value@englishmajor{#1}}
 \newcommand\makeenglishtitle{%
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
     \vspace*{0cm}
-      \sf\USTCLARGE \USTC@value@englishschool
+      \USTCLARGE{University of Science and Technology of China}
     \vskip -0.5cm %-0.6cm
-      \sf\zihao{1} \USTC@label@englishthesis\USTC@value@englishdegree\USTC@label@englishdegree
+      \zihao{1} {A dissertation for doctor degree}
     \vskip 1.7cm %1.25cm
       \includegraphics[scale=0.225]{ustc_logo_new.eps}
     \vskip 2.0cm %2.4cm
       \def\baselinestretch{1}
-      \sffamily \bfseries \zihao{1}\USTC@value@englishtitle
+      \bfseries \zihao{1}\USTC@value@englishtitle
   \end{center}
   \vskip 2cm %1.8cm 2cm 3.1cm
   \normalfont\zihao{3}
@@ -180,10 +195,10 @@
   \def\arraystretch{1.1}
   \hspace{1.8cm}
   \begin{tabular}{lc}
-  	\USTC@label@englishauthor & \rm \USTC@value@englishauthor \\
-  	\USTC@label@englishmajor & \rm \USTC@value@englishmajor \\
-  	\USTC@label@englishadvisor& \rm \USTC@value@englishadvisor \\
-  	\USTC@label@englishdate & \rm \USTC@value@englishdate
+  	Author: & \rm \USTC@value@englishauthor \\
+  	Speciality: & \rm \USTC@value@englishmajor \\
+  	Supervisor: & \rm \USTC@value@englishadvisor \\
+  	Finished Time: & \rm \USTC@value@englishdate
   \end{tabular}
   \clearpage
   \if@twoside
@@ -197,7 +212,7 @@
   \begin{center}
    \rotatebox{-90}{
    \framebox[0.97\textheight][c]{\ziju{0.17}\verthei\zihao{-4} \raisebox{10pt}{\USTCT@value@title 
-   \hspace*{20pt} \USTCT@value@depart \hspace*{20pt} \USTCT@value@author \hspace*{30pt} \USTCT@value@school }}
+   \hspace*{20pt} \USTCT@value@depart \hspace*{20pt} \USTCT@value@author \hspace*{30pt}{中国科学技术大学} }}
    }
   \end{center}
   \clearpage
@@ -207,7 +222,7 @@
   \fi
   }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 定义页眉和页脚 使用fancyhdr 宏包
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 定义页眉横线
@@ -222,15 +237,41 @@
 %\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% helend的基本思路是使用宏包tocloft来实现的
+% 定义了两个新的命名 efcaption,etcaption, 分别用于表示图片和表格的英文标题
+% 同时, 使用tocloft定义了两个新的命令 listofefigures 和 listofetables, 用来分别输出这两个列表
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 不同的脚注符号 (不起作用)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DefineFNsymbols{circled}{{\ding{192}}{\ding{193}}{\ding{194}}{\ding{195}}}
+\setfnsymbol{circled}
+%\renewcommand{\thefootnote}{\textcircled{\arabic{footnote}}}	% 带圈数字型脚注
+%\renewcommand{\thefootnote}{\arabic{footnote}}		% 数字型脚注
+%\renewcommand{\thefootnote}{\alph{footnote}}		% 小写字母型脚注
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}	% 符号型脚注
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand\makeauthorization{%
   \cleardoublepage
   \thispagestyle{empty}
   \def\baselinestretch{1.85}
   \vspace*{5pt}
-  \hei\zihao{3} \USTC@label@authorization
+  \hei\zihao{3}{中国科学技术大学学位论文原创性和授权使用声明}
   \vskip 30pt
-  \song\zihao{4} \USTC@value@authorization
+  \song\zihao{4} {%
+本人声明所呈交的学位论文，是本人在导师指导下进行研究工作所取得的成果。除已特别加以标注和致谢的地方外，论文中不包含任何他人已经发表或撰写过的研究成果。与我一同工作的同志对本研究所做的贡献均已在论文中作了明确的说明。
+
+本人授权中国科学技术大学拥有学位论文的部分使用权，即：学校有权按有关规定向国家有关部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅，可以将学位论文编入有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。
+
+保密的学位论文在解密后也遵守此规定。
+
+\vskip 65pt
+\hspace{17em}作者签名：~\underline{\qquad\qquad\quad\quad}
+
+\hspace{20em}年\hskip 1.5em月\hskip 1.5em日}
   \def\baselinestretch{1.4}
   \clearpage
   \if@twoside
@@ -244,28 +285,31 @@
   \fancyhf{}
   \fancyhead[C]{\small \leftmark}
   \renewcommand{\headrulewidth}{0.7pt}
+  
 \renewcommand\frontmatter{%
     \cleardoublepage
   \@mainmatterfalse
   \pagenumbering{Roman}
   \fancyfoot{}
   \fancyfoot[C]{\small \thepage}}
-\renewcommand\mainmatter{%
+
+  \renewcommand\mainmatter{%
     \cleardoublepage
   \@mainmattertrue
   \pagenumbering{arabic}
   \fancyfoot{}
   \fancyfoot[RO,LE]{\small \thepage}}
-\newenvironment{abstract}
-  {\chapter{\USTCT@label@abstract}}
+
+  \newenvironment{abstract}
+  {\chapter{摘$\quad$要}}
   {}
 \newcommand\keywords[1]{%
-  \vspace{3.5ex}\noindent{\bf\song \USTCT@label@keywords} #1}
+  \vspace{3.5ex}\noindent{\bf\song 关键词：} #1}
 \newenvironment{englishabstract}
-  {\chapter{\USTCT@label@englishabstract}}
+  {\chapter{ABSTRACT}}
   {}
 \newcommand\englishkeywords[1]{%
-  \vspace{3.5ex}\noindent{\bf \USTCT@label@englishkeywords} #1}
+  \vspace{3.5ex}\noindent{\bf Keywords:~} #1}
 \renewcommand\tableofcontents{%
     \if@twocolumn
       \@restonecoltrue\onecolumn
@@ -321,10 +365,6 @@
   \chapter{\bibname}%
   \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}}
 \setlength{\bibsep}{1ex}
-
-	   
-
-
 \let\OLDappendix\appendix
 \newif\if@appendixinbackmatter
 \renewenvironment{appendix}
@@ -336,28 +376,52 @@
   {\if@appendixinbackmatter\@mainmatterfalse
     \fi}
 \renewenvironment{thanks}
-  {\chapter{\USTCT@label@thanks}}
+  {\chapter{致$\quad$谢}}
   {}
-\newenvironment{publications}[1]
-     {\chapter{\USTCT@label@publications}%
-      \@mkboth{\MakeUppercase\USTCT@label@publications}
-              {\MakeUppercase\USTCT@label@publications}%
-      \list{\@biblabel{\@arabic\c@enumiv}}%
-           {\settowidth\labelwidth{\@biblabel{#1}}%
-            \leftmargin\labelwidth
-            \advance\leftmargin\labelsep
-            \@openbib@code
-            \usecounter{enumiv}%
-            \let\p@enumiv\@empty
-            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-      \sloppy
-      \clubpenalty4000
-      \@clubpenalty \clubpenalty
-      \widowpenalty4000%
-      \sfcode`\.\@m}
-     {\def\@noitemerr
-       {\@latex@warning{Empty `publications' environment}}%
-      \endlist}
+  
+%\newenvironment{publications}[1]
+%     {\chapter{\USTCT@label@publications}%
+%      \@mkboth{\MakeUppercase\USTCT@label@publications}
+%              {\MakeUppercase\USTCT@label@publications}%
+%      \list{\@biblabel{\@arabic\c@enumiv}}%
+%           {\settowidth\labelwidth{\@biblabel{#1}}%
+%            \leftmargin\labelwidth
+%            \advance\leftmargin\labelsep
+%            \@openbib@code
+%            \usecounter{enumiv}%
+%            \let\p@enumiv\@empty
+%            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+%      \sloppy
+%      \clubpenalty4000
+%      \@clubpenalty \clubpenalty
+%      \widowpenalty4000%
+%      \sfcode`\.\@m}
+%     {\def\@noitemerr
+%       {\@latex@warning{Empty `publications' environment}}%
+%      \endlist}
+      
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 自定义项目列表标签及格式 \begin{publist} 列表项 \end{publist}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcounter{pubctr} %自定义新计数器
+\newenvironment{publications}{%%%%%定义新环境
+\begin{list}{\@biblabel{\@arabic\c@pubctr}} %%标签格式
+    {
+     \usecounter{pubctr}
+     \setlength{\leftmargin}{4em}     % 左边界 \leftmargin =\itemindent + \labelwidth + \labelsep
+     \setlength{\itemindent}{0em}     % 标号缩进量
+     \setlength{\labelwidth}{1em}     % 标号宽度
+     \setlength{\labelsep}{1em}       % 标号和列表项之间的距离,默认0.5em
+     \setlength{\rightmargin}{0em}    % 右边界
+     \setlength{\topsep}{0ex}         % 列表到上下文的垂直距离
+%     \setlength{\partopsep}{0ex}      % 列表是一个新的段落时，加的额外到上下文的距离
+     \setlength{\parsep}{0ex}         % 段落间距
+     \setlength{\itemsep}{0ex}        % 标签间距
+     \setlength{\listparindent}{26pt} % 段落缩进量
+    }}
+{\end{list}}%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      
 \setcounter{secnumdepth}{4}
 \newtheoremstyle{break}% name
   {}%      Space above, empty = `usual value'
