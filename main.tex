@@ -3,7 +3,7 @@
 \documentclass[twoside]{USTCthesis}% twoside 双面打印
 
 % 设置图形文件的搜索路径
-\graphicspath{{chapter/}{figures/}}
+\graphicspath{{figures/}}
 
 % 取消链接的颜色（黑白打印时）
 \hypersetup{colorlinks=true}
@@ -27,9 +27,9 @@
   \major{电路与系统}
   \advisor{戴蓓蒨\ 教授}
   \submitdate{二○一○年六月二日}
-  
+
   % 英文封面内容
-  \englishtitle{Channel Compensation for Statistial Model Based Speaker Verification}
+  \englishtitle{Channel Compensation for Statistical Model Based Speaker Verification}
   \englishauthor{Qinsong Liu}
   \englishmajor{Circuit and System}
   \englishadvisor{Prof.Beiqian Dai}
@@ -41,7 +41,7 @@
   \maketitle
   \makeenglishtitle
   \makebookspine
-  
+
   % 授权页
   \makeauthorization
 
@@ -53,16 +53,18 @@
 
   % 摘要
   \include{chapter/abstract}
-
+  
   % 目录
   \tableofcontents
   % 表格目录
-  \addcontentsline{toc}{chapter}{表格}%加入目录
   \listoftables
+  \addcontentsline{toc}{chapter}{表\  格}%加入目录
+  
   % 插图目录
-  \addcontentsline{toc}{chapter}{插图}%加入目录
   \listoffigures
+  \addcontentsline{toc}{chapter}{插\  图}%加入目录
 
+  \include{chapter/denotation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 正文部分
@@ -77,7 +79,7 @@
 
 
   参考文献测试：\citep{deng:01a}
-  
+
   %参考文献测试：\citep{knuth86e}
 
 
@@ -97,7 +99,7 @@
   \begin{appendix}
     \include{chapter/chap-req}
   \end{appendix}
-  
+
   % 致谢
   \include{chapter/thanks}
 

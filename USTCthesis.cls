@@ -76,11 +76,6 @@
 \newcommand{\xiaowu}{\fontsize{9pt}{\baselineskip}\selectfont}
 \newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
 \newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
-	
-\def\CTEX@contentsname{目$\quad$录}
-\def\CTEX@listfigurename{插$\quad$图}
-\def\CTEX@listtablename{表$\quad$格}
-\def\CTEX@appendixnumber{}
 
 
 %titleformat
@@ -117,27 +112,28 @@
 \renewcommand{\floatpagefraction}{0.80}
 \bibliographystyle{unsrtnat}
 \newcommand\USTCTspace{\protect\CTEX@spaceChar}
-\newcommand\depart[1]{\def\USTCT@value@depart{#1}}
-\newcommand\degree[1]{\def\USTCT@value@degree{#1}}
-\renewcommand\title[1]{\def\USTCT@value@title{#1}}
-\renewcommand\author[1]{\def\USTCT@value@author{#1}}
-\newcommand\advisor[1]{\def\USTCT@value@advisor{#1}}
-\newcommand\major[1]{\def\USTCT@value@major{#1}}
-\newcommand\submitdate[1]{\def\USTCT@value@date{#1}}
+\newcommand\depart[1]{\def\USTC@value@depart{#1}}
+\newcommand\degree[1]{\def\USTC@value@degree{#1}}
+\renewcommand\title[1]{\def\USTC@value@title{#1}}
+\renewcommand\author[1]{\def\USTC@value@author{#1}}
+\newcommand\advisor[1]{\def\USTC@value@advisor{#1}}
+\newcommand\major[1]{\def\USTC@value@major{#1}}
+\newcommand\submitdate[1]{\def\USTC@value@date{#1}}
 \renewcommand\maketitle{%
-  \pdfbookmark[-1]{\USTCT@value@title}{\USTCT@value@title}
+  \pdfbookmark[-1]{\USTC@value@title}{\USTC@value@title}
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
   	\vspace*{0cm}
-      \xk\zihao{-0}{中国科学技术大学}
+      %\xk\zihao{-0}{中国科学技术大学}
+      \includegraphics[scale=0.8]{ustc_logo_word.eps}
     \vskip -0.5cm
       \hei\USTCHUGE {博士学位论文}
     \vskip 1.75cm
       \includegraphics[scale=0.225]{ustc_logo_new.eps}
     \vskip 1cm %0.75cm
       \def\baselinestretch{1.5}
-      \hei\zihao{1}\USTCT@value@title
+      \hei\zihao{1}\USTC@value@title
   \end{center}
   \vskip 0.7cm %0.6cm 0.7cm 2.3cm
   \normalfont\zihao{3}
@@ -145,10 +141,10 @@
   \def\arraystretch{1.16}
   \hspace{1.25cm}
   \begin{tabular}{lp{8cm}}
-    \hei{作者姓名：} & \song {\hfill \USTCT@value@author \hfill} \\
-    \hei{学科专业：} & \song {\hfill \USTCT@value@major \hfill} \\
-    \hei{导师姓名：} & \song {\hfill \USTCT@value@advisor \hfill} \\
-    \hei{完成时间：} & \song {\hfill \USTCT@value@date \hfill}
+    \hei{作者姓名：} & \song {\hfill \USTC@value@author \hfill} \\
+    \hei{学科专业：} & \song {\hfill \USTC@value@major \hfill} \\
+    \hei{导师姓名：} & \song {\hfill \USTC@value@advisor \hfill} \\
+    \hei{完成时间：} & \song {\hfill \USTC@value@date \hfill}
   \end{tabular}
   \clearpage
   \if@twoside
@@ -197,8 +193,8 @@
   \thispagestyle{empty}
   \begin{center}
    \rotatebox{-90}{
-   \framebox[0.97\textheight][c]{\ziju{0.17}\verthei\zihao{-4} \raisebox{10pt}{\USTCT@value@title
-   \hspace*{20pt} \USTCT@value@depart \hspace*{20pt} \USTCT@value@author \hspace*{30pt}{中国科学技术大学} }}
+   \framebox[0.97\textheight][c]{\ziju{0.17}\verthei\zihao{-4} \raisebox{10pt}{\USTC@value@title
+   \hspace*{20pt} \USTC@value@depart \hspace*{20pt} \USTC@value@author \hspace*{30pt}{中国科学技术大学} }}
    }
   \end{center}
   \clearpage
@@ -316,7 +312,7 @@
   {\thecontentslabel\hspace*{1em}}
   {}
  {\titlerule*[0.5pc]{$\cdot$}\contentspage}
- 
+
 %\addtocontents{toc}{\let\string\CTEX@spaceChar\relax}
 %\newdimen\bibspace
 %\setlength\bibspace{3pt}
@@ -366,30 +362,23 @@
   {\chapter{致$\quad$谢}}
   {}
 
-%\newenvironment{publications}[1]
-%     {\chapter{\USTCT@label@publications}%
-%      \@mkboth{\MakeUppercase\USTCT@label@publications}
-%              {\MakeUppercase\USTCT@label@publications}%
-%      \list{\@biblabel{\@arabic\c@enumiv}}%
-%           {\settowidth\labelwidth{\@biblabel{#1}}%
-%            \leftmargin\labelwidth
-%            \advance\leftmargin\labelsep
-%            \@openbib@code
-%            \usecounter{enumiv}%
-%            \let\p@enumiv\@empty
-%            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-%      \sloppy
-%      \clubpenalty4000
-%      \@clubpenalty \clubpenalty
-%      \widowpenalty4000%
-%      \sfcode`\.\@m}
-%     {\def\@noitemerr
-%       {\@latex@warning{Empty `publications' environment}}%
-%      \endlist}
+\newenvironment{denotation}[1][2.5cm]{
+  \chapter{主要符号对照表} % no tocline
+  \noindent\begin{list}{}%
+    {\vskip-30bp%\xiaosihao[1.6]
+     \renewcommand\makelabel[1]{##1\hfil}
+     \setlength{\labelwidth}{#1} % 标签盒子宽度
+     \setlength{\labelsep}{0.5cm} % 标签与列表文本距离
+     \setlength{\itemindent}{0cm} % 标签缩进量
+     \setlength{\leftmargin}{\labelwidth+\labelsep} % 左边界
+     \setlength{\rightmargin}{0cm}
+     \setlength{\parsep}{0cm} % 段落间距
+     \setlength{\itemsep}{0cm} % 标签间距
+    \setlength{\listparindent}{0cm} % 段落缩进量
+    \setlength{\topsep}{0pt} % 标签与上文的间距
+   }}{\end{list}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 自定义项目列表标签及格式 \begin{publist} 列表项 \end{publist}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newcounter{pubctr} %自定义新计数器
 \newenvironment{publications}{%%%%%定义新环境
 \begin{list}{\@biblabel{\@arabic\c@pubctr}} %%标签格式
@@ -407,18 +396,7 @@
      \setlength{\listparindent}{26pt} % 段落缩进量
     }}
 {\end{list}}%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\setcounter{secnumdepth}{4}
-\newtheoremstyle{break}% name
-  {}%      Space above, empty = `usual value'
-  {}%      Space below
-  {\itshape}% Body font
-  {}%         Indent amount (empty = no indent, \parindent = para indent)
-  {\bfseries}% Thm head font
-  {.}%        Punctuation after thm head
-  {\newline}% Space after thm head: \newline = linebreak
-  {}%         Thm head spec
 \endinput
 %%
 %% End of file `USTCthesis.cls'.
