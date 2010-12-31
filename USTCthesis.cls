@@ -1,36 +1,40 @@
 ﻿\NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{USTCthesis}[2010/09/30 v0.1h USTCthesis document class]
+\ProvidesClass{USTCthesis}[2010/09/30 v0.2 USTCthesis document class]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions
-\LoadClass[cs4size,a4paper,fancyhdr,fntef]{ctexbook}[2005/11/25] 
+\LoadClass[cs4size,a4paper,fancyhdr,fntef]{ctexbook}[2005/11/25]
 \RequirePackage{times}
 \RequirePackage{ccaption}
 \RequirePackage{amsmath,amsthm,amsfonts,amssymb,bm}
 %\RequirePackage{mtpro,mtpams}
 \RequirePackage{graphicx,psfrag}
 \RequirePackage[small,bf,labelsep=space]{caption}
+\RequirePackage{titlesec}
 \RequirePackage{titletoc}
-\RequirePackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm,footskip=0.8cm,headsep=7.5pt]{geometry}
+\RequirePackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm,footskip=0.8cm,headsep=0.42cm]{geometry}
 \RequirePackage{enumerate}
 \RequirePackage{subfig}
 \RequirePackage{float}
 \RequirePackage{paralist}
 \RequirePackage{booktabs}
+\RequirePackage{setspace}
 \RequirePackage[perpage,symbol]{footmisc}
 \RequirePackage{pifont}
 \RequirePackage{hyperref}
 \RequirePackage[numbers,sort&compress,super,square]{natbib}
 \RequirePackage{hypernat}
-\hypersetup{CJKbookmarks,%
-      bookmarksnumbered,%
-      colorlinks,%
-      linkcolor=blue,%
-      citecolor=blue,%
-      plainpages=false,%
-      pdfstartview=FitH}
-	  
-	  
+\hypersetup{
+	CJKbookmarks=true,%
+	bookmarksnumbered=true,%
+	breaklinks=true,
+	colorlinks=true,%
+	linkcolor=black,%
+	citecolor=black,%
+	plainpages=false,%
+	pdfstartview=FitH}
+	
+	
 \setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
 \setCJKsansfont{Adobe Heiti Std}
 \setCJKmonofont{Adobe Fangsong Std}
@@ -56,71 +60,52 @@
 \newcommand{\li}{\CJKfamily{li}}        % 隶书   (Windows自带simli.ttf)
 \newcommand{\xk}{\CJKfamily{xk}}				% 行楷，暂用黑体替代
 \newcommand{\verthei}{\CJKfamily{verthei}}
- 
+
 
 %Chinese font size
 \newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
-\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}
+\newcommand{\xiaochu}{\fontsize{36pt}{\baselineskip}\selectfont}
 \newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}
 \newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}
-\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}
+\newcommand{\xiaoer}{\fontsize{18pt}{\baselineskip}\selectfont}
 \newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}
-\newcommand{\xiaosanhao}{\fontsize{15pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosan}{\fontsize{15pt}{\baselineskip}\selectfont}
 \newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}
-\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\xiaosi}{\fontsize{12pt}{\baselineskip}\selectfont}
 \newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}
-\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}
+\newcommand{\xiaowu}{\fontsize{9pt}{\baselineskip}\selectfont}
 \newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
 \newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
-	  
-	  
-	  
-	  
+	
 \def\CTEX@contentsname{目$\quad$录}
 \def\CTEX@listfigurename{插$\quad$图}
 \def\CTEX@listtablename{表$\quad$格}
 \def\CTEX@appendixnumber{}
 
 
-\def\CTEX@chapter@nameformat{ \bf \hei \zihao{3}}
-\def\CTEX@chapter@titleformat{ \bf \hei \zihao{3}}
-\CTEXsetup[name={第~,~章},number={\arabic{chapter}}]{chapter}
-\def\CTEX@chapter@beforeskip{6bp}
-\def\CTEX@chapter@afterskip{18bp}
-%%
-%% the section title format
-%%
-\def\CTEX@section@format{\sffamily \hei \zihao{4}}
-\def\CTEX@section@beforeskip{20bp}
-\def\CTEX@section@afterskip{6bp}
-%%
-%% the subsection title format
-%%
-\def\CTEX@subsection@format{\sffamily \hei \fontsize{13.05}{15.66}\selectfont}
-\def\CTEX@subsection@beforeskip{8bp}
-\def\CTEX@subsection@afterskip{6bp}
-%%
-%% the subsubsection title format
-%%
-\def\CTEX@subsubsection@format{\sffamily \hei \zihao{-4}}
-\def\CTEX@subsubsection@beforeskip{8bp}
-\def\CTEX@subsubsection@afterskip{6bp}
+%titleformat
+\titleformat{\section}{\flushleft\bfseries\sihao}{\thesection}{1em}{}
+\titleformat{\subsection}{\flushleft\bfseries\xiaosi}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\flushleft\bfseries\wuhao}{\thesubsubsection}{1em}{}
+\titleformat{\chapter}{\centering\sanhao\bfseries}{第\,\thechapter\,章}{1em}{}
+\titlespacing{\chapter}{0cm}{0cm}{.4cm}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
 
-%theorems 
-\newtheorem{theorem}{\textbf{\hspace{0.7cm}定理}}[section] 
-\newtheorem{lemma}{\textbf{\hspace{0.7cm}引理}}[section] 
-\newtheorem{example}{\textbf{\hspace{0.7pt}例}}[section]             
-\newtheorem{algorithm}{\textbf{\hspace{0.7pt}算法}}[section] 
-\newtheorem{definition}{\textbf{\hspace{0.7pt}定义}}[section] 
-\newtheorem{axiom}{\textbf{\hspace{0.7pt}公理}}[section] 
-\newtheorem{property}{\textbf{\hspace{0.7pt}性质}}[section] 
-\newtheorem{proposition}{\textbf{\hspace{0.7pt}命题}}[section] 
-\newtheorem{corollary}{\textbf{\hspace{0.7pt}推论}}[section] 
-\newtheorem{remark}{\textbf{\hspace{0.7pt}注解}}[section] 
-\newtheorem{condition}{\textbf{\hspace{0.7pt}条件}}[section] 
-\newtheorem{conclusion}{\textbf{\hspace{0.7pt}结论}}[section] 
-\newtheorem{assumption}{\textbf{\hspace{0.7pt}假设}}[section] 
-\newtheorem{prove}{\textbf{\hspace{0.7cm}证明}}[section] 
+%theorems
+\newtheorem{theorem}{\textbf{\hspace{0.7cm}定理}}[section]
+\newtheorem{lemma}{\textbf{\hspace{0.7cm}引理}}[section]
+\newtheorem{example}{\textbf{\hspace{0.7pt}例}}[section]
+\newtheorem{algorithm}{\textbf{\hspace{0.7pt}算法}}[section]
+\newtheorem{definition}{\textbf{\hspace{0.7pt}定义}}[section]
+\newtheorem{axiom}{\textbf{\hspace{0.7pt}公理}}[section]
+\newtheorem{property}{\textbf{\hspace{0.7pt}性质}}[section]
+\newtheorem{proposition}{\textbf{\hspace{0.7pt}命题}}[section]
+\newtheorem{corollary}{\textbf{\hspace{0.7pt}推论}}[section]
+\newtheorem{remark}{\textbf{\hspace{0.7pt}注解}}[section]
+\newtheorem{condition}{\textbf{\hspace{0.7pt}条件}}[section]
+\newtheorem{conclusion}{\textbf{\hspace{0.7pt}结论}}[section]
+\newtheorem{assumption}{\textbf{\hspace{0.7pt}假设}}[section]
+\newtheorem{prove}{\textbf{\hspace{0.7cm}证明}}[section]
 
 \def\baselinestretch{1.4}
 %\parskip 0.5ex plus 0.25ex minus 0.25ex
@@ -140,6 +125,7 @@
 \newcommand\major[1]{\def\USTCT@value@major{#1}}
 \newcommand\submitdate[1]{\def\USTCT@value@date{#1}}
 \renewcommand\maketitle{%
+  \pdfbookmark[-1]{\USTCT@value@title}{\USTCT@value@title}
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
@@ -211,7 +197,7 @@
   \thispagestyle{empty}
   \begin{center}
    \rotatebox{-90}{
-   \framebox[0.97\textheight][c]{\ziju{0.17}\verthei\zihao{-4} \raisebox{10pt}{\USTCT@value@title 
+   \framebox[0.97\textheight][c]{\ziju{0.17}\verthei\zihao{-4} \raisebox{10pt}{\USTCT@value@title
    \hspace*{20pt} \USTCT@value@depart \hspace*{20pt} \USTCT@value@author \hspace*{30pt}{中国科学技术大学} }}
    }
   \end{center}
@@ -222,9 +208,6 @@
   \fi
   }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 定义页眉和页脚 使用fancyhdr 宏包
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 定义页眉横线
 \newcommand{\makeheadrule}{%
     \rule[.7\baselineskip]{\headwidth}{1.2pt}\vskip-0.97\baselineskip%
@@ -236,15 +219,6 @@
      \makeheadrule}
 %\makeatother
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% helend的基本思路是使用宏包tocloft来实现的
-% 定义了两个新的命名 efcaption,etcaption, 分别用于表示图片和表格的英文标题
-% 同时, 使用tocloft定义了两个新的命令 listofefigures 和 listofetables, 用来分别输出这两个列表
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 不同的脚注符号 (不起作用)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \DefineFNsymbols{circled}{{\ding{192}}{\ding{193}}{\ding{194}}{\ding{195}}}
 \setfnsymbol{circled}
 %\renewcommand{\thefootnote}{\textcircled{\arabic{footnote}}}	% 带圈数字型脚注
@@ -252,7 +226,6 @@
 %\renewcommand{\thefootnote}{\alph{footnote}}		% 小写字母型脚注
 %\renewcommand{\thefootnote}{\fnsymbol{footnote}}	% 符号型脚注
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand\makeauthorization{%
   \cleardoublepage
@@ -285,7 +258,7 @@
   \fancyhf{}
   \fancyhead[C]{\small \leftmark}
   \renewcommand{\headrulewidth}{0.7pt}
-  
+
 \renewcommand\frontmatter{%
     \cleardoublepage
   \@mainmatterfalse
@@ -310,6 +283,9 @@
   {}
 \newcommand\englishkeywords[1]{%
   \vspace{3.5ex}\noindent{\bf Keywords:~} #1}
+
+%tableofcontents
+\renewcommand{\contentsname}{目$\quad$录}
 \renewcommand\tableofcontents{%
     \if@twocolumn
       \@restonecoltrue\onecolumn
@@ -323,26 +299,32 @@
     \if@restonecol\twocolumn\fi
     \def\baselinestretch{1.4}
     }
+
 %% chang font in content
 \titlecontents{chapter}[0em]
-  {\vspace{6bp} \zihao{4}}
+  {\vspace{6bp}\sihao}
   {\thecontentslabel\hspace*{0.5em}}
   {}
   {\titlerule*[0.5pc]{$\cdot$}\contentspage}
 \titlecontents{section}[1.1\ccwd]
-  {\vspace{6bp} \zihao{-4}}
+  {\vspace{6bp} \xiaosi}
   {\thecontentslabel\hspace*{1em}}
   {}
   {\titlerule*[0.5pc]{$\cdot$}\contentspage}
 \titlecontents{subsection}[2.3\ccwd]
-  {\vspace{6bp} \zihao{-4}}
+  {\vspace{6bp} \wuhao}
   {\thecontentslabel\hspace*{1em}}
   {}
-  {\titlerule*[0.5pc]{$\cdot$}\contentspage}
-\addtocontents{toc}{\let\string\CTEX@spaceChar\relax}
+ {\titlerule*[0.5pc]{$\cdot$}\contentspage}
+ 
+%\addtocontents{toc}{\let\string\CTEX@spaceChar\relax}
+%\newdimen\bibspace
+%\setlength\bibspace{3pt}
 %\renewenvironment{thebibliography}[1]
 %     {\chapter{\bibname}%
-%      \small
+%\renewcommand{\baselinestretch}{0.5}
+ %     \xiaowu%\linestretch{1.0}
+%	  %\addtolength{\bibsep}{-0.5cm}
 %      \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}%
 %      \list{\@biblabel{\@arabic\c@enumiv}}%
 %           {\settowidth\labelwidth{\@biblabel{#1}}%
@@ -361,10 +343,15 @@
 %       {\@latex@warning{Empty `thebibliography' environment}}%
 %      \endlist}
 %\newcommand{\bibfont}{\small}
+%\def\bibpreamble{\linespread{0.2}}
 \renewcommand{\bibsection}{
-  \chapter{\bibname}%
+  \chapter{\bibname}
+\renewcommand{\baselinestretch}{0.8}
+  %\setlength{\linestretch}{1.0}
+  \xiaowu%%\small
+  %\linespread{1.36}
   \@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}}
-\setlength{\bibsep}{1ex}
+%\setlength{\bibsep}{0ex}
 \let\OLDappendix\appendix
 \newif\if@appendixinbackmatter
 \renewenvironment{appendix}
@@ -378,7 +365,7 @@
 \renewenvironment{thanks}
   {\chapter{致$\quad$谢}}
   {}
-  
+
 %\newenvironment{publications}[1]
 %     {\chapter{\USTCT@label@publications}%
 %      \@mkboth{\MakeUppercase\USTCT@label@publications}
@@ -399,7 +386,7 @@
 %     {\def\@noitemerr
 %       {\@latex@warning{Empty `publications' environment}}%
 %      \endlist}
-      
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 自定义项目列表标签及格式 \begin{publist} 列表项 \end{publist}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -421,7 +408,7 @@
     }}
 {\end{list}}%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      
+
 \setcounter{secnumdepth}{4}
 \newtheoremstyle{break}% name
   {}%      Space above, empty = `usual value'
