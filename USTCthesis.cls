@@ -1,13 +1,12 @@
-﻿\NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{USTCthesis}[2010/09/30 v0.2 USTCthesis document class]
+﻿\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesClass{USTCthesis}[2011/01/01 v0.22 USTCthesis document class]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions
-\LoadClass[cs4size,a4paper,fancyhdr,fntef]{ctexbook}[2005/11/25]
+\LoadClass[cs4size,a4paper,fancyhdr,fntef]{ctexbook}
 \RequirePackage{times}
 \RequirePackage{ccaption}
 \RequirePackage{amsmath,amsthm,amsfonts,amssymb,bm}
-%\RequirePackage{mtpro,mtpams}
 \RequirePackage{graphicx,psfrag}
 \RequirePackage[small,bf,labelsep=space]{caption}
 \RequirePackage{titlesec}
@@ -126,11 +125,11 @@
   \begin{center}
   	\vspace*{0cm}
       %\xk\zihao{-0}{中国科学技术大学}
-      \includegraphics[scale=0.8]{ustc_logo_word.eps}
+      \includegraphics[scale=0.8]{ustc_logo_text.eps}
     \vskip -0.5cm
       \hei\USTCHUGE {博士学位论文}
     \vskip 1.75cm
-      \includegraphics[scale=0.225]{ustc_logo_new.eps}
+      \includegraphics[scale=0.225]{ustc_logo_fig.eps}
     \vskip 1cm %0.75cm
       \def\baselinestretch{1.5}
       \hei\zihao{1}\USTC@value@title
@@ -166,7 +165,7 @@
     \vskip -0.5cm %-0.6cm
       \zihao{1} {A dissertation for doctor degree}
     \vskip 1.7cm %1.25cm
-      \includegraphics[scale=0.225]{ustc_logo_new.eps}
+      \includegraphics[scale=0.225]{ustc_logo_fig.eps}
     \vskip 2.0cm %2.4cm
       \def\baselinestretch{1}
       \bfseries \zihao{1}\USTC@value@englishtitle
