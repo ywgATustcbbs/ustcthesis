@@ -1,5 +1,10 @@
-﻿\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{USTCthesis}[2011/01/01 v0.23 USTCthesis document class]
+﻿%
+% University of Science and Technology of China Thesis Template
+%
+%   $Id$
+%
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesClass{USTCthesis}[2011/01/01 USTCthesis document class]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions
@@ -13,7 +18,7 @@
 \RequirePackage{titletoc}
 \RequirePackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm,footskip=0.8cm,headsep=0.42cm]{geometry}
 \RequirePackage{enumerate}
-\RequirePackage{subfig}
+\RequirePackage{subfig,epsfig}
 \RequirePackage{float}
 \RequirePackage{paralist}
 \RequirePackage{booktabs}
@@ -189,7 +194,7 @@
   \fi
 }
 \newcommand\makebookspine{
-\pdfbookmark{书\hspace{1em}脊}{bookmark}
+%\pdfbookmark{书\hspace{1em}脊}{bookmark}
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
@@ -240,7 +245,7 @@
 \newcommand{\USTC@frontdate}{签字日期：}
 \newcommand\USTC@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \newcommand\makeauthorization{%
-  \pdfbookmark{原创与授权声明}{authorization}
+ % \pdfbookmark{原创与授权声明}{authorization}
   \cleardoublepage
   \thispagestyle{empty}
   \def\baselinestretch{1.0}
@@ -292,7 +297,7 @@
   \fancyfoot[RO,LE]{\small \thepage}}
 
   \newenvironment{abstract}
-  {\chapter{摘$\quad$要}}
+  {\chapter{摘\hspace{1em}要}}
   {}
 \newcommand\keywords[1]{%
   \vspace{3.5ex}\noindent{\bf\song 关键词：} #1}
@@ -303,7 +308,7 @@
   \vspace{3.5ex}\noindent{\bf Keywords:~} #1}
 
 %tableofcontents
-\renewcommand{\contentsname}{目$\quad$录}
+\renewcommand{\contentsname}{目\hspace{1em}录}
 \renewcommand\tableofcontents{%
     \if@twocolumn
       \@restonecoltrue\onecolumn
@@ -320,18 +325,18 @@
 
 %% chang font in content
 \titlecontents{chapter}[0em]
-  {\vspace{6bp}\sihao}
+  {\vspace{3bp}\hei\xiaosi}
   {\thecontentslabel\hspace*{0.5em}}
   {}
   {\titlerule*[0.5pc]{$\cdot$}\contentspage}
 \titlecontents{section}[1.1\ccwd]
-  {\vspace{6bp} \xiaosi}
-  {\thecontentslabel\hspace*{1em}}
+  {\vspace{3bp} \xiaosi}
+  {\thecontentslabel\hspace*{0.5em}}
   {}
   {\titlerule*[0.5pc]{$\cdot$}\contentspage}
 \titlecontents{subsection}[2.3\ccwd]
-  {\vspace{6bp} \wuhao}
-  {\thecontentslabel\hspace*{1em}}
+  {\vspace{3bp} \xiaosi}
+  {\thecontentslabel\hspace*{0.5em}}
   {}
  {\titlerule*[0.5pc]{$\cdot$}\contentspage}
 
