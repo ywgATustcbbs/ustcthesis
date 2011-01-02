@@ -16,7 +16,7 @@
 \RequirePackage[small,bf,labelsep=space]{caption}
 \RequirePackage{titlesec}
 \RequirePackage{titletoc}
-\RequirePackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm,footskip=0.8cm,headsep=0.42cm]{geometry}
+\RequirePackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm]{geometry}
 \RequirePackage{enumerate}
 \RequirePackage{subfig,epsfig}
 \RequirePackage{float}
@@ -56,7 +56,7 @@
 \setCJKfamilyfont{kai}{Adobe Kaiti Std}   % XP对应 KaiTi_GB2312，Vista对应KaiTi，注意根据系统切换
 \setCJKfamilyfont{li}{LiSu}
 \setCJKfamilyfont{xk}{STXingkai}
-\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{SimHei}
+\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{Adobe Heiti Std}%{SimHei}
 \newcommand{\song}{\CJKfamily{song}}    % 宋体   (Windows自带simsun.ttf)
 \newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体 (Windows自带simfs.ttf)
 \newcommand{\kai}{\CJKfamily{kai}}      % 楷体   (Windows自带simkai.ttf)
