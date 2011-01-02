@@ -1,5 +1,5 @@
 ﻿\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{USTCthesis}[2011/01/01 v0.22 USTCthesis document class]
+\ProvidesClass{USTCthesis}[2011/01/01 v0.23 USTCthesis document class]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions
@@ -119,7 +119,7 @@
 \newcommand\major[1]{\def\USTC@value@major{#1}}
 \newcommand\submitdate[1]{\def\USTC@value@date{#1}}
 \renewcommand\maketitle{%
-  \pdfbookmark[-1]{\USTC@value@title}{\USTC@value@title}
+  \pdfbookmark[-1]{\USTC@value@title}{title}
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
@@ -157,6 +157,7 @@
 \newcommand\englishdate[1]{\def\USTC@value@englishdate{#1}}
 \newcommand\englishmajor[1]{\def\USTC@value@englishmajor{#1}}
 \newcommand\makeenglishtitle{%
+  %\pdfbookmark{英文标题}{englishtitle}
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
@@ -188,6 +189,7 @@
   \fi
 }
 \newcommand\makebookspine{
+\pdfbookmark{书\hspace{1em}脊}{bookmark}
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
@@ -221,26 +223,47 @@
 %\renewcommand{\thefootnote}{\alph{footnote}}		% 小写字母型脚注
 %\renewcommand{\thefootnote}{\fnsymbol{footnote}}	% 符号型脚注
 
-
-\newcommand\makeauthorization{%
-  \cleardoublepage
-  \thispagestyle{empty}
-  \def\baselinestretch{1.85}
-  \vspace*{5pt}
-  \hei\zihao{3}{中国科学技术大学学位论文原创性和授权使用声明}
-  \vskip 30pt
-  \song\zihao{4} {%
-本人声明所呈交的学位论文，是本人在导师指导下进行研究工作所取得的成果。除已特别加以标注和致谢的地方外，论文中不包含任何他人已经发表或撰写过的研究成果。与我一同工作的同志对本研究所做的贡献均已在论文中作了明确的说明。
-
-本人授权中国科学技术大学拥有学位论文的部分使用权，即：学校有权按有关规定向国家有关部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅，可以将学位论文编入有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。
+\newcommand{\USTC@declarename}{中国科学技术大学学位论文原创性声明}
+\newcommand{\USTC@authtitle}{中国科学技术大学学位论文授权使用声明}
+\newcommand{\USTC@declaretext}{%
+本人声明所呈交的学位论文,是本人在导师指导下进行研究工作所取得的成果。除已特别加以标注和致谢的地方外，论文中不包含任何他人已经发表或撰写过的研究成果。与我一同工作的同志对本研究所做的贡献均已在论文中作了明确的说明。
+}
+\newcommand{\USTC@authorization}{%
+作为申请学位的条件之一，学位论文著作权拥有者授权中国科学技术大学拥有学位论文的部分使用权，即：学校有权按有关规定向国家有关部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅，可以将学位论文编入《中国学位论文全文数据库》等有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。本人提交的电子文档的内容和纸质论文的内容相一致。
 
 保密的学位论文在解密后也遵守此规定。
-
-\vskip 65pt
-\hspace{17em}作者签名：~\underline{\qquad\qquad\quad\quad}
-
-\hspace{20em}年\hskip 1.5em月\hskip 1.5em日}
-  \def\baselinestretch{1.4}
+}
+\def\USTC@secret@newtitle{%
+   □\ 公开\hspace{0.5cm}□\ 保密\ \USTC@underline[4em]\relax\hspace{0.1em}年}
+\newcommand{\USTC@authorsig}{作者签名：}
+\newcommand{\USTC@teachersig}{导师签名：}
+\newcommand{\USTC@frontdate}{签字日期：}
+\newcommand\USTC@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\newcommand\makeauthorization{%
+  \pdfbookmark{原创与授权声明}{authorization}
+  \cleardoublepage
+  \thispagestyle{empty}
+  \def\baselinestretch{1.0}
+  \begin{center}\sanhao\hei\USTC@declarename\end{center}
+  \xiaosi\par\USTC@declaretext
+  \vskip1.0cm
+      {\parindent0pt\xiaosi
+      \hspace*{1.5cm}\USTC@authorsig\USTC@underline[7em]\relax\hfill%
+                     \USTC@frontdate\USTC@underline[7em]\relax\hspace*{1cm}
+                     }
+   \vskip2.0cm
+  \begin{center}\sanhao\hei\USTC@authtitle\end{center}
+  \par\USTC@authorization\par
+  \vskip0.5cm
+  \USTC@secret@newtitle\par
+  \vskip1.0cm
+      {\parindent0pt\xiaosi
+      \hspace*{1.5cm}\USTC@authorsig\USTC@underline[7em]\relax\hfill%
+                     \USTC@teachersig\USTC@underline[7em]\relax\hspace*{1cm}\\
+      \hspace*{1.5cm}\USTC@frontdate\USTC@underline[7em]\relax\hfill%
+                     \USTC@frontdate\USTC@underline[7em]\relax\hspace*{1cm}
+                     }
+      \def\baselinestretch{1.4}
   \clearpage
   \if@twoside
     \thispagestyle{empty}
