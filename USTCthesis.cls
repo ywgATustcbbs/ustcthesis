@@ -424,6 +424,9 @@
     }}
 {\end{list}}%%%%%
 
+
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+
 \endinput
 %%
 %% End of file `USTCthesis.cls'.
