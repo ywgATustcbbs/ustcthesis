@@ -27,7 +27,6 @@
 \RequirePackage{pifont}
 \RequirePackage{hyperref}
 \RequirePackage[numbers,sort&compress,super,square]{natbib}
-\RequirePackage{hypernat}
 \hypersetup{
 	CJKbookmarks=true,%
 	bookmarksnumbered=true,%
