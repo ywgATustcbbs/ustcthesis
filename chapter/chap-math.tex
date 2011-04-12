@@ -8,3 +8,57 @@
 \end{split}
 \end{equation}
 \cite{lshort-cn}
+
+
+\begin{table}[htbp]
+\centering
+\caption{基于因子分析的失配补偿结果}\label{tab:jfa-gmm-ubm}
+\begin{tabular}{cccccc}
+    \toprule
+    &\multirow{2}{*}{\#Mix}&\multicolumn{2}{c}{No-norm}
+    &\multicolumn{2}{c}{Tnorm}\\
+    \cline{3-4} \cline{5-6}
+		&		& EER(\%) 	& MinDCF & EER(\%) 	& MinDCF\\
+    \midrule
+	\multirow{3}{*}{GMM-UBM}
+    &256 		& 12.43 	& 0.0647	& 12.85    & 0.0580\\
+    &512 		& 10.02 	& 0.0464	& 8.88 	   & 0.0370\\
+    &1024 		& 9.97 	    & 0.0457	& 8.72 	   & 0.0372\\
+    \midrule
+	\multirow{3}{*}{Factor Analysis}
+    &256 		& 8.09 	& 0.0331 	& 7.39 	& 0.0319\\
+    &512 		& 7.08 	& 0.0305 	& 6.53 	& 0.0292\\
+    &1024 		& 6.83 	& 0.0295 	& \textbf{6.29} 	& \textbf{0.0279}\\
+ \bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\IncMargin{1em}
+\begin{algorithm}
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\Input{$O_t,UBM,U$}
+\Output{$x,y$}
+\BlankLine
+\emph{$y\leftarrow 0;$$x_h\leftarrow 0;$$h=1,...,H$ }\;
+\For{$i=1$ \KwTo Number of E-M iterations}{
+\emph{E Step}:\\
+\For{$h=1$ \KwTo $H$}{\label{forins}
+对于每一条语音段，计算其EM统计量（零阶统计量$N_h$,一阶统计量$S_{X,h}$\;
+}
+计算每一个人所有语音段的零阶统计量$N$\\
+计算每一个人所有语音段的一阶统计量$S$\\
+\emph{M Step}:\\
+\For{$j=1$ \KwTo Number of Gauss-Seidel iterations}{
+\For{$h=1$ \KwTo $H$}{\label{forins}
+估计每一语音段$h$的失配因子$x_h$
+}
+估计模型的话者因子$y$
+}
+}
+\Return{$\mu = m+Dy$}
+\caption{disjoint decomposition}\label{algo_disjdecomp}
+\end{algorithm}\DecMargin{1em}

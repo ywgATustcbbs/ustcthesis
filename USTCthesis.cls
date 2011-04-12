@@ -12,12 +12,14 @@
 \RequirePackage{times}
 \RequirePackage{ccaption}
 \RequirePackage{amsmath,amsthm,amsfonts,amssymb,bm}
+\RequirePackage[lined,boxed,linesnumbered,algochapter]{algorithm2e}
 \RequirePackage{graphicx,psfrag}
 \RequirePackage[small,bf,labelsep=space]{caption}
 \RequirePackage{titlesec}
 \RequirePackage{titletoc}
 \RequirePackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm]{geometry}
 \RequirePackage{enumerate}
+\RequirePackage{multirow}
 \RequirePackage{subfig,epsfig}
 \RequirePackage{float}
 \RequirePackage{paralist}
@@ -36,7 +38,6 @@
 	citecolor=black,%
 	plainpages=false,%
 	pdfstartview=FitH}
-	
 	
 \setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
 \setCJKsansfont{Adobe Heiti Std}
@@ -80,7 +81,6 @@
 \newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}
 \newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
 
-
 %titleformat
 \titleformat{\section}{\flushleft\bfseries\sihao}{\thesection}{1em}{}
 \titleformat{\subsection}{\flushleft\bfseries\xiaosi}{\thesubsection}{1em}{}
@@ -93,7 +93,6 @@
 \newtheorem{theorem}{\textbf{\hspace{0.7cm}定理}}[section]
 \newtheorem{lemma}{\textbf{\hspace{0.7cm}引理}}[section]
 \newtheorem{example}{\textbf{\hspace{0.7pt}例}}[section]
-\newtheorem{algorithm}{\textbf{\hspace{0.7pt}算法}}[section]
 \newtheorem{definition}{\textbf{\hspace{0.7pt}定义}}[section]
 \newtheorem{axiom}{\textbf{\hspace{0.7pt}公理}}[section]
 \newtheorem{property}{\textbf{\hspace{0.7pt}性质}}[section]
@@ -104,6 +103,8 @@
 \newtheorem{conclusion}{\textbf{\hspace{0.7pt}结论}}[section]
 \newtheorem{assumption}{\textbf{\hspace{0.7pt}假设}}[section]
 \newtheorem{prove}{\textbf{\hspace{0.7cm}证明}}[section]
+\renewcommand{\listalgorithmcfname}{算法}
+\renewcommand{\algorithmcfname}{算法}
 
 \def\baselinestretch{1.4}
 %\parskip 0.5ex plus 0.25ex minus 0.25ex
@@ -128,7 +129,6 @@
   \thispagestyle{empty}
   \begin{center}
   	\vspace*{0cm}
-      %\xk\zihao{-0}{中国科学技术大学}
       \includegraphics[scale=0.8]{ustc_logo_text.eps}
     \vskip -0.5cm
       \hei\USTCHUGE {博士学位论文}
@@ -139,22 +139,22 @@
       \hei\zihao{1}\USTC@value@title
   \end{center}
   \vskip 0.7cm %0.6cm 0.7cm 2.3cm
-  \normalfont\zihao{3}
-  \def\tabcolsep{1pt}
-  \def\arraystretch{1.16}
+  \renewcommand\arraystretch{1.16}
   \hspace{1.25cm}
+  {\sanhao
   \begin{tabular}{lp{8cm}}
     \hei{作者姓名：} & \song {\hfill \USTC@value@author \hfill} \\
     \hei{学科专业：} & \song {\hfill \USTC@value@major \hfill} \\
     \hei{导师姓名：} & \song {\hfill \USTC@value@advisor \hfill} \\
     \hei{完成时间：} & \song {\hfill \USTC@value@date \hfill}
-  \end{tabular}
+  \end{tabular}}
   \clearpage
   \if@twoside
     \thispagestyle{empty}
     \cleardoublepage
   \fi
 }
+
 \newcommand\englishtitle[1]{\def\USTC@value@englishtitle{#1}}
 \newcommand\englishauthor[1]{\def\USTC@value@englishauthor{#1}}
 \newcommand\englishadvisor[1]{\def\USTC@value@englishadvisor{#1}}
@@ -176,16 +176,15 @@
       \bfseries \zihao{1}\USTC@value@englishtitle
   \end{center}
   \vskip 2cm %1.8cm 2cm 3.1cm
-  \normalfont\zihao{3}
-  \def\tabcolsep{1pt}
-  \def\arraystretch{1.1}
+  \renewcommand\arraystretch{1.1}
   \hspace{1.8cm}
-  \begin{tabular}{lc}
+  {\sanhao
+  \begin{tabular}{rc}
   	Author: & \rm \USTC@value@englishauthor \\
   	Speciality: & \rm \USTC@value@englishmajor \\
   	Supervisor: & \rm \USTC@value@englishadvisor \\
   	Finished Time: & \rm \USTC@value@englishdate
-  \end{tabular}
+  \end{tabular}}
   \clearpage
   \if@twoside
     \thispagestyle{empty}
@@ -422,10 +421,6 @@
      \setlength{\listparindent}{26pt} % 段落缩进量
     }}
 {\end{list}}%%%%%
-
-
-\newcommand{\argmax}{\operatornamewithlimits{argmax}}
-
 \endinput
 %%
 %% End of file `USTCthesis.cls'.
