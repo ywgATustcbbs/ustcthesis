@@ -107,6 +107,7 @@
 \renewcommand{\algorithmcfname}{算法}
 
 \def\baselinestretch{1.4}
+\newcommand\USTC@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 %\parskip 0.5ex plus 0.25ex minus 0.25ex
 \newcommand\USTCHUGE{\fontsize{56}{67.2}\selectfont}
 \newcommand\USTCLARGE{\fontsize{20}{30}\selectfont}
@@ -132,22 +133,22 @@
       \includegraphics[scale=0.8]{ustc_logo_text.eps}
     \vskip -0.5cm
       \hei\USTCHUGE {博士学位论文}
-    \vskip 1.75cm
+    \vskip 1.0cm
       \includegraphics[scale=0.225]{ustc_logo_fig.eps}
     \vskip 1cm %0.75cm
-      \def\baselinestretch{1.5}
-      \hei\zihao{1}\USTC@value@title
+      \renewcommand{\baselinestretch}{0.5}%行距
+      \hei\yihao\USTC@value@title
   \end{center}
-  \vskip 0.7cm %0.6cm 0.7cm 2.3cm
-  \renewcommand\arraystretch{1.16}
-  \hspace{1.25cm}
+  \vskip 1.2cm %0.6cm 0.7cm 2.3cm
+  \begin{center}
   {\sanhao
-  \begin{tabular}{lp{8cm}}
-    \hei{作者姓名：} & \song {\hfill \USTC@value@author \hfill} \\
-    \hei{学科专业：} & \song {\hfill \USTC@value@major \hfill} \\
-    \hei{导师姓名：} & \song {\hfill \USTC@value@advisor \hfill} \\
-    \hei{完成时间：} & \song {\hfill \USTC@value@date \hfill}
+  \begin{tabular}{lc}
+    \hei{作者姓名：} & \USTC@underline[6cm]{\USTC@value@author}\\
+    \hei{学科专业：} & \USTC@underline[6cm]{\USTC@value@major}\\
+    \hei{导师姓名：} & \USTC@underline[6cm]{\USTC@value@advisor}\\
+    \hei{完成时间：} & \USTC@underline[6cm]{\USTC@value@date}
   \end{tabular}}
+  \end{center}
   \clearpage
   \if@twoside
     \thispagestyle{empty}
@@ -172,19 +173,19 @@
     \vskip 1.7cm %1.25cm
       \includegraphics[scale=0.225]{ustc_logo_fig.eps}
     \vskip 2.0cm %2.4cm
-      \def\baselinestretch{1}
-      \bfseries \zihao{1}\USTC@value@englishtitle
+      \renewcommand{\baselinestretch}{1}
+      \bfseries\yihao\USTC@value@englishtitle
   \end{center}
   \vskip 2cm %1.8cm 2cm 3.1cm
-  \renewcommand\arraystretch{1.1}
-  \hspace{1.8cm}
+  \begin{center}
   {\sanhao
-  \begin{tabular}{rc}
-  	Author: & \rm \USTC@value@englishauthor \\
-  	Speciality: & \rm \USTC@value@englishmajor \\
-  	Supervisor: & \rm \USTC@value@englishadvisor \\
-  	Finished Time: & \rm \USTC@value@englishdate
+  \begin{tabular}{cc}
+  	Author :& \USTC@underline[6cm]{\USTC@value@englishauthor}\\
+  	Speciality :& \USTC@underline[6cm]{\USTC@value@englishmajor}\\
+  	Supervisor :& \USTC@underline[6cm]{\USTC@value@englishadvisor}\\
+  	Finished Time :& \USTC@underline[6cm]{\USTC@value@englishdate}
   \end{tabular}}
+  \end{center}
   \clearpage
   \if@twoside
     \thispagestyle{empty}
@@ -226,53 +227,49 @@
 %\renewcommand{\thefootnote}{\alph{footnote}}		% 小写字母型脚注
 %\renewcommand{\thefootnote}{\fnsymbol{footnote}}	% 符号型脚注
 
-\newcommand{\USTC@declarename}{中国科学技术大学学位论文原创性声明}
-\newcommand{\USTC@authtitle}{中国科学技术大学学位论文授权使用声明}
 \newcommand{\USTC@declaretext}{%
-本人声明所呈交的学位论文,是本人在导师指导下进行研究工作所取得的成果。除已特别加以标注和致谢的地方外，论文中不包含任何他人已经发表或撰写过的研究成果。与我一同工作的同志对本研究所做的贡献均已在论文中作了明确的说明。
+本人声明所呈交的学位论文,是本人在导师指导下进行研究工作所取得的成果。
+除已特别加以标注和致谢的地方外，论文中不包含任何他人已经发表或撰写过
+的研究成果。与我一同工作的同志对本研究所做的贡献均已在论文中作了明确的说明。
 }
 \newcommand{\USTC@authorization}{%
-作为申请学位的条件之一，学位论文著作权拥有者授权中国科学技术大学拥有学位论文的部分使用权，即：学校有权按有关规定向国家有关部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅，可以将学位论文编入《中国学位论文全文数据库》等有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。本人提交的电子文档的内容和纸质论文的内容相一致。
+作为申请学位的条件之一，学位论文著作权拥有者授权中国科学技术大学拥有
+学位论文的部分使用权，即：学校有权按有关规定向国家有关部门或机构送交
+论文的复印件和电子版，允许论文被查阅和借阅，可以将学位论文编入《中国
+学位论文全文数据库》等有关数据库进行检索，可以采用影印、缩印或扫描等
+复制手段保存、汇编学位论文。本人提交的电子文档的内容和纸质论文的内容
+相一致。
 
 保密的学位论文在解密后也遵守此规定。
 }
 \def\USTC@secret@newtitle{%
    □\ 公开\hspace{0.5cm}□\ 保密\ \USTC@underline[4em]\relax\hspace{0.1em}年}
-\newcommand{\USTC@authorsig}{作者签名：}
-\newcommand{\USTC@teachersig}{导师签名：}
-\newcommand{\USTC@frontdate}{签字日期：}
-\newcommand\USTC@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \newcommand\makeauthorization{%
  % \pdfbookmark{原创与授权声明}{authorization}
   \cleardoublepage
   \thispagestyle{empty}
-  \def\baselinestretch{1.0}
-  \begin{center}\sanhao\hei\USTC@declarename\end{center}
-  \xiaosi\par\USTC@declaretext
+  \begin{center}\sanhao\hei{中国科学技术大学学位论文原创性声明}\end{center}
+  \par\USTC@declaretext\par
   \vskip1.0cm
-      {\parindent0pt\xiaosi
-      \hspace*{1.5cm}\USTC@authorsig\USTC@underline[7em]\relax\hfill%
-                     \USTC@frontdate\USTC@underline[7em]\relax\hspace*{1cm}
-                     }
+  {\begin{tabular}{p{6cm}p{6cm}}
+  作者签名：\USTC@underline{} & 签字日期：\USTC@underline{}
+  \end{tabular}}
    \vskip2.0cm
-  \begin{center}\sanhao\hei\USTC@authtitle\end{center}
+  \begin{center}\sanhao\hei{中国科学技术大学学位论文授权使用声明}\end{center}
   \par\USTC@authorization\par
   \vskip0.5cm
   \USTC@secret@newtitle\par
   \vskip1.0cm
-      {\parindent0pt\xiaosi
-      \hspace*{1.5cm}\USTC@authorsig\USTC@underline[7em]\relax\hfill%
-                     \USTC@teachersig\USTC@underline[7em]\relax\hspace*{1cm}\\
-      \hspace*{1.5cm}\USTC@frontdate\USTC@underline[7em]\relax\hfill%
-                     \USTC@frontdate\USTC@underline[7em]\relax\hspace*{1cm}
-                     }
-      \def\baselinestretch{1.4}
+  {\renewcommand{\arraystretch}{2.0}%行高
+  \begin{tabular}{p{6cm}p{6cm}}
+  作者签名：\USTC@underline{} & 导师签名：\USTC@underline{}\\
+  签字日期：\USTC@underline{} & 签字日期：\USTC@underline{}
+  \end{tabular}}
   \clearpage
   \if@twoside
     \thispagestyle{empty}
     \cleardoublepage
   \fi
-  \normalfont\zihao{-4}
 }
 \fancypagestyle{plain}{}
 \pagestyle{fancy}
