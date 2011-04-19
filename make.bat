@@ -1,7 +1,7 @@
 call clean
-xelatex main.tex
+xelatex main
 bibtex main
-xelatex main.tex
-xelatex main.tex
+xelatex main
+xelatex main
 call clean
 main.pdf

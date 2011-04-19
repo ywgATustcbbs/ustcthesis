@@ -7,3 +7,4 @@ del *.blg /s
 del *.thm /s
 del *.toc /s
 del *.out /s
+del *.loa /s

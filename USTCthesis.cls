@@ -85,7 +85,8 @@
 \titleformat{\section}{\flushleft\bfseries\sihao}{\thesection}{1em}{}
 \titleformat{\subsection}{\flushleft\bfseries\xiaosi}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\flushleft\bfseries\wuhao}{\thesubsubsection}{1em}{}
-\titleformat{\chapter}{\centering\sanhao\bfseries}{第\,\thechapter\,章}{1em}{}
+\renewcommand\chaptername{第\,\chinese{chapter}\,章}
+\titleformat{\chapter}{\centering\sanhao\bfseries}{\chaptername}{1em}{}
 \titlespacing{\chapter}{0cm}{0cm}{.4cm}
 \renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
 
@@ -105,6 +106,7 @@
 \newtheorem{prove}{\textbf{\hspace{0.7cm}证明}}[section]
 \renewcommand{\listalgorithmcfname}{算法}
 \renewcommand{\algorithmcfname}{算法}
+\renewcommand\appendixname{附录}
 
 \def\baselinestretch{1.4}
 \newcommand\USTC@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
@@ -139,7 +141,7 @@
       \renewcommand{\baselinestretch}{0.5}%行距
       \hei\yihao\USTC@value@title
   \end{center}
-  \vskip 1.2cm %0.6cm 0.7cm 2.3cm
+  \vskip 2.0cm %0.6cm 0.7cm 2.3cm
   \begin{center}
   {\sanhao
   \begin{tabular}{lc}
@@ -373,13 +375,17 @@
 \let\OLDappendix\appendix
 \newif\if@appendixinbackmatter
 \renewenvironment{appendix}
-  {\if@mainmatter
+  {
+  \if@mainmatter
      \@appendixinbackmatterfalse\OLDappendix
    \else
       \@appendixinbackmattertrue\@mainmattertrue\OLDappendix
-    \fi}
+    \fi
+	\renewcommand\chaptername{\appendixname~\thechapter}
+	}
   {\if@appendixinbackmatter\@mainmatterfalse
-    \fi}
+    \fi
+   }
 \renewenvironment{thanks}
   {\chapter{致$\quad$谢}}
   {}
