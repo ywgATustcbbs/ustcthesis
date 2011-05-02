@@ -16,6 +16,7 @@
 \RequirePackage{graphicx,psfrag}
 \RequirePackage[small,bf,labelsep=space]{caption}
 \RequirePackage{titlesec}
+\RequirePackage{subfig}
 \RequirePackage{titletoc}
 \RequirePackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm]{geometry}
 \RequirePackage{enumerate}
@@ -28,10 +29,11 @@
 \RequirePackage[perpage,symbol]{footmisc}
 \RequirePackage{pifont}
 \RequirePackage{hyperref}
-\RequirePackage[numbers,sort&compress,super,square]{natbib}
+\RequirePackage[numbers,sort&compress,square]{natbib}
 \hypersetup{
 	CJKbookmarks=true,%
 	bookmarksnumbered=true,%
+    bookmarksopen=true,
 	breaklinks=true,
 	colorlinks=true,%
 	linkcolor=black,%
@@ -54,14 +56,12 @@
 \setCJKfamilyfont{hei}{Adobe Heiti Std}
 \setCJKfamilyfont{fs}{Adobe Fangsong Std} % XP对应 FangSong_GB2312，Vista对应FangSong，注意根据系统切换
 \setCJKfamilyfont{kai}{Adobe Kaiti Std}   % XP对应 KaiTi_GB2312，Vista对应KaiTi，注意根据系统切换
-\setCJKfamilyfont{li}{LiSu}
 \setCJKfamilyfont{xk}{STXingkai}
 \setCJKfamilyfont{verthei}[RawFeature={vertical:}]{Adobe Heiti Std}%{SimHei}
 \newcommand{\song}{\CJKfamily{song}}    % 宋体   (Windows自带simsun.ttf)
 \newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体 (Windows自带simfs.ttf)
 \newcommand{\kai}{\CJKfamily{kai}}      % 楷体   (Windows自带simkai.ttf)
 \newcommand{\hei}{\CJKfamily{hei}}      % 黑体   (Windows自带simhei.ttf)
-\newcommand{\li}{\CJKfamily{li}}        % 隶书   (Windows自带simli.ttf)
 \newcommand{\xk}{\CJKfamily{xk}}				% 行楷，暂用黑体替代
 \newcommand{\verthei}{\CJKfamily{verthei}}
 
@@ -82,15 +82,15 @@
 \newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
 
 %titleformat
+\renewcommand{\thesection}{\S\hspace{0.2em}\arabic{chapter}.\arabic{section}}
+\setcounter{secnumdepth}{3}
 \titleformat{\section}{\flushleft\bfseries\sihao}{\thesection}{1em}{}
 \titleformat{\subsection}{\flushleft\bfseries\xiaosi}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\flushleft\bfseries\wuhao}{\thesubsubsection}{1em}{}
 \renewcommand\chaptername{第\,\chinese{chapter}\,章}
 \titleformat{\chapter}{\centering\sanhao\bfseries}{\chaptername}{1em}{}
 \titlespacing{\chapter}{0cm}{0cm}{.4cm}
-\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
 
-%theorems
 \newtheorem{theorem}{\textbf{\hspace{0.7cm}定理}}[section]
 \newtheorem{lemma}{\textbf{\hspace{0.7cm}引理}}[section]
 \newtheorem{example}{\textbf{\hspace{0.7pt}例}}[section]
@@ -108,16 +108,15 @@
 \renewcommand{\algorithmcfname}{算法}
 \renewcommand\appendixname{附录}
 
-\def\baselinestretch{1.4}
+\renewcommand\baselinestretch{1.4}
 \newcommand\USTC@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
-%\parskip 0.5ex plus 0.25ex minus 0.25ex
+%\setlength{\parskip}{1ex plus1.5ex minus0.5ex}%{0pt plus3pt minus0pt}%{0.5\baselineskip}%{1.5pt plus1pt minus1pt}
 \newcommand\USTCHUGE{\fontsize{56}{67.2}\selectfont}
 \newcommand\USTCLARGE{\fontsize{20}{30}\selectfont}
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
   \thispagestyle{empty}%
   \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
 \renewcommand{\floatpagefraction}{0.80}
-\bibliographystyle{unsrtnat}
 \newcommand\USTCTspace{\protect\CTEX@spaceChar}
 \newcommand\depart[1]{\def\USTC@value@depart{#1}}
 \newcommand\degree[1]{\def\USTC@value@degree{#1}}
@@ -221,14 +220,6 @@
     {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi}%
      \makeheadrule}
 %\makeatother
-
-\DefineFNsymbols{circled}{{\ding{192}}{\ding{193}}{\ding{194}}{\ding{195}}}
-\setfnsymbol{circled}
-%\renewcommand{\thefootnote}{\textcircled{\arabic{footnote}}}	% 带圈数字型脚注
-%\renewcommand{\thefootnote}{\arabic{footnote}}		% 数字型脚注
-%\renewcommand{\thefootnote}{\alph{footnote}}		% 小写字母型脚注
-%\renewcommand{\thefootnote}{\fnsymbol{footnote}}	% 符号型脚注
-
 \newcommand{\USTC@declaretext}{%
 本人声明所呈交的学位论文,是本人在导师指导下进行研究工作所取得的成果。
 除已特别加以标注和致谢的地方外，论文中不包含任何他人已经发表或撰写过
@@ -313,14 +304,12 @@
       \@restonecolfalse
     \fi
     \chapter{\contentsname}%
-    \def\baselinestretch{1}
+    \renewcommand{\baselinestretch}{1}
     \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
     \@starttoc{toc}%
     \if@restonecol\twocolumn\fi
-    \def\baselinestretch{1.4}
     }
-
-%% chang font in content
+%% tableofcontent
 \titlecontents{chapter}[0em]
   {\vspace{3bp}\hei\xiaosi}
   {\thecontentslabel\hspace*{0.5em}}
@@ -375,17 +364,15 @@
 \let\OLDappendix\appendix
 \newif\if@appendixinbackmatter
 \renewenvironment{appendix}
-  {
+{
   \if@mainmatter
      \@appendixinbackmatterfalse\OLDappendix
-   \else
+  \else
       \@appendixinbackmattertrue\@mainmattertrue\OLDappendix
-    \fi
-	\renewcommand\chaptername{\appendixname~\thechapter}
-	}
-  {\if@appendixinbackmatter\@mainmatterfalse
-    \fi
-   }
+  \fi
+	\renewcommand\chaptername{\appendixname~\thechapter}}
+  {\if@appendixinbackmatter\@mainmatterfalse\fi
+}
 \renewenvironment{thanks}
   {\chapter{致$\quad$谢}}
   {}
