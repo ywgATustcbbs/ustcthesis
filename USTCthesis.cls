@@ -160,7 +160,7 @@
       \hei\USTCHUGE {博士学位论文}
     \else
       \hei\USTCHUGE {硕士学位论文}
-    \fi 
+    \fi
     \vskip 1.5cm
       \includegraphics[scale=0.225]{ustc_logo_fig.eps}
     \vskip 1.0cm %0.75cm
@@ -203,7 +203,7 @@
       \zihao{1} {A dissertation for doctor degree}
     \else
       \zihao{1} {A dissertation for master degree}
-    \fi  
+    \fi
     \vskip 1.5cm %1.25cm
       \includegraphics[scale=0.225]{ustc_logo_fig.eps}
     \vskip 1.5cm %2.4cm
@@ -425,28 +425,6 @@
     \setlength{\listparindent}{0cm} % 段落缩进量
     \setlength{\topsep}{0pt} % 标签与上文的间距
    }}{\end{list}}
-
-
-\newcounter{pubctr} %自定义新计数器
-\newenvironment{publications}{%%%%%定义新环境
-\begin{list}{\@biblabel{\@arabic\c@pubctr}} %%标签格式
-    {
-     \usecounter{pubctr}
-     \setlength{\leftmargin}{4em}     % 左边界 \leftmargin =\itemindent + \labelwidth + \labelsep
-     \setlength{\itemindent}{0em}     % 标号缩进量
-     \setlength{\labelwidth}{1em}     % 标号宽度
-     \setlength{\labelsep}{1em}       % 标号和列表项之间的距离,默认0.5em
-     \setlength{\rightmargin}{0em}    % 右边界
-     \setlength{\topsep}{0ex}         % 列表到上下文的垂直距离
-%     \setlength{\partopsep}{0ex}      % 列表是一个新的段落时，加的额外到上下文的距离
-     \setlength{\parsep}{0ex}         % 段落间距
-     \setlength{\itemsep}{0ex}        % 标签间距
-     \setlength{\listparindent}{26pt} % 段落缩进量
-    }}
-{\end{list}}%%%%%
-
-
-
 
 \endinput
 %%
