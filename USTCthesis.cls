@@ -132,7 +132,7 @@
 \renewcommand\appendixname{附录}
 
 \renewcommand\baselinestretch{1.4}
-\newcommand\USTC@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\newcommand\ustc@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \setlength{\parskip}{0pt plus3pt minus0pt}%{1ex plus1.5ex minus0.5ex}%{0.5\baselineskip}%{1.5pt plus1pt minus1pt}
 \newcommand\USTCHUGE{\fontsize{56}{67.2}\selectfont}
 \newcommand\USTCLARGE{\fontsize{20}{30}\selectfont}
@@ -141,15 +141,21 @@
   \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
 \renewcommand{\floatpagefraction}{0.80}
 \newcommand\USTCTspace{\protect\CTEX@spaceChar}
-\newcommand\depart[1]{\def\USTC@value@depart{#1}}
-\newcommand\degree[1]{\def\USTC@value@degree{#1}}
-\renewcommand\title[1]{\def\USTC@value@title{#1}}
-\renewcommand\author[1]{\def\USTC@value@author{#1}}
-\newcommand\advisor[1]{\def\USTC@value@advisor{#1}}
-\newcommand\major[1]{\def\USTC@value@major{#1}}
-\newcommand\submitdate[1]{\def\USTC@value@date{#1}}
+\def\ustc@define@term#1{
+  \expandafter\gdef\csname #1\endcsname##1{%
+    \expandafter\gdef\csname ustc@#1\endcsname{##1}}
+  \csname #1\endcsname{}}
+
+\ustc@define@term{depart}
+\ustc@define@term{degree}
+\renewcommand\title[1]{\def\ustc@title{#1}}
+\renewcommand\author[1]{\def\ustc@author{#1}}
+\ustc@define@term{advisor}
+\ustc@define@term{coadvisor}
+\ustc@define@term{major}
+\ustc@define@term{submitdate}
 \renewcommand\maketitle{%
-  \pdfbookmark[-1]{\USTC@value@title}{title}
+  \pdfbookmark[-1]{\ustc@title}{title}
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
@@ -163,20 +169,23 @@
     \fi
     \vskip 1.5cm
       \includegraphics[scale=0.225]{ustc_logo_fig.eps}
-    \vskip 1.0cm %0.75cm
+    \vskip 0.5cm %0.75cm
       \renewcommand{\baselinestretch}{0.5}%行距
         \parbox[c]{11cm}%\begin{minipage}
-        {\center\hei\yihao\USTC@value@title}
+        {\center\hei\yihao\ustc@title}
       %\end{minipage}
   \end{center}
   \vskip 1.0cm %0.6cm 0.7cm 2.3cm
   \begin{center}
   {\sanhao
   \begin{tabular}{lc}
-    \hei{作者姓名：} & \USTC@underline[6cm]{\USTC@value@author}\\
-    \hei{学科专业：} & \USTC@underline[6cm]{\USTC@value@major}\\
-    \hei{导师姓名：} & \USTC@underline[6cm]{\USTC@value@advisor}\\
-    \hei{完成时间：} & \USTC@underline[6cm]{\USTC@value@date}
+    \hei{作者姓名：} & \ustc@underline[6cm]{\ustc@author}\\
+    \hei{学科专业：} & \ustc@underline[6cm]{\ustc@major}\\
+    \hei{导师姓名：} & \ustc@underline[6cm]{\ustc@advisor}\\
+    \ifx\ustc@coadvisor\@empty\else
+                     & \ustc@underline[6cm]{\ustc@coadvisor}\\
+    \fi
+    \hei{完成时间：} & \ustc@underline[6cm]{\ustc@submitdate}
   \end{tabular}}
   \end{center}
   \clearpage
@@ -186,13 +195,15 @@
   \fi
 }
 
-\newcommand\englishtitle[1]{\def\USTC@value@englishtitle{#1}}
-\newcommand\englishauthor[1]{\def\USTC@value@englishauthor{#1}}
-\newcommand\englishadvisor[1]{\def\USTC@value@englishadvisor{#1}}
-\newcommand\englishdate[1]{\def\USTC@value@englishdate{#1}}
-\newcommand\englishmajor[1]{\def\USTC@value@englishmajor{#1}}
-\newcommand\makeenglishtitle{%
-  %\pdfbookmark{英文标题}{englishtitle}
+\ustc@define@term{etitle}
+\ustc@define@term{eauthor}
+\ustc@define@term{eadvisor}
+\ustc@define@term{ecoadvisor}
+\ustc@define@term{esubmitdate}
+\ustc@define@term{emajor}
+
+\newcommand\makeetitle{%
+  %\pdfbookmark{英文标题}{etitle}
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
@@ -208,16 +219,19 @@
       \includegraphics[scale=0.225]{ustc_logo_fig.eps}
     \vskip 1.5cm %2.4cm
       \renewcommand{\baselinestretch}{1}
-      \bfseries\yihao\USTC@value@englishtitle
+      \bfseries\yihao\ustc@etitle
   \end{center}
   \vskip 1.0cm %1.8cm 2cm 3.1cm
   \begin{center}
   {\sanhao
   \begin{tabular}{cc}
-  	Author :& \USTC@underline[6cm]{\USTC@value@englishauthor}\\
-  	Speciality :& \USTC@underline[6cm]{\USTC@value@englishmajor}\\
-  	Supervisor :& \USTC@underline[6cm]{\USTC@value@englishadvisor}\\
-  	Finished Time :& \USTC@underline[6cm]{\USTC@value@englishdate}
+  	Author :& \ustc@underline[6cm]{\ustc@eauthor}\\
+  	Speciality :& \ustc@underline[6cm]{\ustc@emajor}\\
+  	Supervisor :& \ustc@underline[6cm]{\ustc@eadvisor}\\
+	\ifx\ustc@ecoadvisor\@empty\else
+                     & \ustc@underline[6cm]{\ustc@ecoadvisor}\\
+    \fi
+  	Finished Time :& \ustc@underline[6cm]{\ustc@esubmitdate}
   \end{tabular}}
   \end{center}
   \clearpage
@@ -232,8 +246,8 @@
   \thispagestyle{empty}
   \begin{center}
    \rotatebox{-90}{
-   \framebox[0.97\textheight][c]{\ziju{0.17}\verthei\zihao{-4} \raisebox{10pt}{\USTC@value@title
-   \hspace*{20pt} \USTC@value@depart \hspace*{20pt} \USTC@value@author \hspace*{30pt}{中国科学技术大学} }}
+   \framebox[0.97\textheight][c]{\ziju{0.17}\verthei\zihao{-4} \raisebox{10pt}{\ustc@title
+   \hspace*{20pt} \ustc@depart \hspace*{20pt} \ustc@author \hspace*{30pt}{中国科学技术大学} }}
    }
   \end{center}
   \clearpage
@@ -253,12 +267,12 @@
     {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi}%
      \makeheadrule}
 %\makeatother
-\newcommand{\USTC@declaretext}{%
+\newcommand{\ustc@declaretext}{%
 本人声明所呈交的学位论文,是本人在导师指导下进行研究工作所取得的成果。
 除已特别加以标注和致谢的地方外，论文中不包含任何他人已经发表或撰写过
 的研究成果。与我一同工作的同志对本研究所做的贡献均已在论文中作了明确的说明。
 }
-\newcommand{\USTC@authorization}{%
+\newcommand{\ustc@authorization}{%
 作为申请学位的条件之一，学位论文著作权拥有者授权中国科学技术大学拥有
 学位论文的部分使用权，即：学校有权按有关规定向国家有关部门或机构送交
 论文的复印件和电子版，允许论文被查阅和借阅，可以将学位论文编入《中国
@@ -268,28 +282,28 @@
 
 保密的学位论文在解密后也遵守此规定。
 }
-\def\USTC@secret@newtitle{%
-   □\ 公开\hspace{0.5cm}□\ 保密\ \USTC@underline[4em]\relax\hspace{0.1em}年}
+\def\ustc@secret@newtitle{%
+   □\ 公开\hspace{0.5cm}□\ 保密\ \ustc@underline[4em]\relax\hspace{0.1em}年}
 \newcommand\makeauthorization{%
  % \pdfbookmark{原创与授权声明}{authorization}
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}\sanhao\hei{中国科学技术大学学位论文原创性声明}\end{center}
-  \par\USTC@declaretext\par
+  \par\ustc@declaretext\par
   \vskip1.0cm
   {\begin{tabular}{p{6cm}p{6cm}}
-  作者签名：\USTC@underline{} & 签字日期：\USTC@underline{}
+  作者签名：\ustc@underline{} & 签字日期：\ustc@underline{}
   \end{tabular}}
    \vskip2.0cm
   \begin{center}\sanhao\hei{中国科学技术大学学位论文授权使用声明}\end{center}
-  \par\USTC@authorization\par
+  \par\ustc@authorization\par
   \vskip0.5cm
-  \USTC@secret@newtitle\par
+  \ustc@secret@newtitle\par
   \vskip1.0cm
   {\renewcommand{\arraystretch}{2.0}%行高
   \begin{tabular}{p{6cm}p{6cm}}
-  作者签名：\USTC@underline{} & 导师签名：\USTC@underline{}\\
-  签字日期：\USTC@underline{} & 签字日期：\USTC@underline{}
+  作者签名：\ustc@underline{} & 导师签名：\ustc@underline{}\\
+  签字日期：\ustc@underline{} & 签字日期：\ustc@underline{}
   \end{tabular}}
   \clearpage
   \if@twoside
@@ -322,10 +336,10 @@
   {}
 \newcommand\keywords[1]{%
   \vspace{3.5ex}\noindent{\hei 关键词：} #1}
-\newenvironment{englishabstract}
+\newenvironment{eabstract}
   {\chapter{ABSTRACT}}
   {}
-\newcommand\englishkeywords[1]{%
+\newcommand\ekeywords[1]{%
   \vspace{3.5ex}\noindent{\bf Keywords:~} #1}
 
 %tableofcontents
