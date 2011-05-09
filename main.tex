@@ -1,6 +1,8 @@
 ﻿
 
-\documentclass[twoside]{USTCthesis}% twoside 双面打印
+\documentclass[doctor,adobefont,twoside]{USTCthesis}% twoside 双面打印
+% doctor or master
+% adobefont
 
 % 设置图形文件的搜索路径
 \graphicspath{{figures/}}
@@ -17,7 +19,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   % 中文封面内容
-  \title{基于统计模型的话者识别失配补偿方法研究}
+  \title{话者识别中失配信息补偿理论和方法研究}
   \author{刘\ 青\ 松}
   \depart{二十三系}
   \major{电路与系统}
@@ -25,7 +27,7 @@
   \submitdate{二○一一年五月}
 
   % 英文封面内容
-  \englishtitle{Channel Compensation for Statistical Model Based Speaker Verification}
+  \englishtitle{Research on Mismatch Compensation for Speaker Verification}
   \englishauthor{Qinsong Liu}
   \englishmajor{Circuit and System}
   \englishadvisor{Prof.Beiqian Dai}
@@ -70,10 +72,8 @@
 
   \include{chapter/chap-intro}
   \include{chapter/chap-math}
-  \include{chapter/chap-tabfig}
-  %\include{chapter/chap-faq}
 
-
+\emph{Qingsong Liu}
 
   参考文献测试：\citep{deng:01a}
 

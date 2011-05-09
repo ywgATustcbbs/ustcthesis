@@ -6,9 +6,25 @@
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{USTCthesis}[2011/01/01 USTCthesis document class]
 
+\newif\ifustc@master\ustc@masterfalse
+\newif\ifustc@doctor\ustc@doctorfalse
+\newif\ifustc@adobefont\ustc@adobefontfalse
+\DeclareOption{master}{\ustc@mastertrue}
+\DeclareOption{doctor}{\ustc@doctortrue}
+\DeclareOption{adobefont}{\ustc@adobefonttrue}
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions
 \LoadClass[cs4size,a4paper,fancyhdr,fntef]{ctexbook}
+
+
+\ifustc@master\relax\else
+    \ifustc@doctor\relax\else
+      \ClassError{USTCthesis}%
+                 {You have to specify one of thesis options: master or doctor.}{}
+    \fi
+  \fi
+
 \RequirePackage{times}
 \RequirePackage{ccaption}
 \RequirePackage{amsmath,amsthm,amsfonts,amssymb,bm}
@@ -18,7 +34,7 @@
 \RequirePackage{titlesec}
 \RequirePackage{subfig}
 \RequirePackage{titletoc}
-\RequirePackage[left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm]{geometry}
+\RequirePackage[left=3.17cm,right=3.17cm,top=4.0cm,bottom=4.5cm]{geometry}%left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm
 \RequirePackage{enumerate}
 \RequirePackage{multirow}
 \RequirePackage{subfig,epsfig}
@@ -40,31 +56,38 @@
 	citecolor=black,%
 	plainpages=false,%
 	pdfstartview=FitH}
-	
+
+\ifustc@adobefont
 \setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
 \setCJKsansfont{Adobe Heiti Std}
 \setCJKmonofont{Adobe Fangsong Std}
-\setCJKfamilyfont{Adobe Song Std}{Adobe Song Std}
-\setCJKfamilyfont{Adobe Heiti Std}{Adobe Heiti Std}
-\setCJKfamilyfont{Adobe Kaiti Std}{Adobe Kaiti Std}
-\setCJKfamilyfont{Adobe Fangsong Std}{Adobe Fangsong Std}
-\setmainfont{Times New Roman}
-\setsansfont[BoldFont={Courier New Bold}]{Courier New}
-\setmonofont[BoldFont={Arial:style=Bold}]{Arial}
 
 \setCJKfamilyfont{song}{Adobe Song Std}
 \setCJKfamilyfont{hei}{Adobe Heiti Std}
-\setCJKfamilyfont{fs}{Adobe Fangsong Std} % XP对应 FangSong_GB2312，Vista对应FangSong，注意根据系统切换
-\setCJKfamilyfont{kai}{Adobe Kaiti Std}   % XP对应 KaiTi_GB2312，Vista对应KaiTi，注意根据系统切换
-\setCJKfamilyfont{xk}{STXingkai}
-\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{Adobe Heiti Std}%{SimHei}
-\newcommand{\song}{\CJKfamily{song}}    % 宋体   (Windows自带simsun.ttf)
-\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体 (Windows自带simfs.ttf)
-\newcommand{\kai}{\CJKfamily{kai}}      % 楷体   (Windows自带simkai.ttf)
-\newcommand{\hei}{\CJKfamily{hei}}      % 黑体   (Windows自带simhei.ttf)
-\newcommand{\xk}{\CJKfamily{xk}}				% 行楷，暂用黑体替代
+\setCJKfamilyfont{kai}{Adobe Kaiti Std}
+\setCJKfamilyfont{fs}{Adobe Fangsong Std}
+\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{SimHei}%{Adobe Heiti Std}
+\else
+\setCJKmainfont[BoldFont={SimHei}, ItalicFont={KaiTi_GB2312}]{NSimSun}
+\setCJKsansfont{SimHei}
+\setCJKmonofont{FangSong_GB2312}
+
+\setCJKfamilyfont{song}{NSimSun}
+\setCJKfamilyfont{hei}{SimHei}
+\setCJKfamilyfont{kai}{KaiTi_GB2312}   % XP对应 KaiTi_GB2312，Vista对应KaiTi，注意根据系统切换
+\setCJKfamilyfont{fs}{FangSong_GB2312} % XP对应 FangSong_GB2312，Vista对应FangSong，注意根据系统切换
+\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{SimHei}%{Adobe Heiti Std}
+\fi
+
+\newcommand{\song}{\CJKfamily{song}}    % 宋体
+\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体
+\newcommand{\kai}{\CJKfamily{kai}}      % 楷体
+\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
 \newcommand{\verthei}{\CJKfamily{verthei}}
 
+%\setmainfont{Times New Roman}
+\setsansfont[BoldFont={Courier New Bold}]{Courier New}
+\setmonofont[BoldFont={Arial:style=Bold}]{Arial}
 
 %Chinese font size
 \newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}
@@ -82,14 +105,14 @@
 \newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}
 
 %titleformat
-\renewcommand{\thesection}{\S\hspace{0.2em}\arabic{chapter}.\arabic{section}}
+%\renewcommand{\thesection}{\S\hspace{0.2em}\arabic{chapter}.\arabic{section}}
 \setcounter{secnumdepth}{3}
-\titleformat{\section}{\flushleft\bfseries\sihao}{\thesection}{1em}{}
-\titleformat{\subsection}{\flushleft\bfseries\xiaosi}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\flushleft\bfseries\wuhao}{\thesubsubsection}{1em}{}
+\titleformat{\section}{\flushleft\hei\sihao}{\thesection}{1em}{}
+\titleformat{\subsection}{\flushleft\hei\xiaosi}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\flushleft\hei\wuhao}{\thesubsubsection}{1em}{}
 \renewcommand\chaptername{第\,\chinese{chapter}\,章}
-\titleformat{\chapter}{\centering\sanhao\bfseries}{\chaptername}{1em}{}
-\titlespacing{\chapter}{0cm}{0cm}{.4cm}
+\titleformat{\chapter}{\centering\sanhao\hei}{\chaptername}{1em}{}
+\titlespacing{\chapter}{0cm}{.5cm}{1.5cm} %left above below
 
 \newtheorem{theorem}{\textbf{\hspace{0.7cm}定理}}[section]
 \newtheorem{lemma}{\textbf{\hspace{0.7cm}引理}}[section]
@@ -110,7 +133,7 @@
 
 \renewcommand\baselinestretch{1.4}
 \newcommand\USTC@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
-%\setlength{\parskip}{1ex plus1.5ex minus0.5ex}%{0pt plus3pt minus0pt}%{0.5\baselineskip}%{1.5pt plus1pt minus1pt}
+\setlength{\parskip}{0pt plus3pt minus0pt}%{1ex plus1.5ex minus0.5ex}%{0.5\baselineskip}%{1.5pt plus1pt minus1pt}
 \newcommand\USTCHUGE{\fontsize{56}{67.2}\selectfont}
 \newcommand\USTCLARGE{\fontsize{20}{30}\selectfont}
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
@@ -130,17 +153,23 @@
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
-  	\vspace*{0cm}
+  	\vspace*{-1.0cm}
       \includegraphics[scale=0.8]{ustc_logo_text.eps}
     \vskip -0.5cm
+    \ifustc@doctor
       \hei\USTCHUGE {博士学位论文}
-    \vskip 1.0cm
+    \else
+      \hei\USTCHUGE {硕士学位论文}
+    \fi 
+    \vskip 1.5cm
       \includegraphics[scale=0.225]{ustc_logo_fig.eps}
-    \vskip 1cm %0.75cm
+    \vskip 1.0cm %0.75cm
       \renewcommand{\baselinestretch}{0.5}%行距
-      \hei\yihao\USTC@value@title
+        \parbox[c]{11cm}%\begin{minipage}
+        {\center\hei\yihao\USTC@value@title}
+      %\end{minipage}
   \end{center}
-  \vskip 2.0cm %0.6cm 0.7cm 2.3cm
+  \vskip 1.0cm %0.6cm 0.7cm 2.3cm
   \begin{center}
   {\sanhao
   \begin{tabular}{lc}
@@ -170,14 +199,18 @@
     \vspace*{0cm}
       \USTCLARGE{University of Science and Technology of China}
     \vskip -0.5cm %-0.6cm
+    \ifustc@doctor
       \zihao{1} {A dissertation for doctor degree}
-    \vskip 1.7cm %1.25cm
+    \else
+      \zihao{1} {A dissertation for master degree}
+    \fi  
+    \vskip 1.5cm %1.25cm
       \includegraphics[scale=0.225]{ustc_logo_fig.eps}
-    \vskip 2.0cm %2.4cm
+    \vskip 1.5cm %2.4cm
       \renewcommand{\baselinestretch}{1}
       \bfseries\yihao\USTC@value@englishtitle
   \end{center}
-  \vskip 2cm %1.8cm 2cm 3.1cm
+  \vskip 1.0cm %1.8cm 2cm 3.1cm
   \begin{center}
   {\sanhao
   \begin{tabular}{cc}
@@ -288,7 +321,7 @@
   {\chapter{摘\hspace{1em}要}}
   {}
 \newcommand\keywords[1]{%
-  \vspace{3.5ex}\noindent{\bf\song 关键词：} #1}
+  \vspace{3.5ex}\noindent{\hei 关键词：} #1}
 \newenvironment{englishabstract}
   {\chapter{ABSTRACT}}
   {}
@@ -311,17 +344,17 @@
     }
 %% tableofcontent
 \titlecontents{chapter}[0em]
-  {\vspace{3bp}\hei\xiaosi}
+  {\vspace{6bp}\hei\xiaosi}
   {\thecontentslabel\hspace*{0.5em}}
   {}
   {\titlerule*[0.5pc]{$\cdot$}\contentspage}
 \titlecontents{section}[1.1\ccwd]
-  {\vspace{3bp} \xiaosi}
+  {\vspace{1bp} \xiaosi}
   {\thecontentslabel\hspace*{0.5em}}
   {}
   {\titlerule*[0.5pc]{$\cdot$}\contentspage}
 \titlecontents{subsection}[2.3\ccwd]
-  {\vspace{3bp} \xiaosi}
+  {\vspace{1bp} \xiaosi}
   {\thecontentslabel\hspace*{0.5em}}
   {}
  {\titlerule*[0.5pc]{$\cdot$}\contentspage}
@@ -411,6 +444,10 @@
      \setlength{\listparindent}{26pt} % 段落缩进量
     }}
 {\end{list}}%%%%%
+
+
+
+
 \endinput
 %%
 %% End of file `USTCthesis.cls'.
