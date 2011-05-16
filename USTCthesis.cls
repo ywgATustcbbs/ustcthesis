@@ -66,16 +66,16 @@
 \setCJKfamilyfont{hei}{Adobe Heiti Std}
 \setCJKfamilyfont{kai}{Adobe Kaiti Std}
 \setCJKfamilyfont{fs}{Adobe Fangsong Std}
-\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{SimHei}%{Adobe Heiti Std}
+\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{Adobe Heiti Std}%{Adobe Heiti Std} 这里还是改成Adobe Heiti Std吧，在Linux下面SimHei貌似不行，改成这个就好了
 \else
-\setCJKmainfont[BoldFont={SimHei}, ItalicFont={KaiTi_GB2312}]{NSimSun}
+\setCJKmainfont[BoldFont={SimHei}, ItalicFont={KaiTi}]{NSimSun}
 \setCJKsansfont{SimHei}
-\setCJKmonofont{FangSong_GB2312}
+\setCJKmonofont{FangSong}
 
 \setCJKfamilyfont{song}{NSimSun}
 \setCJKfamilyfont{hei}{SimHei}
-\setCJKfamilyfont{kai}{KaiTi_GB2312}   % XP对应 KaiTi_GB2312，Vista对应KaiTi，注意根据系统切换
-\setCJKfamilyfont{fs}{FangSong_GB2312} % XP对应 FangSong_GB2312，Vista对应FangSong，注意根据系统切换
+\setCJKfamilyfont{kai}{KaiTi}   % XP对应 KaiTi_GB2312，Vista对应KaiTi，注意根据系统切换
+\setCJKfamilyfont{fs}{FangSong} % XP对应 FangSong_GB2312，Vista对应FangSong，注意根据系统切换
 \setCJKfamilyfont{verthei}[RawFeature={vertical:}]{SimHei}%{Adobe Heiti Std}
 \fi
 
@@ -246,8 +246,8 @@
   \thispagestyle{empty}
   \begin{center}
    \rotatebox{-90}{
-   \framebox[0.97\textheight][c]{\ziju{0.17}\verthei\zihao{-4} \raisebox{10pt}{\ustc@title
-   \hspace*{20pt} \ustc@depart \hspace*{20pt} \ustc@author \hspace*{30pt}{中国科学技术大学} }}
+   \framebox[0.97\textheight][c]{\ziju{0.17}\verthei\zihao{-4} \raisebox{10pt}{ \ustc@title
+   \hspace*{20pt}  \ustc@depart \hspace*{20pt}  \ustc@author  \hspace*{30pt}{中国科学技术大学} }}
    }
   \end{center}
   \clearpage
