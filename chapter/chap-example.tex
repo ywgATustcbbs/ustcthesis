@@ -1,0 +1,194 @@
+﻿
+\chapter{代码示例}
+\label{chap:example}
+\section{Euler数学字体示例}
+$$
+abcdefghijklmnopqrstuvwxyz
+$$
+$$
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+$$
+$$
+0123456789
+$$
+\begin{equation}
+\begin{split}
+\{S_i=0\}=\frac{a_i}{b_i+a_i} \\
+\{S_i=1\}=\frac{b_i}{b_i+a_i} \label{1}
+\end{split}
+\end{equation}
+
+\section{上标引用示例}
+\verb|\scite{lshort-cn}|，效果\scite{lshort-cn}。
+
+\section{表格环境加强命令示例}
+本模板提供了表格环境下p\{width\}加强版命令，使用L\{width\}等可以在指定宽度的同时指定对齐方式。
+
+\begin{minipage}{\textwidth}
+\begin{Codex}[numbers=left]
+\begin{table}
+\tabcaption{几种命令效果对比的对比}
+\label{tab:tblcmp}
+\centering
+\begin{tabular}{c||l|c|r|p{2.5cm}|L{2.5cm}|C{2.5cm}|R{2.5cm}}
+\hline
+命令&l&c&r&p\{width\}&L\{width\}&C\{width\}&R\{width\}\\
+\hline
+效果&左齐&居中&右齐&定宽&左齐定宽&居中定宽&右齐定宽\\
+\hline
+\end{tabular}
+\end{table}
+\end{Codex}
+
+\tabcaption{几种命令效果对比的对比}
+\label{tab:tblcmp}
+\centering
+\begin{tabular}{c||l|c|r|p{2.5cm}|L{2.5cm}|C{2.5cm}|R{2.5cm}}
+\hline
+命令&l&c&r&p\{width\}&L\{width\}&C\{width\}&R\{width\}\\
+\hline
+效果&左齐&居中&右齐&定宽&左齐定宽&居中定宽&右齐定宽\\
+\hline
+\end{tabular}
+\end{minipage}
+
+\section{自定义代码环境示例}
+\label{codex}
+\subsection{Code环境}
+\begin{minipage}{\textwidth}
+\begin{minipage}{0.4\textwidth}
+\begin{Code}[label=a.cpp, numbers=left]
+This is Code environment
+A simple example.
+For more options, see fancyvrb's manual.
+\end{Code}
+\end{minipage}
+\hfill\begin{minipage}{0.4\textwidth}
+\begin{Verbatim}[fontsize=\scriptsize,baselinestretch=0.9,xleftmargin=3mm,frame=lines,labelposition=all,framesep=5pt]
+\begin{Code}[label=a.cpp, numbers=left]
+This is Code environment
+A simple example.
+For more options, see fancyvrb's manual.
+\end{Code}
+\end{Verbatim}
+\end{minipage}
+\end{minipage}
+
+\subsection{Codex环境}
+\begin{minipage}{\textwidth}
+\begin{minipage}{0.4\textwidth}
+\begin{Codex}[label=a.cpp, numbers=left]
+This is Codex environment
+A simple example.
+For more options, see fancyvrb's manual.
+\end{Codex}
+\end{minipage}
+\hfill\begin{minipage}{0.4\textwidth}
+\begin{Verbatim}[fontsize=\scriptsize,baselinestretch=0.9,xleftmargin=3mm,frame=lines,labelposition=all,framesep=5pt]
+\begin{Codex}[label=a.cpp, numbers=left]
+This is Codex environment
+A simple example.
+For more options, see fancyvrb's manual.
+\end{Codex}
+\end{Verbatim}
+\end{minipage}
+\end{minipage}
+
+\subsection{CodeScript环境}
+\begin{minipage}{\textwidth}
+\begin{minipage}{0.4\textwidth}
+\begin{CodeScript}[label=a.cpp, numbers=left]
+This is CodeScript environment
+A simple example.
+For more options, see fancyvrb's manual.
+\end{CodeScript}
+\end{minipage}
+\hfill\begin{minipage}{0.4\textwidth}
+\begin{Verbatim}[fontsize=\scriptsize,baselinestretch=0.9,xleftmargin=3mm,frame=lines,labelposition=all,framesep=5pt]
+\begin{CodeScript}[label=a.cpp, numbers=left]
+This is CodeScript environment
+A simple example.
+For more options, see fancyvrb's manual.
+\end{CodeScript}
+\end{Verbatim}
+\end{minipage}
+\end{minipage}
+
+\subsection{CodexScript环境}
+\begin{minipage}{\textwidth}
+\begin{minipage}{0.4\textwidth}
+\begin{CodexScript}[label=a.cpp, numbers=left]
+This is CodexScript environment
+A simple example.
+For more options, see fancyvrb's manual.
+\end{CodexScript}
+\end{minipage}
+\hfill\begin{minipage}{0.4\textwidth}
+\begin{Verbatim}[fontsize=\scriptsize,baselinestretch=0.9,xleftmargin=3mm,frame=lines,labelposition=all,framesep=5pt]
+\begin{CodexScript}[label=a.cpp, numbers=left]
+This is CodexScript environment
+A simple example.
+For more options, see fancyvrb's manual.
+\end{CodexScript}
+\end{Verbatim}
+\end{minipage}
+\end{minipage}
+
+\section{表格示例}
+具体代码请参考源文件./chapter/chap-example.tex。
+\begin{table}[htbp]
+\centering
+\caption{基于因子分析的失配补偿结果}
+\label{tab:jfa-gmm-ubm}
+\begin{tabular}{cccccc}
+    \toprule
+    &\multirow{2}{*}{\#Mix}&\multicolumn{2}{c}{No-norm}
+    &\multicolumn{2}{c}{Tnorm}\\
+    \cline{3-4} \cline{5-6}
+		&		& EER(\%) 	& MinDCF & EER(\%) 	& MinDCF\\
+    \midrule
+	\multirow{3}{*}{GMM-UBM}
+    &256 		& 12.43 	& 0.0647	& 12.85    & 0.0580\\
+    &512 		& 10.02 	& 0.0464	& 8.88 	   & 0.0370\\
+    &1024 		& 9.97 	    & 0.0457	& 8.72 	   & 0.0372\\
+    \midrule
+	\multirow{3}{*}{Factor Analysis}
+    &256 		& 8.09 	& 0.0331 	& 7.39 	& 0.0319\\
+    &512 		& 7.08 	& 0.0305 	& 6.53 	& 0.0292\\
+    &1024 		& 6.83 	& 0.0295 	& \textbf{6.29} 	& \textbf{0.0279}\\
+ \bottomrule
+\end{tabular}
+\end{table}
+
+\section{算法示例}
+具体代码请参考源文件./chapter/chap-example.tex。
+\IncMargin{1em}
+\begin{algorithm}
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\Input{$O_t,UBM,U$}
+\Output{$x,y$}
+\BlankLine
+\emph{$y\leftarrow 0;$$x_h\leftarrow 0;$$h=1,...,H$ }\;
+\For{$i=1$ \KwTo Number of E-M iterations}{
+\emph{E Step}:\\
+\For{$h=1$ \KwTo $H$}{\label{forins}
+对于每一条语音段，计算其EM统计量（零阶统计量$N_h$,一阶统计量$S_{X,h}$\;
+}
+计算每一个人所有语音段的零阶统计量$N$\\
+计算每一个人所有语音段的一阶统计量$S$\\
+\emph{M Step}:\\
+\For{$j=1$ \KwTo Number of Gauss-Seidel iterations}{
+\For{$h=1$ \KwTo $H$}{\label{forins}
+估计每一语音段$h$的失配因子$x_h$
+}
+估计模型的话者因子$y$
+}
+}
+\Return{$\mu = m+Dy$}
+\caption{disjoint decomposition}\label{algo_disjdecomp}
+\end{algorithm}\DecMargin{1em}
+
+\section{引用参考文献示例}
+参考文献测试：\citep{deng:01a}
