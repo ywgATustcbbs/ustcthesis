@@ -153,10 +153,20 @@
 %titleformat
 \setcounter{secnumdepth}{3}
 
-\CTEXsetup[format={{\centering\sanhao\bfseries}}]{chapter}%规定16pt，三号为15.75pt
-\CTEXsetup[format={{\flushleft\bfseries\sihao}}]{section}%规定14pt，即四号
-\CTEXsetup[format={{\flushleft\bfseries\fontsize{13pt}\baselineskip}}]{subsection}%规定13pt
-\CTEXsetup[format={{\flushleft\bfseries\xiaosihao}}]{subsubsection}%规定12pt，即小四号
+%\titleformat{\section}{\flushleft\hei\sihao}{\thesection}{1em}{}
+%\titleformat{\subsection}{\flushleft\hei\xiaosi}{\thesubsection}{1em}{}
+%\titleformat{\subsubsection}{\flushleft\hei\wuhao}{\thesubsubsection}{1em}{}
+%\renewcommand\chaptername{第\,\chinese{chapter}\,章}
+%\titleformat{\chapter}{\centering\sanhao\hei}{\chaptername}{1em}{}
+%\titlespacing{\chapter}{0cm}{.5cm}{1.5cm} %left above below
+
+
+\CTEXsetup[format={\centering}]{chapter}%规定16pt，三号为15.75pt
+\CTEXsetup[nameformat={\bfseries\sanhao}]{chapter}
+\CTEXsetup[titleformat={\bfseries\sanhao}]{chapter}
+\CTEXsetup[format={\flushleft\bfseries\sihao}]{section}%规定14pt，即四号
+\CTEXsetup[format={\flushleft\bfseries\fontsize{13pt}\baselineskip}]{subsection}%规定13pt
+\CTEXsetup[format={\flushleft\bfseries\xiaosihao}]{subsubsection}%规定12pt，即小四号
 \CTEXsetup[beforeskip={0pt}]{chapter}
 \CTEXsetup[afterskip={18pt}]{chapter}
 
@@ -472,7 +482,7 @@
   {}
   
 %tableofcontents
-\renewcommand{\contentsname}{目\rule{\ccwd}{0pt}录}
+\renewcommand{\contentsname}{\texorpdfstring{目\rule{\ccwd}{0pt}录}{目录}}
 \renewcommand\tableofcontents{%
     \if@twocolumn
       \@restonecoltrue\onecolumn
