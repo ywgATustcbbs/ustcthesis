@@ -36,6 +36,7 @@
 \DeclareOption{master}{\ustc@mastertrue}
 \DeclareOption{doctor}{\ustc@doctortrue}
 \DeclareOption{bachelor}{\ustc@bachelortrue}
+%使用Euler数学字体
 \DeclareOption{euler}{\ustc@eulertrue}
 
 %增强容错性

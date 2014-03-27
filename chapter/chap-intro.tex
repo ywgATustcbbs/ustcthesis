@@ -2,7 +2,7 @@
 \chapter{绪论}
 \label{chap:introduction}
 
-中国科学技术大学论文模板（USTCthesis）是按照中国科学技术大学学士、硕士和博士论文要求制作的\LaTeX 通用论文模板。其前身是中国科学技术大学本科论文模板（作者XPS，最后维护ywg）和中国科学技术大学研究生论文模板（作者Liuqs，主要维护Liuqs、Guolicai）。本模板在上述两模板基础上进行了整合梳理，将模板的基础实现和增强功能进行分离，分别提供最基础的USTCthesis.cls以及增强包USTCxtra.cls。其中，USTCthesis.cls仅提供模板的最基础格式，USTCxtra.cls则包含一些常用的优化设置及更为便捷的自定义命令。
+中国科学技术大学论文模板（ustcthesis）是按照中国科学技术大学学士、硕士和博士论文要求制作的\LaTeX 通用论文模板。其前身是中国科学技术大学本科论文模板（作者XPS，最后维护ywg）和中国科学技术大学研究生论文模板（作者Liuqs，主要维护Liuqs、Guolicai）。本模板在上述两模板基础上进行了整合梳理，将模板的基础实现和增强功能进行分离，分别提供最基础的ustcthesis.cls以及增强包ustcxtra.cls。其中，ustcthesis.cls仅提供模板的最基础格式，ustcxtra.cls则包含一些常用的优化设置及更为便捷的自定义命令。
 
 本文是使用上述模板生成的示例文档，目的在于帮助使用者熟悉该模板的使用方法，并且为使用者学位论文的撰写提供基础代码示例。
 
@@ -10,17 +10,17 @@
 \subsection{系统要求}
 本模板基于\CTeX 的ctexbook文档类进行定制，基于\XeTeX 引擎排版。使用本模板的最基础功能时，除了上述需求外，还需要如下几类宏包（直接引用）：
 \begin{description}
-\item[数学类]{xeCJK、amsmath、amsthm、amsfonts、amssymb、bm}
+\item[数学类]{amsmath、amsthm、amsfonts、amssymb、bm}
 \item[格式类]{titletoc、titlesec、geometry}
 \item[表格类]{multicol、multirow}
-\item[其他]{hyperref、natbib}
+\item[其他]{xeCJK、hyperref、natbib}
 \end{description}
 可能有部分宏包是由上述宏包以及\CTeX 间接引用的，此处不一一列举。
 
-另外，如果需要使用增强的USTCxtra.cls，额外需要如下宏包（直接引用）：
+另外，如果需要使用增强的ustcxtra.cls，额外需要如下宏包（直接引用）：
 \begin{description}
 \item[默认载入]{times、algorithm2e、graphicx、psfrag、subfig、enumerate、epsfig、float、paralist、booktabs、footmisc、wasysym、longtable、bbm、indentfirst、ifthen、caption3、array、fancyvrb、xcolor、url}
-\item[条件载入]{eulervm（仅在文档类选项中同时注明了extra和euler时载入）}
+\item[条件载入]{eulervm（仅在文档类处于增强模式并在文档类选项注明euler时载入）}
 \end{description}
 
 \section{下载与安装}
@@ -42,8 +42,8 @@ make.bat			&./			&生成脚本\tabularnewline
 make.sh				&./			&生成脚本\tabularnewline
 readme.txt			&./			&关于\tabularnewline
 ustcbib.bst		&./			&Bib格式文件\tabularnewline
-USTCthesis.cls		&./			&（关键）模板\tabularnewline
-USTCxtra.cls		&./			&（关键）模板增强\tabularnewline
+ustcthesis.cls		&./			&（关键）模板\tabularnewline
+ustcxtra.cls		&./			&（关键）模板增强\tabularnewline
 ustc\_logo\_fig.eps	&./figures	&（关键）科大校徽\tabularnewline
 ustc\_logo\_text.eps&./figures	&（关键）科大校名\tabularnewline
 \bottomrule
@@ -51,7 +51,18 @@ ustc\_logo\_text.eps&./figures	&（关键）科大校名\tabularnewline
 \end{table}
 
 \subsection{模板下载与使用}
-本模板及本示例文件可以在Google Project网站\url{http://code.google.com/p/ustcthesis}下载。
+本模板及本示例文件可以在Google Project网站\url{http://code.google.com/p/ustcthesis}下载。备份托管地址为\url{https://gitlab.lug.ustc.edu.cn/ywg/ustcthesis}，此托管网站由LUG@USTC提供服务
+
+\textbf{特别注意:}由于Google在2014年之后停止了新建下载的功能，目前在Google Code网站不能在Download页面找到下载链接。请通过“source”页面->选择“default”Repository->点击“browse”->download “zip”来下载最新的模板（见\autoref{fig:download}）。也可以通过git clone的方式获得模板。
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{download}
+\figcaption{在Google Code上进行模板下载}
+\label{fig:download}
+\end{figure}
+
+\textbf{特别注意2:}此前开发的本科和硕博模板已暂停支持，但仍然可以通过在download页面中通过搜索功能查找并下载，也可以在source中选择对应的Repository进行下载。
 
 模板的安装使用方法有多种，最为简单便捷的方法是直接解压缩下载好的压缩包，修改其中的main.tex文件以及chapter文件夹下的文件，必要时增加所需要的文件。需要注意的是确保所有文件使用UTF-8编码。Windows系统中将其他编码的文件转化为UTF-8的方法是: 用记事本打开这些文件, 然后点击文件—另存为—在最下方选择UTF-8 编码。
 
