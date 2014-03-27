@@ -105,9 +105,13 @@
 \RequirePackage[
 	left=3.17cm,
 	right=3.17cm,
-	top=4.0cm,
-	bottom=4.5cm
-	]{geometry}%left=3.17cm,right=3.17cm,top=2.54cm,bottom=2.54cm
+	top=2.54cm,
+	bottom=2.54cm,
+	headsep=0.25cm,
+	headheight=1.5cm,
+	footskip=0.79cm,
+%	showframe
+	]{geometry}
 \RequirePackage{multicol}
 \RequirePackage{multirow}
 \RequirePackage{hyperref}
@@ -269,6 +273,12 @@
 
 %中文扉页
 \newcommand\make@cntitle{%
+  \newgeometry{%
+  top=3.8cm,
+  bottom=3.8cm,
+  left=3.2cm,
+  right=3.2cm
+  }
   \pdfbookmark[-1]{\ustc@title}{title}
   \cleardoublepage
   \thispagestyle{empty}
@@ -314,6 +324,7 @@
   \fi}
   \end{center}
   \clearpage
+  \restoregeometry
   \if@twoside
     \thispagestyle{empty}
     \cleardoublepage
@@ -322,6 +333,12 @@
 
 %英文扉页
 \newcommand\make@entitle{%
+  \newgeometry{%
+  top=3.8cm,
+  bottom=3.8cm,
+  left=3.2cm,
+  right=3.2cm
+  }
   %\pdfbookmark{英文标题}{etitle}
   \cleardoublepage
   \thispagestyle{empty}
@@ -369,12 +386,19 @@
   \fi}
   \end{center}
   \clearpage
+  \restoregeometry
   \if@twoside
     \thispagestyle{empty}
     \cleardoublepage
   \fi
 }
 \newcommand\make@bookspine{
+  \newgeometry{%
+  top=3.8cm,
+  bottom=3.8cm,
+  left=3.2cm,
+  right=3.2cm
+  }
 %\pdfbookmark{书\hspace{1em}脊}{bookmark}
   \cleardoublepage
   \thispagestyle{empty}
@@ -385,11 +409,12 @@
    }
   \end{center}
   \clearpage
+  \restoregeometry
   \if@twoside
     \thispagestyle{empty}
     \cleardoublepage
   \fi
-  }
+}
 
 %% 定义页眉横线
 \newcommand{\makeheadrule}{%
