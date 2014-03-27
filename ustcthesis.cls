@@ -49,7 +49,8 @@
 %
 \PassOptionsToPackage{CJKchecksingle,PlainEquation}{xeCJK}
 \LoadClass[cs4size,a4paper,fancyhdr,fntef]{ctexbook}
-
+      
+%确认是否载入加强包
 \ifustc@basic\relax\else\input{ustcxtra.cls}\relax\fi
 
 % Alter some LaTeX defaults for better treatment of figures:

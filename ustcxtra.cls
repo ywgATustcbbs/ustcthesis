@@ -28,7 +28,7 @@
 \RequirePackage{bbm}
 \RequirePackage{indentfirst}
 \RequirePackage{ifthen}
-\RequirePackage{caption3}
+%\RequirePackage{caption3}
 \RequirePackage{array}
 \RequirePackage{fancyvrb}
 \RequirePackage{xcolor}
