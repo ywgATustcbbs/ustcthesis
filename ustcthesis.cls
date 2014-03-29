@@ -7,14 +7,14 @@
 %   Created 
 %       2014.03.26 by ywg@USTC
 %   Last Modified
-%       2014.03.27 by ywg@USTC
+%       2014.03.29 by ywg@USTC
 %
 %       $Id$
 %
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{ustcthesis}[2014/03/26 USTCthesis document class. Created: 2014.03.26 by ywg@USTC, Last Modified: 2014.03.27 by ywg@USTC]
+\ProvidesClass{ustcthesis}[2014/03/26 USTCthesis document class. Created: 2014.03.26 by ywg@USTC, Last Modified: 2014.03.29 by ywg@USTC]
 
-%new class options
+%Dew class options
 \newif\ifustc@basic\ustc@basicfalse
 \newif\ifustc@oldfontcfg\ustc@oldfontcfgfalse
 \newif\ifustc@master\ustc@masterfalse
@@ -23,34 +23,36 @@
 \newif\ifustc@adobefont\ustc@adobefontfalse
 \newif\ifustc@euler\ustc@eulerfalse
 
+%Define new commands
 \def\ustc@define@term#1{
   \expandafter\gdef\csname #1\endcsname##1{%
     \expandafter\gdef\csname ustc@#1\endcsname{##1}}
   \csname #1\endcsname{}}
 
-%默认情况下加载增强包，其中有常用宏包及实用命令，如果不需要增强包或者出现了兼容问题，可以尝试仅加载基础宏包的版本。
+%By default, the template will load the extra pack which includes some commonly used packages and macros. Use `basic' option to load necessary/basic packages in case of compatibility problems.
 \DeclareOption{basic}{\ustc@basictrue}
-%CTeX中已经对字体进行了设置，因此不必再另行定义。但是为了对原硕博模板提供一定程度的兼容，可以通过此选项继续使用原字体设置
+%CTeX has its own font configurations so that it is unnecessary to define font family by user. Those who want to use old font configurations of former ustcthesis should use `oldfontcfg' option.
 \DeclareOption{oldfontcfg}{\ustc@oldfontcfgtrue}
-%论文的目标学位
+%Dissertation categories - use only one option at a time, never try to use more than one options.
 \DeclareOption{master}{\ustc@mastertrue}
 \DeclareOption{doctor}{\ustc@doctortrue}
 \DeclareOption{bachelor}{\ustc@bachelortrue}
-%使用Euler数学字体
+%Use Euler math font
 \DeclareOption{euler}{\ustc@eulertrue}
 
-%增强容错性
+%Enhance compatibility
 \DeclareOption{adobefonts}{\ustc@adobefonttrue\PassOptionsToClass{adobefonts}{ctexbook}}
 \DeclareOption{adobefont}{\ustc@adobefonttrue\PassOptionsToClass{adobefonts}{ctexbook}}
 
-
+%Pass all unprocessed/unknown options to ctexbook. If a wrong option is specified, perhaps ctexbook will throw an error.
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions
-%
+
+%Minimum xeCJK version:3.2.10, date:2014/03/01
 \PassOptionsToPackage{CJKchecksingle,PlainEquation}{xeCJK}
 \LoadClass[cs4size,a4paper,fancyhdr,fntef]{ctexbook}
       
-%确认是否载入加强包
+%Check if extra pack should be used.
 \ifustc@basic\relax\else\input{ustcxtra.cls}\relax\fi
 
 % Alter some LaTeX defaults for better treatment of figures:
@@ -72,7 +74,7 @@
 \renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
 %remember to use [htp] or [htpb] for placement
 
-
+%Check if user has specified one dissertation option.
 \ifustc@master\relax\else
 	\ifustc@doctor\relax\else
 		\ifustc@bachelor\relax\else
@@ -81,6 +83,7 @@
 	\fi
 \fi
 
+%Ensure only one dissertation option is specified.
 \newcommand\ustc@error{\ClassError{USTCthesis}{You can ONLY specify ONE KEY option: bachelor, master or doctor!}{}}
 \ifustc@doctor
 	\ifustc@master
@@ -98,7 +101,6 @@
 	\fi
 \fi
 	
-
 %load basic packages
 \RequirePackage{amsmath,amsthm,amsfonts,amssymb,bm}
 \RequirePackage{titletoc}
@@ -111,7 +113,7 @@
 	headsep=0.25cm,
 	headheight=1.5cm,
 	footskip=0.79cm,
-%	showframe
+%	showframe%uncomment this if you want to check the page setup.
 	]{geometry}
 \RequirePackage{multicol}
 \RequirePackage{multirow}
@@ -148,7 +150,7 @@
 \newcommand{\liuhao}    {\fontsize{7.875pt}{\baselineskip}\selectfont}
 \newcommand{\qihao}     {\fontsize{5.25pt} {\baselineskip}\selectfont}
 
-%定义竖排黑体
+%Define font for vertical typesetting.
 \ifustc@adobefont
 	\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{Adobe Heiti Std}\relax
 \else%
@@ -156,26 +158,33 @@
 \fi
 \newcommand{\ustc@verthei}{\CJKfamily{verthei}}
 
-%titleformat
+%Set section numbering to subsubsection
 \setcounter{secnumdepth}{3}
+%Set numbering style to X.X
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
 
+%Old configurations which should not be used
 %\titleformat{\section}{\flushleft\hei\sihao}{\thesection}{1em}{}
 %\titleformat{\subsection}{\flushleft\hei\xiaosi}{\thesubsection}{1em}{}
 %\titleformat{\subsubsection}{\flushleft\hei\wuhao}{\thesubsubsection}{1em}{}
 %\renewcommand\chaptername{第\,\chinese{chapter}\,章}
 %\titleformat{\chapter}{\centering\sanhao\hei}{\chaptername}{1em}{}
 %\titlespacing{\chapter}{0cm}{.5cm}{1.5cm} %left above below
+%\titlespacing{\chapter}{0cm}{0pt}{0pt} %left above below
 
-
+%Title setup
 \CTEXsetup[format={\centering}]{chapter}%规定16pt，三号为15.75pt
 \CTEXsetup[nameformat={\bfseries\sanhao}]{chapter}
 \CTEXsetup[titleformat={\bfseries\sanhao}]{chapter}
+\CTEXsetup[beforeskip={0pt}]{chapter}
+\CTEXsetup[afterskip={18pt}]{chapter}
 \CTEXsetup[format={\flushleft\bfseries\sihao}]{section}%规定14pt，即四号
 \CTEXsetup[format={\flushleft\bfseries\fontsize{13pt}\baselineskip}]{subsection}%规定13pt
 \CTEXsetup[format={\flushleft\bfseries\xiaosihao}]{subsubsection}%规定12pt，即小四号
-\CTEXsetup[beforeskip={0pt}]{chapter}
-\CTEXsetup[afterskip={18pt}]{chapter}
 
+%Define new commands for List of Figures/Tables
 \ustc@define@term{ustclofname}
 \ustc@define@term{ustclotname}
 \ustclofname{插图索引}
@@ -185,8 +194,7 @@
 \newcommand\ustclot{\listoftables\addcontentsline{toc}{chapter}{\ustc@ustclotname}}
 \newcommand\ustclof{\listoffigures\addcontentsline{toc}{chapter}{\ustc@ustclofname}}
 
-%\titlespacing{\chapter}{0cm}{0pt}{0pt} %left above below
-
+%New mathematical environments
 \newtheorem{theorem}{\textbf{\hspace{0.7cm}定理}}[section]
 \newtheorem{lemma}{\textbf{\hspace{0.7cm}引理}}[section]
 \newtheorem{example}{\textbf{\hspace{0.7pt}例}}[section]
@@ -202,6 +210,7 @@
 \newtheorem{prove}{\textbf{\hspace{0.7cm}证明}}[section]
 \renewcommand{\proofname}{证明}
 \renewcommand\appendixname{附录}
+%New autorefname
 \def\equationautorefname{式}
 \def\footnoteautorefname{脚注}
 \def\itemautorefname{项}
@@ -217,7 +226,8 @@
 \def\assumptionautorefname{假设}
 \def\propertyautorefname{性质}
 
-%似乎CTeX中的行距设置已经比较完善了，不知道为什么还要把这个设置成1.4，对应的应该是12pt*1.4=16.8pt
+%Line and par setup
+%It seems unnecessary since CTeX has already set the \baselinestretch etc.
 %\renewcommand\baselinestretch{1.4}
 \newcommand\ustc@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \setlength{\parskip}{0pt plus3pt minus0pt}%{1ex plus1.5ex minus0.5ex}%{0.5\baselineskip}%{1.5pt plus1pt minus1pt}
@@ -229,7 +239,7 @@
 %\setlength{\textwidth}{14.5true cm} 
 %\setlength{\belowcaptionskip}{5pt}
 
-
+%Title page setup
 \newcommand\USTCHUGE{\fontsize{56}{67.2}\selectfont}%中文扉页第二行
 \newcommand\USTCLARGE{\fontsize{26}{30}\selectfont}%英文扉页第二行
 \newcommand\USTCLarge{\fontsize{20}{30}\selectfont}%英文扉页第一行
@@ -238,8 +248,11 @@
   \thispagestyle{empty}%
   \hbox{}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
 
-\renewcommand{\floatpagefraction}{0.80}
+% !! Never try to set this value greater than 0.7.
+% !! This value has already set previously. So, leave it here as a reminder.
+%\renewcommand{\floatpagefraction}{0.80}
 
+%Information used for title page and book spine
 \renewcommand\title[1]{\def\ustc@title{#1}}
 \renewcommand\author[1]{\def\ustc@author{#1}}
 \ustc@define@term{advisor}
@@ -254,12 +267,12 @@
 \ustc@define@term{encoadvisor}
 \ustc@define@term{ensubmitdate}
 \ustc@define@term{enmajor}
-\ustc@define@term{endepart}%硕士博士论文用院系代号，仅用于书脊。本科论文用院系全称，仅用于扉页
+\ustc@define@term{endepart}%本科论文用院系全称，仅用于扉页。硕博暂时没有用
 
 \ustc@define@term{studentid}%学号，仅本科论文
 \ustc@define@term{spinetitle}%书脊使用的标题，当title里含有控制字符时使用此命令输入文本标题
 
-%\ustc@define@term{degree}%暂时没有用
+%\ustc@define@term{degree}%Not used
 
 \renewcommand\maketitle{%
 	\ifustc@bachelor%
@@ -272,7 +285,7 @@
 		\make@authorization
 	\fi}
 
-%中文扉页
+%Chinese title page
 \newcommand\make@cntitle{%
   \newgeometry{%
   top=3.8cm,
@@ -298,7 +311,7 @@
     \ifustc@bachelor\vskip 1cm\relax\else\vskip 1.5cm\fi
       \includegraphics[width=4.7cm]{ustc_logo_fig.eps}
     \ifustc@bachelor\relax\else\vskip 0.5cm\fi %0.75cm
-      \renewcommand{\baselinestretch}{0.5}%行距
+      \renewcommand{\baselinestretch}{0.5}%Leading
         \parbox[c]{11cm}%\begin{minipage}
         {\center\bfseries\yihao\ustc@title}
       %\end{minipage}
@@ -332,7 +345,7 @@
   \fi
 }
 
-%英文扉页
+%English title page
 \newcommand\make@entitle{%
   \newgeometry{%
   top=3.8cm,
@@ -393,6 +406,8 @@
     \cleardoublepage
   \fi
 }
+
+%Book spine for master and doctor
 \newcommand\make@bookspine{
   \newgeometry{%
   top=3.8cm,
@@ -417,16 +432,15 @@
   \fi
 }
 
-%% 定义页眉横线
+%Define head rule
 \newcommand{\makeheadrule}{%
     \rule[.7\baselineskip]{\headwidth}{1.2pt}\vskip-0.97\baselineskip%
     \rule[.6\baselineskip]{\headwidth}{0.4pt}}%
-
-%\makeatletter
 \renewcommand{\headrule}{%
     {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi}%
      \makeheadrule}
-%\makeatother
+
+%Declaration and authorization page
 \newcommand{\ustc@declaretext}{%
 本人声明所呈交的学位论文,是本人在导师指导下进行研究工作所取得的成果。
 除已特别加以标注和致谢的地方外，论文中不包含任何他人已经发表或撰写过
@@ -471,6 +485,8 @@
     \cleardoublepage
   \fi
 }
+
+%Define page style
 \fancypagestyle{plain}{}
 \pagestyle{fancy}
   \fancyhf{}
@@ -491,6 +507,7 @@
   \fancyfoot{}
   \fancyfoot[RO,LE]{\small \thepage}}
 
+%Abstracts and thanks
 \newcommand{\ustc@enabstractname}{ABSTRACT}
 \newcommand{\ustc@cnabstractname}{摘\rule{\ccwd}{0pt}要}
 \newcommand{\ustc@thanksname}{致\rule{\ccwd}{0pt}谢}
