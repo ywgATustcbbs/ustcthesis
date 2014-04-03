@@ -7,7 +7,7 @@
 %   Created 
 %       2014.03.26 by ywg@USTC
 %   Last Modified
-%       2014.03.31 by ywg@USTC
+%       2014.04.03 by ywg@USTC
 %
 %       $Id$
 %
@@ -516,13 +516,13 @@
 \newcommand\enkeywords[1]{%
   \vspace{3.5ex}\noindent{\bf Keywords:~} #1}
 \newenvironment{cnabstract}
-  {\chapter{\texorpdfstring{\ustc@cnabstractname}{摘要}}}
+  {\ifustc@bachelor\chapter{\texorpdfstring{\ustc@cnabstractname}{摘要}}\else\chapter[\texorpdfstring{\ustc@cnabstractname}{摘要}]{\protect\vskip-10pt\ustc@cnabstractname}\fi}
   {}
 \newenvironment{enabstract}
-  {\chapter{ABSTRACT}}
+  {\ifustc@bachelor\chapter{ABSTRACT}\else\chapter[ABSTRACT]{\protect\vskip-10pt{}ABSTRACT}\fi}
   {}
 \renewenvironment{thanks}
-  {\chapter{\texorpdfstring{\ustc@thanksname}{致谢}}}
+  {\ifustc@bachelor\chapter[\texorpdfstring{\ustc@thanksname}{致谢}]{\protect\vskip-10pt\ustc@thanksname}\else\chapter{\texorpdfstring{\ustc@thanksname}{致谢}}\fi}
   {}
   
 %tableofcontents
@@ -533,7 +533,7 @@
     \else
       \@restonecolfalse
     \fi
-    \chapter{\contentsname}%
+    \chapter[\contentsname]{\protect\vskip-10pt\contentsname}%
     \renewcommand{\baselinestretch}{1}
     \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
     \@starttoc{toc}%
