@@ -28,6 +28,7 @@ oldfontcfg	&使用老版本的硕博论文模板的字体设置			&需要补充�
 euler		&使用euler数学字体&需要补充包\tabularnewline
 adobefont	&使用adobe的字体	&\multirow{2}{4cm}{仅仅防止误输入}\tabularnewline
 adobefonts	&使用adobe的字体	&\tabularnewline
+notchinese	&使用外文撰写论文	Use this option to write thesis in other laguage(s)& If you use language(s) other than Chinese and English, you should refer to \autoref{tab:newcmd}. \tabularnewline
 \bottomrule
 \end{tabular}
 \end{table}
@@ -87,7 +88,7 @@ prove &证明 &\tabularnewline
 proof&证明 &与prove的区别见\autoref{pic:proofandprove}\tabularnewline
 \end{longtable}
 
-\begin{longtable}{lll}%@{\extracolsep{\fill}}
+\begin{longtable}{lp{0.35\textwidth}p{0.35\textwidth}}%@{\extracolsep{\fill}}
 \caption[模板提供的新命令]{模板提供的新命令}
 \label{tab:newcmd} \\
 \toprule
@@ -131,6 +132,22 @@ R\{width\}&定宽右齐&\tabularnewline
 \textbackslash scite\{\}&上标引用&\tabularnewline
 \textbackslash song&宋体&另有其他，详见ustcxtra\tabularnewline
 \textbackslash upGamma&立直希腊Gamma&另有其他，详见ustcxtra\tabularnewline
+
+\textbackslash otherustcstr  & 'University of Science and Technology of China'. A translation of this string in your own language. \emph{Only useful when you are writting a thesis in language(s) other than Chinese and English}. &  According to regulations of USTC, your need to put three title pages: Chinese, English and your own language title pages. So use these commands to generate the third title page. \tabularnewline%
+\textbackslash otherthesisstr  & 'A dissertation for bachelor(/master/doctor)'s degree' & Similar to previous one \tabularnewline%
+\textbackslash otherauthorstr  & 'Author' & Similar to previous one \tabularnewline%
+\textbackslash otherdepartmentstr  & 'Department' & Similar to previous one \tabularnewline%
+\textbackslash otherstudentidstr  & 'Student ID' & Similar to previous one \tabularnewline%
+\textbackslash othersupervisorstr  & 'Supervisor' & Similar to previous one \tabularnewline%
+\textbackslash otherfinishedtimestr  & 'Finished Time' & Similar to previous one \tabularnewline%
+\textbackslash otherspecialitystr  & 'Speciality' & Similar to previous one \tabularnewline%
+\textbackslash othertitle  & Thesis title. Put your thesis title in your own language here. \emph{Only useful when you are writting a thesis in language(s) other than Chinese and English}. &   \tabularnewline
+\textbackslash otherauthor  & Your name & Similar to previous one \tabularnewline
+\textbackslash otheradvisor  & Your advisor's name & Similar to previous one \tabularnewline
+\textbackslash othercoadvisor  & Co-advisor & Similar to previous one \tabularnewline
+\textbackslash othersubmitdate  & Thesis submit date & Similar to previous one \tabularnewline
+\textbackslash othermajor  & Your major & Similar to previous one \tabularnewline
+\textbackslash otherdepart  & Your department & Similar to previous one \tabularnewline
 \end{longtable}
 
 需要注意的是，这里prove环境翻译为“证明”，事实上，其实prove环境不是用作theorem等类似环境配套证明的，prove环境是与theorem等环境同级别的环境。与theorem等环境相配套的证明环境是proof环境。使用时请注意下两个环境的差异：proof环境是没有编号的，是与theorem这类环境配合使用的；prove环境是有编号的，更多的是类似于证明题的题目。详细的差别见\autoref{pic:proofandprove}。

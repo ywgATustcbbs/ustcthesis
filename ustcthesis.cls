@@ -7,7 +7,7 @@
 %   Created 
 %       2014.03.26 by ywg@USTC
 %   Last Modified
-%       2014.04.03 by ywg@USTC
+%       2014.04.24 by ywg@USTC
 %
 %       $Id$
 %
@@ -22,6 +22,7 @@
 \newif\ifustc@bachelor\ustc@bachelorfalse
 \newif\ifustc@adobefont\ustc@adobefontfalse
 \newif\ifustc@euler\ustc@eulerfalse
+\newif\ifustc@notchinese\ustc@notchinesefalse
 
 %Define new commands
 \def\ustc@define@term#1{
@@ -37,8 +38,11 @@
 \DeclareOption{master}{\ustc@mastertrue}
 \DeclareOption{doctor}{\ustc@doctortrue}
 \DeclareOption{bachelor}{\ustc@bachelortrue}
+%For English and/or other language users
+\DeclareOption{notchinese}{\ustc@notchinesetrue}
 %Use Euler math font
 \DeclareOption{euler}{\ustc@eulertrue}
+
 
 %Enhance compatibility
 \DeclareOption{adobefonts}{\ustc@adobefonttrue\PassOptionsToClass{adobefonts}{ctexbook}}
@@ -49,7 +53,10 @@
 \ProcessOptions
 
 %Minimum xeCJK version:3.2.10, date:2014/03/01
-\PassOptionsToPackage{CJKchecksingle,PlainEquation}{xeCJK}
+\PassOptionsToPackage{CJKchecksingle}{xeCJK}
+%不再鼓励使用$$...$$的方式输入公式，可能会引起奇怪的问题
+%如果一定要用$$...$$输入公式。请在更新到上述版本后加入PlainEquation选项。
+
 \LoadClass[cs4size,a4paper,fancyhdr,fntef]{ctexbook}
       
 %Check if extra pack should be used.
@@ -183,48 +190,102 @@
 \CTEXsetup[format={\flushleft\bfseries\sihao}]{section}%规定14pt，即四号
 \CTEXsetup[format={\flushleft\bfseries\fontsize{13pt}\baselineskip}]{subsection}%规定13pt
 \CTEXsetup[format={\flushleft\bfseries\xiaosihao}]{subsubsection}%规定12pt，即小四号
+\ifustc@notchinese
+	\CTEXsetup[name={Part\space,}]{part}
+	\CTEXsetup[name={Chapter\space,}]{chapter}
+	\CTEXsetup[number={\Roman{part}}]{part}
+	\CTEXsetup[number={\arabic{chapter}}]{chapter}
+	\CTEXsetup[name={Appendix\space}]{appendix}
+	\CTEXoptions[contentsname={Table of Contents}]
+	\CTEXoptions[listfigurename={List of Figures}]
+	\CTEXoptions[listtablename={List of Tables}]
+	\CTEXoptions[figurename={Figure}]
+	\CTEXoptions[tablename={Table}]
+	\CTEXoptions[indexname={Indexes}]
+	\CTEXoptions[bibname={References}]
+\else
+	\relax
+\fi
 
 %Define new commands for List of Figures/Tables
 \ustc@define@term{ustclofname}
 \ustc@define@term{ustclotname}
-\ustclofname{插图索引}
-\ustclotname{表格索引}
+\ifustc@notchinese
+	\ustclofname{List of Figures}
+	\ustclotname{List of Tables}
+\else
+	\ustclofname{插图索引}
+	\ustclotname{表格索引}
+\fi
 \CTEXoptions[listfigurename={\ustc@ustclofname}]
 \CTEXoptions[listtablename={\ustc@ustclotname}]
 \newcommand\ustclot{\listoftables\addcontentsline{toc}{chapter}{\ustc@ustclotname}}
 \newcommand\ustclof{\listoffigures\addcontentsline{toc}{chapter}{\ustc@ustclofname}}
 
 %New mathematical environments
-\newtheorem{theorem}{\textbf{\hspace{0.7cm}定理}}[section]
-\newtheorem{lemma}{\textbf{\hspace{0.7cm}引理}}[section]
-\newtheorem{example}{\textbf{\hspace{0.7pt}例}}[section]
-\newtheorem{definition}{\textbf{\hspace{0.7pt}定义}}[section]
-\newtheorem{axiom}{\textbf{\hspace{0.7pt}公理}}[section]
-\newtheorem{property}{\textbf{\hspace{0.7pt}性质}}[section]
-\newtheorem{proposition}{\textbf{\hspace{0.7pt}命题}}[section]
-\newtheorem{corollary}{\textbf{\hspace{0.7pt}推论}}[section]
-\newtheorem{remark}{\textbf{\hspace{0.7pt}注解}}[section]
-\newtheorem{condition}{\textbf{\hspace{0.7pt}条件}}[section]
-\newtheorem{conclusion}{\textbf{\hspace{0.7pt}结论}}[section]
-\newtheorem{assumption}{\textbf{\hspace{0.7pt}假设}}[section]
-\newtheorem{prove}{\textbf{\hspace{0.7cm}证明}}[section]
-\renewcommand{\proofname}{证明}
-\renewcommand\appendixname{附录}
-%New autorefname
-\def\equationautorefname{式}
-\def\footnoteautorefname{脚注}
-\def\itemautorefname{项}
-\def\figureautorefname{图}
-\def\subfigureautorefname{图}
-\def\tableautorefname{表}
-\def\partautorefname{篇}
-\def\appendixautorefname{附录}
-\def\chapterautorefname{章}
-\def\sectionautorefname{节}
-\def\subsectionautorefname{小节}
-\def\theoremautorefname{定理}
-\def\assumptionautorefname{假设}
-\def\propertyautorefname{性质}
+\ifustc@notchinese
+	\newtheorem{theorem}{\textbf{\hspace{0.7cm}Theorem}}[section]
+	\newtheorem{lemma}{\textbf{\hspace{0.7cm}Lemma}}[section]
+	\newtheorem{example}{\textbf{\hspace{0.7pt}Example}}[section]
+	\newtheorem{definition}{\textbf{\hspace{0.7pt}Definition}}[section]
+	\newtheorem{axiom}{\textbf{\hspace{0.7pt}Axiom}}[section]
+	\newtheorem{property}{\textbf{\hspace{0.7pt}Property}}[section]
+	\newtheorem{proposition}{\textbf{\hspace{0.7pt}Proposition}}[section]
+	\newtheorem{corollary}{\textbf{\hspace{0.7pt}Corollary}}[section]
+	\newtheorem{remark}{\textbf{\hspace{0.7pt}Remark}}[section]
+	\newtheorem{condition}{\textbf{\hspace{0.7pt}Condition}}[section]
+	\newtheorem{conclusion}{\textbf{\hspace{0.7pt}Conclusion}}[section]
+	\newtheorem{assumption}{\textbf{\hspace{0.7pt}Assumption}}[section]
+	\newtheorem{prove}{\textbf{\hspace{0.7cm}Prove}}[section]
+	\renewcommand{\proofname}{Proof}
+	\renewcommand\appendixname{Appendix}
+	%New autorefname
+	\def\equationautorefname{Equation}
+	\def\footnoteautorefname{Footnote}
+	\def\itemautorefname{Item}
+	\def\figureautorefname{Figure}
+	\def\subfigureautorefname{Figure}
+	\def\tableautorefname{Table}
+	\def\partautorefname{Part}
+	\def\appendixautorefname{Appendix}
+	\def\chapterautorefname{Chapter}
+	\def\sectionautorefname{Section}
+	\def\subsectionautorefname{Subsection}
+	\def\theoremautorefname{Theorem}
+	\def\assumptionautorefname{Assumption}
+	\def\propertyautorefname{Property}
+\else
+	\newtheorem{theorem}{\textbf{\hspace{0.7cm}定理}}[section]
+	\newtheorem{lemma}{\textbf{\hspace{0.7cm}引理}}[section]
+	\newtheorem{example}{\textbf{\hspace{0.7pt}例}}[section]
+	\newtheorem{definition}{\textbf{\hspace{0.7pt}定义}}[section]
+	\newtheorem{axiom}{\textbf{\hspace{0.7pt}公理}}[section]
+	\newtheorem{property}{\textbf{\hspace{0.7pt}性质}}[section]
+	\newtheorem{proposition}{\textbf{\hspace{0.7pt}命题}}[section]
+	\newtheorem{corollary}{\textbf{\hspace{0.7pt}推论}}[section]
+	\newtheorem{remark}{\textbf{\hspace{0.7pt}注解}}[section]
+	\newtheorem{condition}{\textbf{\hspace{0.7pt}条件}}[section]
+	\newtheorem{conclusion}{\textbf{\hspace{0.7pt}结论}}[section]
+	\newtheorem{assumption}{\textbf{\hspace{0.7pt}假设}}[section]
+	\newtheorem{prove}{\textbf{\hspace{0.7cm}证明}}[section]
+	\renewcommand{\proofname}{证明}
+	\renewcommand\appendixname{附录}
+	%New autorefname
+	\def\equationautorefname{式}
+	\def\footnoteautorefname{脚注}
+	\def\itemautorefname{项}
+	\def\figureautorefname{图}
+	\def\subfigureautorefname{图}
+	\def\tableautorefname{表}
+	\def\partautorefname{篇}
+	\def\appendixautorefname{附录}
+	\def\chapterautorefname{章}
+	\def\sectionautorefname{节}
+	\def\subsectionautorefname{小节}
+	\def\theoremautorefname{定理}
+	\def\assumptionautorefname{假设}
+	\def\propertyautorefname{性质}
+\fi
 
 %Line and par setup
 %It seems unnecessary since CTeX has already set the \baselinestretch etc.
@@ -257,30 +318,54 @@
 \renewcommand\author[1]{\def\ustc@author{#1}}
 \ustc@define@term{advisor}
 \ustc@define@term{coadvisor}
-\ustc@define@term{major}%硕士博士论文适用专业全称，不可用缩写。本科论文不需要此项
+\ustc@define@term{major}%硕士博士论文适用专业全称，不可用缩写。本科论文不需要此项 Not used in bachelor thesis. For master and doctor thesis, use full name -- NEVER use abbr. 
 \ustc@define@term{submitdate}
-\ustc@define@term{depart}%硕士博士论文用院系代号，仅用于书脊。本科论文用院系全称，仅用于扉页
+\ustc@define@term{depart}%硕士博士论文用院系代号，仅用于书脊。本科论文用院系全称，仅用于扉页 For bachelor use full name(only used in title page). Currently unused for master and doctor
 
+%English
 \ustc@define@term{entitle}
 \ustc@define@term{enauthor}
 \ustc@define@term{enadvisor}
 \ustc@define@term{encoadvisor}
 \ustc@define@term{ensubmitdate}
 \ustc@define@term{enmajor}
-\ustc@define@term{endepart}%本科论文用院系全称，仅用于扉页。硕博暂时没有用
+\ustc@define@term{endepart}%本科论文用院系全称，仅用于扉页。硕博暂时没有用 For bachelor use full name(only used in title page). Currently unused for master and doctor
 
-\ustc@define@term{studentid}%学号，仅本科论文
-\ustc@define@term{spinetitle}%书脊使用的标题，当title里含有控制字符时使用此命令输入文本标题
+%Other language strings
+\ustc@define@term{otherustcstr}%A translation of `University of Science and Technology of China' in your language
+\ustc@define@term{otherthesisstr}%A translation of `A dissertation for doctor's degree' in your language
+\ustc@define@term{otherauthorstr}%A translation of `Author' in your language
+\ustc@define@term{otherdepartmentstr}%A translation of `Department' in your language
+\ustc@define@term{otherstudentidstr}%A translation of `Student ID' in your language
+\ustc@define@term{othersupervisorstr}%A translation of `Supervisor' in your language
+\ustc@define@term{otherfinishedtimestr}%A translation of `Finished Time' in your language
+\ustc@define@term{otherspecialitystr}%A translation of `Speciality' in your language
+\ustc@define@term{othertitle}
+\ustc@define@term{otherauthor}
+\ustc@define@term{otheradvisor}
+\ustc@define@term{othercoadvisor}
+\ustc@define@term{othersubmitdate}
+\ustc@define@term{othermajor}
+\ustc@define@term{otherdepart}%本科论文用院系全称，仅用于扉页。硕博暂时没有用 For bachelor use full name(only used in title page). Currently unused for master and doctor
+
+\ustc@define@term{studentid}%学号，仅本科论文 Student ID, only for bachelor
+\ustc@define@term{spinetitle}%书脊使用的标题，当title里含有控制字符时使用此命令输入文本标题 Use this command to generate spine when there are some control commands in \title{}
 
 %\ustc@define@term{degree}%Not used
 
 \renewcommand\maketitle{%
+	\make@cntitle
+	\make@entitle
+	\ifustc@notchinese
+		\ifx\ustc@othertitle\@empty
+			\relax
+		\else
+			\make@othertitle
+		\fi
+	\fi
 	\ifustc@bachelor%
-		\make@cntitle
-		\make@entitle
+		\relax
 	\else
-		\make@cntitle
-		\make@entitle
 		\make@bookspine
 		\make@authorization
 	\fi}
@@ -407,6 +492,62 @@
   \fi
 }
 
+%Other language title page
+\newcommand\make@othertitle{%
+  \newgeometry{%
+  top=3.8cm,
+  bottom=3.8cm,
+  left=3.2cm,
+  right=3.2cm
+  }
+  %\pdfbookmark{英文标题}{etitle}
+  \cleardoublepage
+  \thispagestyle{empty}
+  \begin{center}
+    \vspace*{0cm}
+      \USTCLarge{\ttfamily{\ustc@otherustcstr}}
+    \vskip -0.2cm %-0.6cm
+    \USTCLARGE{\ttfamily\ustc@otherthesisstr}
+    \vskip 1.5cm %1.25cm
+      \includegraphics[width=4.7cm]{ustc_logo_fig.eps}
+    \vskip 1.5cm %2.4cm
+      \renewcommand{\baselinestretch}{1}
+      \bfseries\yihao\ustc@othertitle
+  \end{center}
+  \vskip 1.0cm %1.8cm 2cm 3.1cm
+  \begin{center}
+  {\sanhao
+  \ifustc@bachelor
+	  \begin{tabular}{lc}
+	  	\ustc@otherauthorstr :& \ustc@underline[6cm]{\ustc@otherauthor}\\
+	  	\ustc@otherdepartmentstr :& \ustc@underline[6cm]{\ustc@otherdepart}\\
+	  	\ustc@otherstudentidstr :& \ustc@underline[6cm]{\ustc@studentid}\\
+		\ustc@othersupervisorstr :& \ustc@underline[6cm]{\ustc@otheradvisor}\\
+		\ifx\ustc@encoadvisor\@empty\else
+	                     & \ustc@underline[6cm]{\ustc@othercoadvisor}\\
+	    \fi
+	  	\ustc@otherfinishedtimestr :& \ustc@underline[6cm]{\ustc@othersubmitdate}
+	  \end{tabular}
+  \else
+	  \begin{tabular}{lc}
+	  	\ustc@otherauthorstr :& \ustc@underline[6cm]{\ustc@otherauthor}\\
+	  	\ustc@otherspecialitystr :& \ustc@underline[6cm]{\ustc@othermajor}\\
+	  	\ustc@othersupervisorstr :& \ustc@underline[6cm]{\ustc@otheradvisor}\\
+		\ifx\ustc@othercoadvisor\@empty\else
+	                     & \ustc@underline[6cm]{\ustc@othercoadvisor}\\
+	    \fi
+	  	\ustc@otherfinishedtimestr :& \ustc@underline[6cm]{\ustc@othersubmitdate}
+	  \end{tabular}
+  \fi}
+  \end{center}
+  \clearpage
+  \restoregeometry
+  \if@twoside
+    \thispagestyle{empty}
+    \cleardoublepage
+  \fi
+}
+
 %Book spine for master and doctor
 \newcommand\make@bookspine{
   \newgeometry{%
@@ -490,7 +631,7 @@
 \fancypagestyle{plain}{}
 \pagestyle{fancy}
   \fancyhf{}
-  \ifustc@bachelor\fancyhead[C]{\xiaowuhao{中国科学技术大学学士学位论文}}\relax\else\fancyhead[C]{\small \leftmark}\fi
+  \ifustc@bachelor\fancyhead[C]{\xiaowuhao{中国科学技术大学学士学位论文}}\relax\else\fancyhead[C]{\small \nouppercase\leftmark}\fi
   \renewcommand{\headrulewidth}{0.7pt}
 
 \renewcommand\frontmatter{%
@@ -510,7 +651,11 @@
 %Abstracts and thanks
 \newcommand{\ustc@enabstractname}{ABSTRACT}
 \newcommand{\ustc@cnabstractname}{摘\rule{\ccwd}{0pt}要}
-\newcommand{\ustc@thanksname}{致\rule{\ccwd}{0pt}谢}
+\ifustc@notchinese
+	\newcommand{\ustc@thanksname}{Thanks}
+\else
+	\newcommand{\ustc@thanksname}{致\rule{\ccwd}{0pt}谢}
+\fi
 \newcommand\keywords[1]{%
   \vspace{3.5ex}\noindent{\bfseries 关键词：~} #1}
 \newcommand\enkeywords[1]{%
@@ -522,11 +667,15 @@
   {\ifustc@bachelor\chapter{ABSTRACT}\else\chapter[ABSTRACT]{\protect\vskip-10pt{}ABSTRACT}\fi}
   {}
 \renewenvironment{thanks}
-  {\ifustc@bachelor\chapter[\texorpdfstring{\ustc@thanksname}{致谢}]{\protect\vskip-10pt\ustc@thanksname}\else\chapter{\texorpdfstring{\ustc@thanksname}{致谢}}\fi}
+  {\ifustc@bachelor\chapter[\texorpdfstring{\ustc@thanksname}{\ifustc@notchinese{}致谢\else{}Thanks\fi}]{\protect\vskip-10pt\ustc@thanksname}\else\chapter{\texorpdfstring{\ustc@thanksname}{致谢}}\fi}
   {}
   
 %tableofcontents
-\renewcommand{\contentsname}{\texorpdfstring{目\rule{\ccwd}{0pt}录}{目录}}
+\ifustc@notchinese
+	\renewcommand{\contentsname}{Table of Contents}
+\else
+	\renewcommand{\contentsname}{\texorpdfstring{目\rule{\ccwd}{0pt}录}{目录}}
+\fi
 \renewcommand\tableofcontents{%
     \if@twocolumn
       \@restonecoltrue\onecolumn

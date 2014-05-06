@@ -1,6 +1,9 @@
-﻿\documentclass[master,euler,twoside,openright]{ustcthesis}% twoside 双面打印
-% bachelor, doctor or master
-% adobefont
+﻿\documentclass[master,euler,twoside,openright]{ustcthesis}
+% 默认twoside 双面打印
+% 将master修改为bachelor, doctor or master
+% 要使用adobe字体，添加adobefonts选项
+% 使用euler数学字体，如不愿使用，去掉euler
+% 使用外文写作，请添加notchinese
 
 % 设置图形文件的搜索路径
 \graphicspath{{figures/}}
@@ -18,7 +21,7 @@
   % 中文封面内容
   \title{中国科学技术大学\\本硕博毕业论文模板\\示例文档(Beta)}%一般情况下扉页和书脊共用一个标题文本，可以不用定义\spinetitle。特殊情况见下。
   \spinetitle{\small{中国科学技术大学本硕博毕业论文模板示例文档\raisebox{-3pt}{(Beta)}}}
-  %特殊情况1：本例中\title命令里含有换行控制字符，这回导致制作书脊的时候出现错误，例如如果你注释掉这一行就会报错。这时需要定义一个不含换行等命令的\spinetitle，这并不表示\spinetitle里不能有任何命令——只能使用有限的命令。
+  %特殊情况1：本例中\title命令里含有换行控制字符，这会导致制作书脊的时候出现错误，例如如果你注释掉这一行就会报错。这时需要定义一个不含换行等命令的\spinetitle，这并不表示\spinetitle里不能有任何命令——只能使用有限的命令。
   %特殊情况2：本例中标题过长，所以需要缩小书脊标题的字号。
   %特殊情况3：本例中中英文混排，由于tex竖排的原理限制，中英文基线不重合，所以需要人工调整英文的基线。具体调整量根据不同字体有所不同。
   \author{赵\ 钱\ 孙}
@@ -36,6 +39,26 @@
   \enadvisor{Prof. Wuzheng Zhou}
   \encoadvisor{Prof. Chenzhu Feng}%另外一个导师
   \ensubmitdate{Thimber, 2099}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% If you use another language instead of chinese and english, then you
+% should define some strings and provide information in your language.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \otherustcstr{zhong guo ke xue ji shu da xue}%A translation of `University of Science and Technology of China' in your language
+%  \otherthesisstr{shuo shi xue wei lun wen}%A translation of `A dissertation for doctor's degree' in your language
+%  \otherauthorstr{xing ming}%A translation of `Author' in your language
+%  \otherdepartmentstr{yuan xi}%A translation of `Department' in your language
+%  \otherstudentidstr{xue hao}%A translation of `Student ID' in your language
+%  \othersupervisorstr{dao shi}%A translation of `Supervisor' in your language
+%  \otherfinishedtimestr{ri qi}%A translation of `Finished Time' in your language
+%  \otherspecialitystr{zhuan ye}%A translation of `Speciality' in your language
+%  \othertitle{zhong guo ke xue ji shu da xue tong yong xue wen lun wen shi li wen dang}
+%  \otherauthor{zhao qian sun}
+%  \otheradvisor{zhou wu zheng}
+%  \othercoadvisor{feng chen zhu}
+%  \othersubmitdate{hou nian ma yue}
+%  \othermajor{mou zhuan ye}
+%  \otherdepart{mou xi}
 
   % 封面
   \maketitle

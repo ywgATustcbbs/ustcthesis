@@ -40,9 +40,14 @@
 
 
 \ustc@define@term{ustcloaname}
-\ustcloaname{算法索引}
+\ifustc@notchinese
+	\ustcloaname{List of Algorithm}
+	\renewcommand{\algorithmcfname}{Algorithm}
+\else
+	\ustcloaname{算法索引}
+	\renewcommand{\algorithmcfname}{算法}
+\fi
 \renewcommand{\listalgorithmcfname}{\ustc@ustcloaname}
-\renewcommand{\algorithmcfname}{算法}
 \newcommand\ustcloa{\listofalgorithms\addcontentsline{toc}{chapter}{\ustc@ustcloaname}}
 
 \ifustc@oldfontcfg
@@ -94,7 +99,11 @@
 \newcommand{\scite}[1]{\textsuperscript{\cite{#1}}}
 
 \newenvironment{denotation}[1][2.5cm]{
-  \chapter{主要符号对照表} % no tocline
+  \ifustc@notchinese
+  		\chapter{Nomenclature}
+  \else
+  		\chapter{主要符号对照表} % no tocline
+  \fi
   \noindent\begin{list}{}%
     {\vskip-30bp%\xiaosihao[1.6]
      \renewcommand\makelabel[1]{##1\hfil}
