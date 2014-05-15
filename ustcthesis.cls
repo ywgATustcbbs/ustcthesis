@@ -7,7 +7,7 @@
 %   Created 
 %       2014.03.26 by ywg@USTC
 %   Last Modified
-%       2014.04.24 by ywg@USTC
+%       2014.05.16 by ywg@USTC
 %
 %       $Id$
 %
@@ -125,6 +125,7 @@
 \RequirePackage{multicol}
 \RequirePackage{multirow}
 \RequirePackage{hyperref}
+\pdfstringdefDisableCommands{\def\and{and }}
 \hypersetup{
 	CJKbookmarks=true,%
 	bookmarksnumbered=true,%
@@ -134,7 +135,12 @@
 	linkcolor=black,%
 	citecolor=black,%
 	plainpages=false,%
-	pdfstartview=FitH}
+	pdfstartview=FitH,}
+\AtBeginDocument{\hypersetup{%
+	pdftitle={\ustc@title,\ustc@entitle},%
+	pdfauthor={\ustc@author,\ustc@enauthor},%
+	pdfkeywords={},%Either put keywords here or not, as you wish.
+	pdfcreator={LaTeX with hyperref package, using USTC LaTeX Thesis Template for Bachelor, Master and Doctor}}}
 \RequirePackage[numbers,sort&compress,square]{natbib}
 \def\bibfont{\wuhao}
 \setlength{\bibsep}{0pt plus1pt minus1pt}

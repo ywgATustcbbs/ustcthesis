@@ -5,13 +5,16 @@
 %   Version
 %       Beta
 %   Created 
-%       2014.05.06 by ywg@USTC
+%       2014.03.27 by ywg@USTC
 %   Last Modified
-%       2014.04.24 by ywg@USTC
+%       2014.05.16 by ywg@USTC
 %
 %       $Id$
 %
 由于水平所限，更新后模板可能存在bug，恳请大家及时告知。
+
+更新日志[20140515]
+为pdf文件添加metadata信息(非功能改动)
 
 更新日志[20140506]
 添加外文支持。
