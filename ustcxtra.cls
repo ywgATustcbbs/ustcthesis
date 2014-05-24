@@ -7,7 +7,7 @@
 %   Created 
 %       2014.03.26 by ywg@USTC
 %   Last Modified
-%       2014.05.06 by ywg@USTC
+%       2014.05.24 by ywg@USTC
 %
 %       $Id$
 %
@@ -48,7 +48,7 @@
 	\renewcommand{\algorithmcfname}{算法}
 \fi
 \renewcommand{\listalgorithmcfname}{\ustc@ustcloaname}
-\newcommand\ustcloa{\listofalgorithms\addcontentsline{toc}{chapter}{\ustc@ustcloaname}}
+\newcommand\ustcloa{\cleardoublepage\addcontentsline{toc}{chapter}{\ustc@ustcloaname}\listofalgorithms}
 
 \ifustc@oldfontcfg
 	\ifustc@adobefont

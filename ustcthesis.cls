@@ -7,7 +7,7 @@
 %   Created 
 %       2014.03.26 by ywg@USTC
 %   Last Modified
-%       2014.05.21 by ywg@USTC
+%       2014.05.24 by ywg@USTC
 %
 %       $Id$
 %
@@ -232,8 +232,8 @@
 \fi
 \CTEXoptions[listfigurename={\ustc@ustclofname}]
 \CTEXoptions[listtablename={\ustc@ustclotname}]
-\newcommand\ustclot{\listoftables\addcontentsline{toc}{chapter}{\ustc@ustclotname}}
-\newcommand\ustclof{\listoffigures\addcontentsline{toc}{chapter}{\ustc@ustclofname}}
+\newcommand\ustclot{\cleardoublepage\addcontentsline{toc}{chapter}{\ustc@ustclotname}\listoftables}
+\newcommand\ustclof{\cleardoublepage\addcontentsline{toc}{chapter}{\ustc@ustclofname}\listoffigures}
 
 %New mathematical environments
 \ifustc@notchinese
