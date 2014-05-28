@@ -680,7 +680,7 @@
   {\ifustc@bachelor\chapter{ABSTRACT}\else\chapter[ABSTRACT]{\protect\vskip-10pt{}ABSTRACT}\fi}
   {}
 \renewenvironment{thanks}
-  {\ifustc@bachelor\chapter[\texorpdfstring{\ustc@thanksname}{\ifustc@notchinese{}致谢\else{}Thanks\fi}]{\protect\vskip-10pt\ustc@thanksname}\else\chapter{\texorpdfstring{\ustc@thanksname}{致谢}}\fi}
+  {\ifustc@bachelor\chapter[\texorpdfstring{\ustc@thanksname}{\ifustc@notchinese{}Thanks\else{}致谢\fi}]{\protect\vskip-10pt\ustc@thanksname}\else\chapter{\texorpdfstring{\ustc@thanksname}{\ifustc@notchinese{}Thanks\else{}致谢\fi}}\fi}
   {}
   
 %tableofcontents
