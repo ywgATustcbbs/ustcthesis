@@ -16,17 +16,27 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   % 中文封面内容
-  \title{中国科学技术大学\\本硕博毕业论文模板\\示例文档(Beta)}%一般情况下扉页和书脊共用一个标题文本，可以不用定义\spinetitle。特殊情况见下。
+  \title{中国科学技术大学\\本硕博毕业论文模板\\示例文档(Beta)}%一般情况下扉页和封皮、书脊共用一个标题文本，可以不用定义\spinetitle（仅硕博有用）, \covertitle（本硕博均有用）和\encovertitle（仅本科有用）。特殊情况见下。
   \spinetitle{\small{中国科学技术大学本硕博毕业论文模板示例文档\raisebox{-3pt}{(Beta)}}}
   %特殊情况1：本例中\title命令里含有换行控制字符，这会导致制作书脊的时候出现错误，例如如果你注释掉\spinetitle{...}这一行就会报错。这时需要定义一个不含换行等命令的\spinetitle，这并不表示\spinetitle里不能有任何命令——只能使用有限的命令。
   %特殊情况2：本例中标题过长，所以需要缩小书脊标题的字号。
   %特殊情况3：本例中中英文混排，由于tex竖排的原理限制，中英文基线不重合，所以需要人工调整英文的基线。具体调整量根据不同字体有所不同。
+  \covertitle{中国科学技术大学本硕博毕业\\论文模板示例文档(Beta)}
+  %\covertitle{中文题目第一行\\中文题目第二行}
+  %不要在此调整封皮字体大小！ Do not set Cover Page font size here!
+  %特殊情况4：本例中\title中含有多个换行，导致标题超过了两行。根据制本厂规定，封皮标题不能超过两行。因此需要定义封皮使用的标题\covertitle. 如果你注释掉这一行，就会发现封皮不符合规定。
+  \encovertitle{USTC Thesis Template for Bachelor, Master and Doctor User's Guide(Beta)}
+  %\encovertitle{English Title Line 1\\English Title Line 2\\English Title Line 3}
+  %不要在此调整封皮字体大小！ Do not set Cover Page font size here!
+  %特殊情况5:仅本科生有用。本科封皮中有英文标题，不超过三行。与上类似。
+
   \author{赵\ 钱\ 孙}
   \depart{一二三系}%系别，硕博请用系代号，本科请用全称如
   %\depart{数理化和信息工程系}
   \major{人文管理和生物专业专业}%专业，硕博请用全称，本科不需要
   \advisor{周武正\ 教授}
   \coadvisor{冯晨珠\ 教授}%第二导师，没有请注释掉
+  \studentid{PB00000000}%For bachelor only
   \submitdate{二〇九九年十三月}
 
   % 英文封面内容
@@ -59,6 +69,18 @@
 
 \begin{document}
 
+  \makecover
+  %生成制本厂规定格式的封皮
+  %Generate Cover Page required by USTC Printer
+  %如果封皮中标题有问题，请尝试使用\covertitle和\coverentitle定义对应的标题。如果标题仍然过长，请使用如下格式的命令：
+  %In case of very long title, use following commands：
+  %\makecover[<cn_title_font_size>][<en_title_font_size>]
+  %cn_title_font_size: 17pt(default), 3(sanhao), ..., -5(xiaowuhao)
+  %en_title_font_size: same as previous
+  %EXAMPLE:
+  %\makecover[-4][5]%This will generate cover page with xiaosi(Chinese font size small 4) for Chinese title and wuhao(Chinese font size 5) for  English
+  %Note that for master and doctor, <en_title_font_size> does not take effect since there is no en title in their cover page. BUT YOU HAVE TO SPECIFY THIS PARAMETER when you use \makecover with optional parameters.
+  
   % 封面
   \maketitle
 

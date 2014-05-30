@@ -7,7 +7,7 @@
 %   Created 
 %       2014.03.26 by ywg@USTC
 %   Last Modified
-%       2014.05.24 by ywg@USTC
+%       2014.05.31 by ywg@USTC
 %
 %       $Id$
 %
@@ -363,8 +363,13 @@
 
 \ustc@define@term{studentid}%学号，仅本科论文 Student ID, only for bachelor
 \ustc@define@term{spinetitle}%书脊使用的标题，当title里含有控制字符时使用此命令输入文本标题 Use this command to generate spine when there are some control commands in \title{}
+\ustc@define@term{covertitle}%封皮使用的标题，当title里存在强制换行导致标题超过了三行时，或者存在其他特殊情况时，请使用此命令输入封皮的标题。根据制本厂的规定，封皮标题最多两行。Use this command to generate cover page title when \title{} contains more than one force line break, ie. title has more than two lines, or when \title{} contains some special commands. Accroding to requirements of USTC Printer, cover page title can only have no more than two lines. 
+\ustc@define@term{encovertitle}%本科专用。封皮使用的英文标题，当entitle里存在强制换行导致标题超过了四行时，或者存在其他特殊情况时，请使用此命令输入封皮的英文标题。根据制本厂的规定，封皮英文标题最多三行。For bachelor only. Use this command to generate cover page title when \entitle{} contains more than two force line breaks, ie. entitle has more than three lines, or when \entitle{} contains some special commands. Accroding to requirements of USTC Printer, cover page English title can only have no more than three lines. 
 
 %\ustc@define@term{degree}%Not used
+
+\RequirePackage{xparse}
+\DeclareDocumentCommand{\makecover}{ O{17pt} O{17pt} }{\make@bookspine{#1}{#2}}
 
 \renewcommand\maketitle{%
 	\make@cntitle
@@ -379,7 +384,6 @@
 	\ifustc@bachelor%
 		\relax
 	\else
-		\make@bookspine
 		\make@authorization
 	\fi}
 
@@ -561,29 +565,142 @@
   \fi
 }
 
-%Book spine for master and doctor
-\newcommand\make@bookspine{
-  \newgeometry{%
-  top=3.8cm,
-  bottom=3.8cm,
-  left=3.2cm,
-  right=3.2cm
-  }
-%\pdfbookmark{书\hspace{1em}脊}{bookmark}
-  \cleardoublepage
-  \thispagestyle{empty}
-  \begin{center}
-   \rotatebox{-90}{
-   \framebox[0.97\textheight][c]{\ziju{0.17}\ustc@verthei\zihao{-4} \raisebox{10pt}{ \ifx\ustc@spinetitle\@empty\ustc@title\else\ustc@spinetitle\fi
-   \hspace*{20pt}  \ustc@depart \hspace*{20pt}  \ustc@author  \hspace*{30pt}{中国科学技术大学} }}
-   }
-  \end{center}
-  \clearpage
-  \restoregeometry
+%Cover page and book spine for bachelor, master and doctor
+\newcommand{\cover@cnfontsize}{\relax}
+\newcommand{\cover@enfontsize}{\relax}
+\newcommand{\cover@defaultfontsize}{\fontsize{17pt}{\baselineskip}\selectfont}
+\newlength{\cover@cnvoffset}
+\newlength{\cover@cnhoffset}
+\newlength{\cover@envoffset}
+\newlength{\cover@enhoffset}
+\newlength{\cover@cntitleh}
+\newlength{\cover@entitleh}
+\newcommand{\c@scn}[4]{
+  \def\c@s@default{17pt}
+  \def\c@s@var{#1}
+  \ifx\c@s@var\c@s@default\renewcommand{\cover@cnfontsize}{\cover@defaultfontsize}\else\renewcommand{\cover@cnfontsize}{\zihao{#1}}\fi
+  \setlength{\cover@cnvoffset}{#2}
+  \setlength{\cover@cnhoffset}{#3}
+  \setlength{\cover@cntitleh}{#4}}
+\newcommand{\c@sen}[4]{
+  \def\c@s@default{17pt}
+  \def\c@s@var{#1}
+  \ifx\c@s@var\c@s@default\renewcommand{\cover@enfontsize}{\cover@defaultfontsize}\else\renewcommand{\cover@enfontsize}{\zihao{#1}}\fi
+  \setlength{\cover@envoffset}{#2}
+  \setlength{\cover@enhoffset}{#3}
+  \setlength{\cover@entitleh}{#4}}
+
+\newcommand\make@bookspine[2]{
+  \def\cover@varcn{#1}
+  \def\cover@varen{#2}
+  \def\cover@san{3}
+  \def\cover@ssan{-3}
+  \def\cover@si{4}
+  \def\cover@ssi{-4}
+  \def\cover@wu{5}
+  \def\cover@swu{-5}
+
+  \ifustc@bachelor%cover page for bachelor
+    \ifx\cover@varcn\cover@san\c@scn{#1}{0mm}{-8.5mm}{1.6cm}\else
+      \ifx\cover@varcn\cover@ssan\c@scn{#1}{0.5mm}{-8.5mm}{1.55cm}\else
+        \ifx\cover@varcn\cover@si\c@scn{#1}{1mm}{-8.5mm}{1.5cm}\else
+          \ifx\cover@varcn\cover@ssi\c@scn{#1}{1.5mm}{-8.5mm}{1.45cm}\else
+            \ifx\cover@varcn\cover@wu\c@scn{#1}{2mm}{-8.5mm}{1.4cm}\else
+              \ifx\cover@varcn\cover@swu\c@scn{#1}{2.5mm}{-8.5mm}{1.35cm}\else
+                \c@scn{17pt}{0mm}{-0.85cm}{1.6cm}
+              \fi
+            \fi
+          \fi
+        \fi
+      \fi       
+    \fi
+    \ifx\cover@varen\cover@san\c@sen{#2}{5mm}{0mm}{2.55cm}\else
+      \ifx\cover@varen\cover@ssan\c@sen{#2}{5.5mm}{0mm}{2.5cm}\else
+        \ifx\cover@varen\cover@si\c@sen{#2}{6mm}{0mm}{2.45cm}\else
+          \ifx\cover@varen\cover@ssi\c@sen{#2}{6.5mm}{0mm}{2.4cm}\else
+            \ifx\cover@varen\cover@wu\c@sen{#2}{7mm}{0mm}{2.35cm}\else
+              \ifx\cover@varen\cover@swu\c@sen{#2}{7.5mm}{0mm}{2.3cm}\else
+                \c@sen{17pt}{4.5mm}{0mm}{2.6cm}
+              \fi
+            \fi
+          \fi
+        \fi
+      \fi       
+    \fi
+    \newgeometry{top=17.4cm,bottom=1.1cm,left=6cm,right=5.5cm}
+    \clearpage
+    \thispagestyle{empty}
+    \rule{0mm}{0mm}\vskip\cover@cnvoffset\hspace{\cover@cnhoffset}
+    \begin{minipage}[c]{9.7cm}
+      \begin{minipage}[c][\cover@cntitleh][s]{9.5cm}
+	    \centering\bfseries\cover@cnfontsize\baselineskip=1\baselineskip plus 1fill\lineskip=0pt plus 1fill
+        \ifx\ustc@covertitle\@empty\ustc@title\else\ustc@covertitle\fi
+      \end{minipage}\vskip\cover@envoffset\hskip\cover@enhoffset
+      \begin{minipage}[c][\cover@entitleh][s]{9.5cm}
+	    \centering\bfseries\cover@enfontsize\baselineskip=1\baselineskip plus 1fill\lineskip=0pt plus 1fill
+        \ifx\ustc@encovertitle\@empty\ustc@entitle\else\ustc@encovertitle\fi
+      \end{minipage}\vskip 0.5cm\hskip 0cm
+      \begin{minipage}[c][1.5cm][s]{9.5cm}
+	    \centering\bfseries\cover@defaultfontsize\ustc@depart
+      \end{minipage}\vskip -0.5cm\hskip 0cm
+      \begin{minipage}[c][1.5cm][s]{9.5cm}
+        \centering\bfseries\cover@defaultfontsize\ustc@author\hfil\ustc@studentid
+      \end{minipage}\vskip -0.5cm\hskip 0cm
+      \begin{minipage}[c][1.5cm][s]{9.5cm}
+        \centering\bfseries\cover@defaultfontsize\ustc@advisor\ifx\ustc@coadvisor\@empty\else\quad\ustc@coadvisor\fi
+      \end{minipage}\vskip -0.5cm\hskip 0cm
+      \begin{minipage}[c][1.5cm][s]{9.5cm}
+        \centering\bfseries\cover@defaultfontsize\ustc@submitdate
+      \end{minipage}
+    \end{minipage}
+  \else
+    \ifx\cover@varcn\cover@san\c@scn{#1}{-7.3cm}{6.2cm}{1.5cm}\else
+      \ifx\cover@varcn\cover@ssan\c@scn{#1}{-7.3cm}{6.2cm}{1.5cm}\else
+        \ifx\cover@varcn\cover@si\c@scn{#1}{-7.2cm}{6.2cm}{1.4cm}\else
+          \ifx\cover@varcn\cover@ssi\c@scn{#1}{-7.2cm}{6.2cm}{1.4cm}\else
+            \ifx\cover@varcn\cover@wu\c@scn{#1}{-7.1cm}{6.2cm}{1.3cm}\else
+              \ifx\cover@varcn\cover@swu\c@scn{#1}{-7.1cm}{6.2cm}{1.3cm}\else
+                \c@scn{17pt}{-7.4cm}{6.2cm}{1.5cm}
+              \fi
+            \fi
+          \fi
+        \fi
+      \fi       
+    \fi
+    \c@sen{17pt}{0cm}{0cm}{10cm}
+    \newgeometry{top=2cm,bottom=2cm,left=1.2cm,right=19.5cm}
+    \clearpage
+    \thispagestyle{empty}
+    \begin{flushleft}
+      \rotatebox{-90}{\makebox[23.7cm][c]{\ziju{0.17}\ustc@verthei\zihao{-4}{\ifx\ustc@spinetitle\@empty\ustc@title\else\ustc@spinetitle\fi\hfil\hfil\ustc@depart\hfil\hfil\ustc@author\hfil\hfil{}中国科学技术大学}}}
+    \end{flushleft}
+    \vspace{\cover@cnvoffset}\hspace{\cover@cnhoffset}
+    \begin{minipage}[c]{12.2cm}
+      \begin{minipage}[c][\cover@cntitleh][s]{12cm}
+	    \centering\bfseries\cover@cnfontsize\baselineskip=1\baselineskip plus 1fill\lineskip=0pt plus 1fill
+        \ifx\ustc@covertitle\@empty\ustc@title\else\ustc@covertitle\fi
+      \end{minipage}\vskip 0.6cm\hskip 0cm
+      \begin{minipage}[c][1.5cm][s]{12cm}
+	    \centering\bfseries\cover@defaultfontsize\ustc@author
+      \end{minipage}\vskip -0.6cm\hskip 0cm
+      \begin{minipage}[c][1.5cm][s]{12cm}
+        \centering\bfseries\cover@defaultfontsize\ustc@major
+      \end{minipage}\vskip -0.6cm\hskip 0cm
+      \begin{minipage}[c][1.5cm][s]{12cm}
+        \centering\bfseries\cover@defaultfontsize\ustc@advisor\ifx\ustc@coadvisor\@empty\else\quad\ustc@coadvisor\fi
+      \end{minipage}\vskip -0.6cm\hskip 0cm
+      \begin{minipage}[c][1.5cm][s]{12cm}
+        \centering\bfseries\cover@defaultfontsize\ustc@submitdate
+      \end{minipage}
+    \end{minipage}
+  \fi
   \if@twoside
     \thispagestyle{empty}
     \cleardoublepage
+  \else
+    \clearpage  
   \fi
+  \restoregeometry
 }
 
 %Define head rule
