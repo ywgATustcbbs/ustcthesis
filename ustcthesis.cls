@@ -368,6 +368,7 @@
 
 %\ustc@define@term{degree}%Not used
 
+\RequirePackage{subfiles}
 \RequirePackage{xparse}
 \DeclareDocumentCommand{\makecover}{ O{17pt} O{17pt} }{\make@bookspine{#1}{#2}}
 

@@ -1,0 +1,15 @@
+﻿%在正文写作完成后，请直接编译此文件以生成制本厂需要的封皮
+%After finish writting thesis, compile this file to generate Cover Page required by USTC Printer
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\makecover
+%  %如果封皮中标题有问题，请尝试使用\covertitle和\coverentitle定义对应的标题。如果标题仍然过长，请使用如下格式的命令：
+%  %In case of very long title, use following commands：
+%  %\makecover[<cn_title_font_size>][<en_title_font_size>]
+%  %cn_title_font_size: 17pt(default), 3(sanhao), ..., -5(xiaowuhao)
+%  %en_title_font_size: same as previous
+%  %EXAMPLE:
+%  %\makecover[-4][5]%This will generate cover page with xiaosi(Chinese font size small 4) for Chinese title and wuhao(Chinese font size 5) for  English
+%  %Note that for master and doctor, <en_title_font_size> does not take effect since there is no en title in their cover page. BUT YOU HAVE TO SPECIFY THIS PARAMETER when you use \makecover with optional parameters.
+%  
+\end{document}
