@@ -781,11 +781,11 @@
 
 %Abstracts and thanks
 \newcommand{\ustc@enabstractname}{ABSTRACT}
-\newcommand{\ustc@cnabstractname}{摘\rule{\ccwd}{0pt}要}
+\newcommand{\ustc@cnabstractname}{摘\hspace{\ccwd}要}
 \ifustc@notchinese
 	\newcommand{\ustc@thanksname}{Thanks}
 \else
-	\newcommand{\ustc@thanksname}{致\rule{\ccwd}{0pt}谢}
+	\newcommand{\ustc@thanksname}{致\hspace{\ccwd}谢}
 \fi
 \newcommand\keywords[1]{%
   \vspace{3.5ex}\noindent{\bfseries 关键词：~} #1}
@@ -805,7 +805,7 @@
 \ifustc@notchinese
 	\renewcommand{\contentsname}{Table of Contents}
 \else
-	\renewcommand{\contentsname}{\texorpdfstring{目\rule{\ccwd}{0pt}录}{目录}}
+	\renewcommand{\contentsname}{\texorpdfstring{目\hspace{\ccwd}录}{目录}}
 \fi
 \renewcommand\tableofcontents{%
     \if@twocolumn
