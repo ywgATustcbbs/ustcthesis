@@ -7,7 +7,7 @@
 %   Created 
 %       2014.03.26 by ywg@USTC
 %   Last Modified
-%       2014.05.24 by ywg@USTC
+%       2015.03.17 by ywg@USTC
 %
 %       $Id$
 %
@@ -314,3 +314,10 @@
      \example@code{example@bkcolor}{0.96\textwidth}%
    }%
    \endlist}
+
+%%
+%% End of file `USTCthesis.cls'.
+%% Project page:
+%%   https://github.com/ywgATustcbbs?tab=repositories
+%% Backup Mirror:
+%%   https://gitlab.lug.ustc.edu.cn/ywg/ustcthesis

@@ -7,12 +7,12 @@
 %   Created 
 %       2014.03.26 by ywg@USTC
 %   Last Modified
-%       2014.05.31 by ywg@USTC
+%       2015.03.17 by ywg@USTC
 %
 %       $Id$
 %
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{ustcthesis}[2014/03/26 USTCthesis document class. Created: 2014.03.26 by ywg@USTC, Last Modified: 2014.03.29 by ywg@USTC]
+\ProvidesClass{ustcthesis}[2014/03/26 USTCthesis document class. Created: 2014.03.26 by ywg@USTC, Last Modified: 2015.03.17 by ywg@USTC]
 
 %Dew class options
 \newif\ifustc@basic\ustc@basicfalse
@@ -889,3 +889,8 @@
 \endinput
 %%
 %% End of file `USTCthesis.cls'.
+%% Project page:
+%%   https://github.com/ywgATustcbbs?tab=repositories
+%% Backup Mirror:
+%%   https://gitlab.lug.ustc.edu.cn/ywg/ustcthesis
+
