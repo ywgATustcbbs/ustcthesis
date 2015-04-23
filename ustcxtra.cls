@@ -7,7 +7,7 @@
 %   Created 
 %       2014.03.26 by ywg@USTC
 %   Last Modified
-%       2015.03.17 by ywg@USTC
+%       2015.04.23 by ywg@USTC
 %
 %       $Id$
 %
@@ -20,7 +20,7 @@
 \RequirePackage{paralist}
 \RequirePackage{booktabs}
 \RequirePackage[perpage,symbol]{footmisc}
-\RequirePackage[integrals]{wasysym}
+\RequirePackage[nointegrals]{wasysym}
 \RequirePackage{longtable}
 	% Set default longtable alignment
 	\setlength\LTleft{0pt}
