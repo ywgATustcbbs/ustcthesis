@@ -7,7 +7,7 @@
 %   Created 
 %       2014.03.26 by ywg@USTC
 %   Last Modified
-%       2015.03.17 by ywg@USTC
+%       2015.04.25 by ywg@USTC
 %
 %       $Id$
 %
@@ -729,7 +729,7 @@
 保密的学位论文在解密后也遵守此规定。
 }
 \def\ustc@secret@newtitle{%
-   \raisebox{-1pt}{\large\Square}\ 公开\hspace{0.5cm}\raisebox{-1pt}{\large\Square}\ 保密\ \ustc@underline[4em]\relax\hspace{0.1em}年}
+   \raisebox{1.1mm}{\fbox{\rule{0pt}{1.4mm}\rule{1.4mm}{0pt}}}\ 公开\hspace{0.5cm}\raisebox{1.1mm}{\fbox{\rule{0pt}{1.4mm}\rule{1.4mm}{0pt}}}\ 保密\ \ustc@underline[4em]\relax\hspace{0.1em}年}
 \newcommand\make@authorization{%
  % \pdfbookmark{原创与授权声明}{authorization}
   \cleardoublepage

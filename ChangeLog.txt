@@ -7,11 +7,14 @@
 %   Created 
 %       2014.03.27 by ywg@USTC
 %   Last Modified
-%       2015.04.23 by ywg@USTC
+%       2015.04.25 by ywg@USTC
 %
 %       $Id$
 %
 由于水平所限，更新后模板可能存在bug，恳请大家及时告知。
+
+更新日志[20150425]
+移除对wasysym宏包的依赖
 
 更新日志[20150423]
 修正积分号显示与大多数人期望不一致的问题（wasysym宏包选项由integrals改为nointegrals，这将导致无法使用\oiint命令）
