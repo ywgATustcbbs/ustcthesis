@@ -48,7 +48,7 @@
 	\renewcommand{\algorithmcfname}{算法}
 \fi
 \renewcommand{\listalgorithmcfname}{\ustc@ustcloaname}
-\newcommand\ustcloa{\cleardoublepage\addcontentsline{toc}{chapter}{\ustc@ustcloaname}\listofalgorithms}
+\newcommand\ustcloa{\cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{\ustc@ustcloaname}\listofalgorithms}
 
 \ifustc@oldfontcfg
 	\ifustc@adobefont

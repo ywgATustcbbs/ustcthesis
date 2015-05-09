@@ -232,8 +232,8 @@
 \fi
 \CTEXoptions[listfigurename={\ustc@ustclofname}]
 \CTEXoptions[listtablename={\ustc@ustclotname}]
-\newcommand\ustclot{\cleardoublepage\addcontentsline{toc}{chapter}{\ustc@ustclotname}\listoftables}
-\newcommand\ustclof{\cleardoublepage\addcontentsline{toc}{chapter}{\ustc@ustclofname}\listoffigures}
+\newcommand\ustclot{\cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{\ustc@ustclotname}\listoftables}
+\newcommand\ustclof{\cleardoublepage\phantomsection\addcontentsline{toc}{chapter}{\ustc@ustclofname}\listoffigures}
 
 %New mathematical environments
 \ifustc@notchinese
