@@ -714,7 +714,7 @@
 
 %Declaration and authorization page
 \newcommand{\ustc@declaretext}{%
-本人声明所呈交的学位论文,是本人在导师指导下进行研究工作所取得的成果。
+本人声明所呈交的学位论文，是本人在导师指导下进行研究工作所取得的成果。
 除已特别加以标注和致谢的地方外，论文中不包含任何他人已经发表或撰写过
 的研究成果。与我一同工作的同志对本研究所做的贡献均已在论文中作了明确的说明。
 }
@@ -729,7 +729,7 @@
 保密的学位论文在解密后也遵守此规定。
 }
 \def\ustc@secret@newtitle{%
-   \raisebox{1.1mm}{\fbox{\rule{0pt}{1.4mm}\rule{1.4mm}{0pt}}}\ 公开\hspace{0.5cm}\raisebox{1.1mm}{\fbox{\rule{0pt}{1.4mm}\rule{1.4mm}{0pt}}}\ 保密\ \ustc@underline[4em]\relax\hspace{0.1em}年}
+   \raisebox{1.1mm}{\fbox{\rule{0pt}{1.4mm}\rule{1.4mm}{0pt}}}\ 公开\hspace{0.5cm}\raisebox{1.1mm}{\fbox{\rule{0pt}{1.4mm}\rule{1.4mm}{0pt}}}\ 保密（\ustc@underline[2em]\relax\hspace{0.1em}年）}
 \newcommand\make@authorization{%
  % \pdfbookmark{原创与授权声明}{authorization}
   \cleardoublepage
