@@ -807,9 +807,9 @@
 	\newcommand{\ustc@thanksname}{致\hspace{\ccwd}谢}
 \fi
 \newcommand\keywords[1]{%
-  \vspace{3.5ex}\noindent{\bfseries 关键词：~} #1}
+  \vspace{3.5ex}\noindent{\textbf{关键词：~}} #1}
 \newcommand\enkeywords[1]{%
-  \vspace{3.5ex}\noindent{\bf Keywords:~} #1}
+  \vspace{3.5ex}\noindent{\textbf{Keywords:~}} #1}
 \newenvironment{cnabstract}
   {\ifustc@bachelor\chapter{\texorpdfstring{\ustc@cnabstractname}{摘要}}\else\chapter[\texorpdfstring{\ustc@cnabstractname}{摘要}]{\protect\vskip-10pt\ustc@cnabstractname}\fi}
   {}
