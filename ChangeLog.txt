@@ -7,11 +7,15 @@
 %   Created 
 %       2014.03.27 by ywg@USTC
 %   Last Modified
-%       2015.04.27 by ywg@USTC
+%       2015.05.15 by ywg@USTC
 %
 %       $Id$
 %
 由于水平所限，更新后模板可能存在bug，恳请大家及时告知。
+
+更新日志[20150515]
+添加对mac系统字体支持（by Zeping Lee）
+修正mono和sans设置错误
 
 更新日志[20150427]
 更换校徽，与学校要求一致
