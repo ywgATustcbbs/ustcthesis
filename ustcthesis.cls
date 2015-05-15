@@ -480,9 +480,9 @@
   \thispagestyle{empty}
   \begin{center}
     \vspace*{0cm}
-      \USTCLarge{\ttfamily{University of Science and Technology of China}}
+      \USTCLarge{\sffamily{University of Science and Technology of China}}
     \vskip -0.2cm %-0.6cm
-    \USTCLARGE{\ttfamily\ifustc@doctor
+    \USTCLARGE{\sffamily\ifustc@doctor
       {A dissertation for doctor's degree}
     \else\ifustc@master
       {A dissertation for master's degree}
@@ -493,7 +493,7 @@
       \includegraphics[width=4.7cm]{ustc_logo_fig.eps}
     \vskip 1.5cm %2.4cm
       \renewcommand{\baselinestretch}{1}
-      \bfseries\yihao\ustc@entitle
+      \sffamily\bfseries\yihao\ustc@entitle
   \end{center}
   \vskip 1.0cm %1.8cm 2cm 3.1cm
   \begin{center}
