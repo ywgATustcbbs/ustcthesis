@@ -1,4 +1,4 @@
-﻿%
+%
 % University of Science and Technology of China Thesis Template
 % For Bachelor Master and Doctor
 %
@@ -21,6 +21,7 @@
 \newif\ifustc@doctor\ustc@doctorfalse
 \newif\ifustc@bachelor\ustc@bachelorfalse
 \newif\ifustc@adobefont\ustc@adobefontfalse
+\newif\ifustc@macfont\ustc@macfontfalse
 \newif\ifustc@euler\ustc@eulerfalse
 \newif\ifustc@notchinese\ustc@notchinesefalse
 
@@ -47,6 +48,9 @@
 %Enhance compatibility
 \DeclareOption{adobefonts}{\ustc@adobefonttrue\PassOptionsToClass{adobefonts}{ctexbook}}
 \DeclareOption{adobefont}{\ustc@adobefonttrue\PassOptionsToClass{adobefonts}{ctexbook}}
+\DeclareOption{macfonts}{\ustc@macfonttrue\PassOptionsToClass{nofonts}{ctexbook}}
+
+
 
 %Pass all unprocessed/unknown options to ctexbook. If a wrong option is specified, perhaps ctexbook will throw an error.
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
@@ -173,10 +177,25 @@
 %Define font for vertical typesetting.
 \ifustc@adobefont
 	\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{Adobe Heiti Std}\relax
-\else%
-	\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{SimHei}\relax
+\else
+	\ifustc@macfont
+		\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{Heiti SC}\relax
+	\else
+		\setCJKfamilyfont{verthei}[RawFeature={vertical:}]{SimHei}\relax
+	\fi
 \fi
 \newcommand{\ustc@verthei}{\CJKfamily{verthei}}
+
+
+\ifustc@macfont
+	\setCJKmainfont[BoldFont={Heiti SC}, ItalicFont={Kaiti SC}]{Songti SC}
+	\setCJKsansfont{Heiti SC}
+	\setCJKmonofont{STFangsong}
+	\setCJKfamilyfont{song}{Songti Sc}
+	\setCJKfamilyfont{hei}{Heiti SC}
+	\setCJKfamilyfont{kai}{Kaiti SC}
+	\setCJKfamilyfont{fs}{STFangsong}
+\fi
 
 %Set section numbering to subsubsection
 \setcounter{secnumdepth}{3}
