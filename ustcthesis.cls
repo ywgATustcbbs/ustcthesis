@@ -480,20 +480,20 @@
   \thispagestyle{empty}
   \begin{center}
     \vspace*{0cm}
-      \USTCLarge{\ttfamily{University of Science and Technology of China}}
+      \USTCLarge{\textsf{University of Science and Technology of China}}
     \vskip -0.2cm %-0.6cm
-    \USTCLARGE{\ttfamily\ifustc@doctor
+    \USTCLARGE{\textsf{\ifustc@doctor
       {A dissertation for doctor's degree}
     \else\ifustc@master
       {A dissertation for master's degree}
     \else
       {A dissertation for bachelor's degree}
-    \fi\fi}
+    \fi\fi}}
     \vskip 1.5cm %1.25cm
       \includegraphics[width=4.7cm]{ustc_logo_fig.eps}
     \vskip 1.5cm %2.4cm
       \renewcommand{\baselinestretch}{1}
-      \bfseries\yihao\ustc@entitle
+      \textsf{\bfseries\yihao\ustc@entitle}
   \end{center}
   \vskip 1.0cm %1.8cm 2cm 3.1cm
   \begin{center}
@@ -542,9 +542,9 @@
   \thispagestyle{empty}
   \begin{center}
     \vspace*{0cm}
-      \USTCLarge{\ttfamily{\ustc@otherustcstr}}
+      \USTCLarge{\texttt{\ustc@otherustcstr}}
     \vskip -0.2cm %-0.6cm
-    \USTCLARGE{\ttfamily\ustc@otherthesisstr}
+    \USTCLARGE{\texttt{\ustc@otherthesisstr}}
     \vskip 1.5cm %1.25cm
       \includegraphics[width=4.7cm]{ustc_logo_fig.eps}
     \vskip 1.5cm %2.4cm
@@ -807,9 +807,9 @@
 	\newcommand{\ustc@thanksname}{致\hspace{\ccwd}谢}
 \fi
 \newcommand\keywords[1]{%
-  \vspace{3.5ex}\noindent{\bfseries 关键词：~} #1}
+  \vspace{3.5ex}\noindent{\textbf{关键词：~}} #1}
 \newcommand\enkeywords[1]{%
-  \vspace{3.5ex}\noindent{\bf Keywords:~} #1}
+  \vspace{3.5ex}\noindent{\textbf{Keywords:~}} #1}
 \newenvironment{cnabstract}
   {\ifustc@bachelor\chapter{\texorpdfstring{\ustc@cnabstractname}{摘要}}\else\chapter[\texorpdfstring{\ustc@cnabstractname}{摘要}]{\protect\vskip-10pt\ustc@cnabstractname}\fi}
   {}
