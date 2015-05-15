@@ -7,7 +7,7 @@
 %   Created 
 %       2014.03.26 by ywg@USTC
 %   Last Modified
-%       2015.04.23 by ywg@USTC
+%       2015.05.15 by ywg@USTC
 %
 %       $Id$
 %
@@ -79,8 +79,8 @@
 \newcommand{\hei}{\CJKfamily{hei}}      % 黑体
 
 \setmainfont{Times New Roman}
-\setsansfont[BoldFont={Courier New Bold}]{Courier New}
-\setmonofont[BoldFont={Arial:style=Bold}]{Arial}
+\setmonofont[BoldFont={Courier New Bold}]{Courier New}
+\setsansfont[BoldFont={Arial:style=Bold}]{Arial}
 
 
 
