@@ -7,7 +7,7 @@
 %   Created 
 %       2014.03.26 by ywg@USTC
 %   Last Modified
-%       2015.04.25 by ywg@USTC
+%       2016.02.24 by ywg@USTC
 %
 %       $Id$
 %
@@ -44,24 +44,23 @@
 %Use Euler math font
 \DeclareOption{euler}{\ustc@eulertrue}
 
-
 %Enhance compatibility
 \DeclareOption{adobefonts}{\ustc@adobefonttrue\PassOptionsToClass{adobefonts}{ctexbook}}
 \DeclareOption{adobefont}{\ustc@adobefonttrue\PassOptionsToClass{adobefonts}{ctexbook}}
 \DeclareOption{macfonts}{\ustc@macfonttrue\PassOptionsToClass{nofonts}{ctexbook}}
 
-
-
 %Pass all unprocessed/unknown options to ctexbook. If a wrong option is specified, perhaps ctexbook will throw an error.
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions
 
+\LoadClass[cs4size,a4paper,fancyhdr,fntef]{ctexbook}
+
 %Minimum xeCJK version:3.2.10, date:2014/03/01
-\PassOptionsToPackage{CJKchecksingle}{xeCJK}
+%CheckSingle选项的作用是防止孤字成行，这是一个排版的重要细节。
+%xeCJK不知道哪个版本更新后由CJKchecksingle换成了CheckSingle，导致了之前的BUG。对于较旧的版本，但愿CJKchecksingle不会报错。
 %不再鼓励使用$$...$$的方式输入公式，可能会引起奇怪的问题
 %如果一定要用$$...$$输入公式。请在更新到上述版本后加入PlainEquation选项。
-
-\LoadClass[cs4size,a4paper,fancyhdr,fntef]{ctexbook}
+\@ifpackagelater{xeCJK}{2014/03/01}{\xeCJKsetup{CheckSingle=true}}{\xeCJKsetup{CJKchecksingle=true}}
       
 %Check if extra pack should be used.
 \ifustc@basic\relax\else\input{ustcxtra.cls}\relax\fi
@@ -480,9 +479,9 @@
   \thispagestyle{empty}
   \begin{center}
     \vspace*{0cm}
-      \USTCLarge{\ttfamily{University of Science and Technology of China}}
+      \USTCLarge{\sffamily{University of Science and Technology of China}}
     \vskip -0.2cm %-0.6cm
-    \USTCLARGE{\ttfamily\ifustc@doctor
+    \USTCLARGE{\sffamily\ifustc@doctor
       {A dissertation for doctor's degree}
     \else\ifustc@master
       {A dissertation for master's degree}
